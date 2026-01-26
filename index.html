@@ -13,6 +13,10 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #fff8f0;
@@ -133,6 +137,7 @@
         /* Secciones */
         section {
             padding: 5rem 2rem;
+            scroll-margin-top: 110px;
         }
 
         .section-title {
@@ -144,42 +149,124 @@
         }
 
         .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            display: flex;
+            flex-direction: column;
+            max-width: 900px;
+            gap: 2.5rem;
+            margin: 0 auto;
         }
 
         .card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
+            background-color: #ffffff;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.12);
         }
 
         .card h3 {
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: #4b2e2e;
+            font-size: 1.15rem;
+            font-weight: 600;
         }
 
         .card p {
             font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 0.8rem;
+        }
+
+        .card-imagen {
+            flex-direction: row;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .card-texto {
+            flex: 1;
+        }
+
+        .card-imagen-contenedor {
+            flex: 0 0 200px;
+            height: 140px;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .card-imagen-contenedor img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card > *:last-child {
+            margin-bottom: 0;
+        }
+
+        .card .cta {
+            margin-top: auto;
+        }
+
+        .card.destacada {
+            border: 1px solid rgba(75,46,46,0.15);
+        }
+
+        .experiencias-lista {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.5rem;
+        }
+
+        .experiencias-lista li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
             color: #555;
         }
 
-        /* Footer */
+        .experiencias-lista li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #4b2e2e;
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
         footer {
             background-color: #4b2e2e;
-            color: white;
-            text-align: center;
-            padding: 2rem;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 14px;
         }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-content span {
+            white-space: nowrap;
+        }
+
+        .footer-social {
+            opacity: 0.85;
+        }
+
 
         /* Botón flotante dinámico */
         .floating-btn {
@@ -203,6 +290,13 @@
             background-color: #d17e3f;
         }
 
+        .whatsapp-btn {
+        display: inline-flex;   
+        align-items: center; 
+        background-color: #25D366;
+        border-radius: 50px;
+        }
+
         @media(max-width: 768px) {
             .hero h1 {
                 font-size: 2.2rem;
@@ -219,9 +313,16 @@
                 margin: 0;
                 font-size: 1.1rem;
             }
+
+            .card-imagen {
+                flex-direction: column;
+            }
+
+            .card-imagen-contenedor {
+                width: 100%;
+                height: 180px;
+            }
         }
-
-
     </style>
 </head>
 <body>
@@ -230,15 +331,14 @@
         <img src="/img/logo3.png" alt="Origen Pasion y Café Logo" width="100">
         <nav>
             <a href="#nosotros">Nosotros</a>
-            <a href="#productos">Productos</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#experiencias">Experiencias</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <h1>Bienvenido a Origen, Pasión y Café</h1>
-            <p>Descubre la pasión detrás de cada taza. Café de origen, calidad premium y experiencia única.</p>
+            <p>El café no se trata solo de beberlo, sino de entenderlo y disfrutarlo.</p>
             <button class="btn">Conoce más</button>
         </div>
     </section>
@@ -246,44 +346,158 @@
     <section id="nosotros">
         <h2 class="section-title">Nuestra Historia</h2>
         <p style="max-width: 800px; margin: 0 auto; text-align: center;">
-            En Origen Café combinamos tradición y pasión por el café. Desde la selección de los granos hasta tu taza, garantizamos calidad, sostenibilidad y sabor excepcional.
+            Origen, Pasión y Café nace del deseo de ir más allá de la taza. 
+            Creemos que el café es una experiencia que se construye desde el origen, se entiende con conocimiento y se disfruta con intención. 
+            Por eso combinamos café de especialidad, formación y experiencias sensoriales para acercar a las personas al verdadero valor del café. 
+            Cada cata, curso o evento que realizamos está pensado para compartir lo que sabemos, 
+            lo que sentimos y lo que el café puede contar cuando se prepara y se vive con propósito.
         </p>
     </section>
 
-    <section id="productos">
-        <h2 class="section-title">Nuestros Productos</h2>
+    <section id="experiencias">
+        <h2 class="section-title">Nuestras Experiencias en Café</h2>
+
         <div class="cards">
-            <div class="card">
-                <h3>Café Premium</h3>
-                <p>Granos seleccionados de origen único, tostados con precisión para resaltar su aroma y sabor.</p>
+
+            <!-- Catas -->
+            <div class="card destacada card-imagen">
+                <div class="card-texto">
+                    <h3>Catas de Café de Especialidad</h3>
+                    <p>
+                        Experiencias sensoriales guiadas donde exploramos aromas, sabores, procesos y orígenes del café.
+                        Ideales para desarrollar el paladar, aprender a describir lo que se percibe y entender el café más allá de la taza.
+                    </p>
+                </div>
+                <div class="card-imagen-contenedor">
+                    <img 
+                        src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80"
+                        alt="Cata de café de especialidad">
+                </div>
             </div>
-            <div class="card">
-                <h3>Molienda Especial</h3>
-                <p>Adaptamos la molienda a tu método de preparación favorito, desde espresso hasta prensa francesa.</p>
+
+            <!-- Formación -->
+            <div class="card card-imagen">
+                <div class="card-texto">
+                    <h3>Formación en Barismo</h3>
+                    <p>
+                        Programas prácticos de barismo básico y avanzado enfocados en extracción, espresso, métodos filtrados
+                        y bebidas con café. Diseñados para aprender haciendo, con grupos pequeños y acompañamiento cercano.
+                    </p>
+                </div>
+                <div class="card-imagen-contenedor">
+                    <img 
+                        src="https://images.unsplash.com/photo-1652007762236-fa98a594627b?auto=format&fit=crop&w=600&q=80"
+                        alt="Formación en barismo">
+                </div>
             </div>
-            <div class="card">
-                <h3>Accesorios</h3>
-                <p>Desde tazas hasta molinos, contamos con todo lo que necesitas para disfrutar tu café como un experto.</p>
+
+            <!-- Profundizaciones -->
+            <div class="card card-imagen">
+                <div class="card-texto">
+                    <h3>Profundizaciones en Café</h3>
+                    <p>
+                        Módulos especializados para profundizar en áreas específicas del café de especialidad:
+                    </p>
+                    <ul class="experiencias-lista">
+                        <li>Espresso y ajuste de extracción</li>
+                        <li>Análisis sensorial y cata</li>
+                        <li>Métodos filtrados (V60, Chemex, Aeropress, Prensa Francesa)</li>
+                        <li>Café, leche y arte latte</li>
+                        <li>Procesos, orígenes y tueste</li>
+                        <li>Bebidas con café</li>
+                        <li>Barismo doméstico y profesional</li>
+                    </ul>
+                </div>
+                <div class="card-imagen-contenedor">
+                    <img 
+                        src="https://images.unsplash.com/photo-1653491889108-7585d5b6e145?auto=format&fit=crop&w=600&q=80"
+                        alt="Métodos filtrados de café">
+                </div>
             </div>
+
+            <!-- Eventos -->
+            <div class="card card-imagen">
+                <div class="card-texto">
+                    <h3>Barra de Café para Eventos</h3>
+                    <p>
+                        Llevamos una barra de café de especialidad a eventos corporativos y sociales, con baristas,
+                        equipos profesionales y café seleccionado, cuidando cada detalle del servicio y la experiencia.
+                    </p>
+                </div>
+                <div class="card-imagen-contenedor">
+                    <img 
+                        src="https://images.unsplash.com/photo-1731509950762-2d06baeadb52?auto=format&fit=crop&w=600&q=80"
+                        alt="Barra de café para eventos">
+                </div>
+            </div>
+
+            <!-- Experiencias personalizadas -->
+            <div class="card card-imagen">
+                <div class="card-texto">
+                    <h3>Experiencias Personalizadas</h3>
+                    <p>
+                        Diseñamos experiencias a medida para empresas, equipos o grupos privados, combinando catas,
+                        formación y servicio de café según el objetivo del evento o la experiencia.
+                    </p>
+                </div>
+                <div class="card-imagen-contenedor">
+                    <img 
+                        src="https://images.unsplash.com/photo-1562447457-579fc34967fb?auto=format&fit=crop&w=600&q=80"
+                        alt="Experiencia personalizada de café">
+                </div>
+            </div>
+
         </div>
     </section>
 
+
+    <!--
     <section id="contacto">
         <h2 class="section-title">Contáctanos</h2>
-        <p style="text-align: center; margin-bottom: 2rem;">¿Tienes preguntas o quieres conocer más sobre nuestros productos? Escríbenos:</p>
-        <form style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
-            <input type="text" placeholder="Nombre" required style="padding: 0.8rem; border-radius: 10px; border: 1px solid #ccc;">
-            <input type="email" placeholder="Correo electrónico" required style="padding: 0.8rem; border-radius: 10px; border: 1px solid #ccc;">
-            <textarea placeholder="Mensaje" rows="5" required style="padding: 0.8rem; border-radius: 10px; border: 1px solid #ccc;"></textarea>
-            <button type="submit" class="btn">Enviar</button>
-        </form>
+        <p style="max-width: 800px; margin: 0 auto; text-align: center;">
+            En Origen Café combinamos tradición y pasión por el café. Desde la selección de los granos hasta tu taza, garantizamos calidad, sostenibilidad y sabor excepcional.
+        </p>
     </section>
+    -->
 
-    <footer>
-        &copy; 2025 Origen Café. Todos los derechos reservados.
+    <footer id="footer">
+        <div class="footer-content">
+            <span>
+                © 2025 <strong>Origen, Pasión y Café</strong>
+            </span>
+
+            <span>
+                📍 Bogotá, Colombia
+            </span>
+
+            <span>
+                ✉️ ventas@origenpasionycafe.com
+            </span>
+
+            <span>
+                📞 +57 3170518915
+            </span>
+
+            <span class="footer-social">
+                Instagram · Facebook · TikTok
+            </span>
+        </div>
     </footer>
 
-    <button class="floating-btn">¡Compra Ahora!</button>
+
+
+    <a 
+    href="https://wa.me/573170518915?text=Hola%20vengo%20desde%20la%20página%20web%20y%20quiero%20conocer%20sus%20experiencias"
+    class="floating-btn whatsapp-btn"
+    target="_blank"
+    aria-label="Chatea por WhatsApp"    >
+    <!-- Logo oficial WhatsApp  -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+    </svg>
+        <span></span>
+    </a>
+    
 
 </body>
 </html>
