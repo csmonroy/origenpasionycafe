@@ -1,512 +1,405 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Origen, Pasión y Café</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/img/favicon.png">
-    <style>
-        /* Reset básico */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Origen, Pasión y Café</title>
 
-        html {
-            scroll-behavior: smooth;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #fff8f0;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Header */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 3rem;
-            background: #4b2e2e;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        header nav a {
-            margin-left: 2rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        header nav a:hover {
-            color: #f2a154;
-        }
-
-        /* Hero Section */       
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 5rem 2rem;
-            /* 
-             background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600') no-repeat center center/cover; 
-             background: url('https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=1600') no-repeat center center/cover; 
-             background: url('https://images.unsplash.com/photo-1500353391678-d7b57979d6d2?q=80&w=1600') no-repeat center center/cover; 
-             background: url('https://images.unsplash.com/photo-1522726336270-3a0053210f06?q=80&w=1600') no-repeat center center/cover; */
-             background: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1600') no-repeat center center/cover;
-            
-            height: calc(100vh - 100px);
-            color: white;
-            position: relative;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(75, 46, 46, 0.6);
-        }
-
-        .hero-content {
-            position: relative;
-            max-width: 800px;
-            z-index: 2;
-            margin-top: -150px;
-        }
-
-        .hero h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero .btn {
-            background-color: #f2a154;
-            color: black;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
-        }
-
-        .hero .btn:hover {
-            background-color: #d17e3f;
-            transform: translateY(-3px);
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px);}
-            to { opacity: 1; transform: translateY(0);}
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px);}
-            to { opacity: 1; transform: translateY(0);}
-        }
-
-        /* Secciones */
-        section {
-            padding: 5rem 2rem;
-            scroll-margin-top: 110px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 3rem;
-            color: #4b2e2e;
-        }
-
-        .cards {
-            display: flex;
-            flex-direction: column;
-            max-width: 900px;
-            gap: 2.5rem;
-            margin: 0 auto;
-        }
-
-        .card {
-            background-color: #ffffff;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 28px rgba(0,0,0,0.12);
-        }
-
-        .card h3 {
-            margin-bottom: 0.75rem;
-            color: #4b2e2e;
-            font-size: 1.15rem;
-            font-weight: 600;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #555;
-            margin-bottom: 0.8rem;
-        }
-
-        .card-imagen {
-            flex-direction: row;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .card-texto {
-            flex: 1;
-        }
-
-        .card-imagen-contenedor {
-            flex: 0 0 200px;
-            height: 140px;
-            border-radius: 14px;
-            overflow: hidden;
-        }
-
-        .card-imagen-contenedor img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .card > *:last-child {
-            margin-bottom: 0;
-        }
-
-        .card .cta {
-            margin-top: auto;
-        }
-
-        .card.destacada {
-            border: 1px solid rgba(75,46,46,0.15);
-        }
-
-        .experiencias-lista {
-            list-style: none;
-            padding: 0;
-            margin-top: 0.5rem;
-        }
-
-        .experiencias-lista li {
-            position: relative;
-            padding-left: 18px;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .experiencias-lista li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #4b2e2e;
-            font-size: 1.3rem;
-            line-height: 1;
-        }
-
-        footer {
-            background-color: #4b2e2e;
-            color: #fff;
-            padding: 15px 30px;
-            font-size: 14px;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .footer-content span {
-            white-space: nowrap;
-        }
-
-        .footer-social {
-            opacity: 0.85;
-        }
-
-
-        /* Botón flotante dinámico */
-        .floating-btn {
-            position: fixed;
-            bottom: 5rem;
-            right: 2rem;
-            background-color: #f2a154;
-            color: white;
-            border: none;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s, background 0.3s;
-            z-index: 100;
-        }
-
-        .floating-btn:hover {
-            transform: translateY(-5px);
-            background-color: #d17e3f;
-        }
-
-        .whatsapp-btn {
-        display: inline-flex;   
-        align-items: center; 
-        background-color: #25D366;
-        border-radius: 50px;
-        }
-
-        @media(max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            header nav {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            header nav a {
-                margin: 0;
-                font-size: 1.1rem;
-            }
-
-            .card-imagen {
-                flex-direction: column;
-            }
-
-            .card-imagen-contenedor {
-                width: 100%;
-                height: 180px;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Ir al inicio">
+        <img src="/img/logo3.png" alt="Origen, Pasión y Café" class="brand-logo" />
+      </a>
 
-    <header>
-        <img src="/img/logo3.png" alt="Origen Pasion y Café Logo" width="100">
-        <nav>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#experiencias">Experiencias</a>
-        </nav>
-    </header>
+      <nav class="nav" aria-label="Navegación principal">
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Bienvenido a Origen, Pasión y Café</h1>
-            <p>El café no se trata solo de beberlo, sino de entenderlo y disfrutarlo.</p>
-            <a href="#experiencias" class="btn" data-scroll>Conoce más</a>
+        <ul class="nav-list">
+          <li><a href="#nosotros">Nuestro Café</a></li>
+          <li><a href="#experiencias">Catas & Cursos</a></li>
+          <li><a href="#tienda">Café para casa</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <a class="header-phone" href="tel:+57 3012669975" aria-label="Llamar">
+        <span class="header-phone__icon">📞</span>
+        <span class="header-phone__text">+57 3012669975</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Sección principal">
+      <div class="hero-bg" role="img" aria-label="Café de especialidad" style="background-image:url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=2000&q=80')"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
+          <p class="eyebrow">Colombia merece tomarse su mejor café.</p>
+
+          <h1>
+            Pasión por el origen,
+            <span class="emph">aprendizaje</span> en cada taza.
+          </h1>
+
+          <p class="lead">
+            Educamos y acompañamos a quienes quieren descubrir el café de especialidad:
+            variedades, métodos, molienda, extracción… y una nueva forma de consumir con intención.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#reservar" data-track="cta_whatsapp_hero">Reservar por WhatsApp</a>
+            <a class="btn btn-secondary" href="#experiencias">Ver catas y cursos</a>
+          </div>
+
+          <div class="hero-note">
+            <span class="dot"></span>
+            <span>Una invitación a probar sin azúcar… y a entender por qué.</span>
+          </div>
         </div>
-    </section>
 
-    <section id="nosotros">
-        <h2 class="section-title">Nuestra Historia</h2>
-        <p style="max-width: 800px; margin: 0 auto; text-align: center;">
-            Origen, Pasión y Café nace del deseo de ir más allá de la taza. 
-            Creemos que el café es una experiencia que se construye desde el origen, se entiende con conocimiento y se disfruta con intención. 
-            Por eso combinamos café de especialidad, formación y experiencias sensoriales para acercar a las personas al verdadero valor del café. 
-            Cada cata, curso o evento que realizamos está pensado para compartir lo que sabemos, 
-            lo que sentimos y lo que el café puede contar cuando se prepara y se vive con propósito.
-        </p>
-    </section>
+        <div class="hero-card" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+          <div class="hero-card__top">
+            <h3>Reserva rápida</h3>
+            <p>Te guiamos según tu nivel: desde curiosos hasta apasionados.</p>
+          </div>
 
-    <section id="experiencias">
-        <h2 class="section-title">Nuestras Experiencias en Café</h2>
-
-        <div class="cards">
-
-            <!-- Catas -->
-            <div class="card destacada card-imagen">
-                <div class="card-texto">
-                    <h3>Catas de Café de Especialidad</h3>
-                    <p>
-                        Experiencias sensoriales guiadas donde exploramos aromas, sabores, procesos y orígenes del café.
-                        Ideales para desarrollar el paladar, aprender a describir lo que se percibe y entender el café más allá de la taza.
-                    </p>
-                </div>
-                <div class="card-imagen-contenedor">
-                    <img 
-                        src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80"
-                        alt="Cata de café de especialidad">
-                </div>
+          <div class="hero-card__grid">
+            <div class="mini">
+              <div class="mini__title">Catas</div>
+              <div class="mini__value">Desde $80.000</div>
+              <div class="mini__meta">60–90 min</div>
             </div>
-
-            <!-- Formación -->
-            <div class="card card-imagen">
-                <div class="card-texto">
-                    <h3>Formación en Barismo</h3>
-                    <p>
-                        Programas prácticos de barismo básico y avanzado enfocados en extracción, espresso, métodos filtrados
-                        y bebidas con café. Diseñados para aprender haciendo, con grupos pequeños y acompañamiento cercano.
-                    </p>
-                </div>
-                <div class="card-imagen-contenedor">
-                    <img 
-                        src="https://images.unsplash.com/photo-1652007762236-fa98a594627b?auto=format&fit=crop&w=600&q=80"
-                        alt="Formación en barismo">
-                </div>
+            <div class="mini">
+              <div class="mini__title">Cursos</div>
+              <div class="mini__value">Desde $160.000</div>
+              <div class="mini__meta">2–4 horas</div>
             </div>
+          </div>
 
-            <!-- Profundizaciones -->
-            <div class="card card-imagen">
-                <div class="card-texto">
-                    <h3>Profundizaciones en Café</h3>
-                    <p>
-                        Módulos especializados para profundizar en áreas específicas del café de especialidad:
-                    </p>
-                    <ul class="experiencias-lista">
-                        <li>Espresso y ajuste de extracción</li>
-                        <li>Análisis sensorial y cata</li>
-                        <li>Métodos filtrados (V60, Chemex, Aeropress, Prensa Francesa)</li>
-                        <li>Café, leche y arte latte</li>
-                        <li>Procesos, orígenes y tueste</li>
-                        <li>Bebidas con café</li>
-                        <li>Barismo doméstico y profesional</li>
-                    </ul>
-                </div>
-                <div class="card-imagen-contenedor">
-                    <img 
-                        src="https://images.unsplash.com/photo-1653491889108-7585d5b6e145?auto=format&fit=crop&w=600&q=80"
-                        alt="Métodos filtrados de café">
-                </div>
-            </div>
-
-            <!-- Eventos -->
-            <div class="card card-imagen">
-                <div class="card-texto">
-                    <h3>Barra de Café para Eventos</h3>
-                    <p>
-                        Llevamos una barra de café de especialidad a eventos corporativos y sociales, con baristas,
-                        equipos profesionales y café seleccionado, cuidando cada detalle del servicio y la experiencia.
-                    </p>
-                </div>
-                <div class="card-imagen-contenedor">
-                    <img 
-                        src="https://images.unsplash.com/photo-1731509950762-2d06baeadb52?auto=format&fit=crop&w=600&q=80"
-                        alt="Barra de café para eventos">
-                </div>
-            </div>
-
-            <!-- Experiencias personalizadas -->
-            <div class="card card-imagen">
-                <div class="card-texto">
-                    <h3>Experiencias Personalizadas</h3>
-                    <p>
-                        Diseñamos experiencias a medida para empresas, equipos o grupos privados, combinando catas,
-                        formación y servicio de café según el objetivo del evento o la experiencia.
-                    </p>
-                </div>
-                <div class="card-imagen-contenedor">
-                    <img 
-                        src="https://images.unsplash.com/photo-1562447457-579fc34967fb?auto=format&fit=crop&w=600&q=80"
-                        alt="Experiencia personalizada de café">
-                </div>
-            </div>
-
+          <a class="btn btn-primary btn-block" href="#reservar">Reservar ahora</a>
+          <p class="hero-card__fine">*Valores referenciales (ajustables).</p>
         </div>
-    </section>
+      </div>
 
-
-    <!--
-    <section id="contacto">
-        <h2 class="section-title">Contáctanos</h2>
-        <p style="max-width: 800px; margin: 0 auto; text-align: center;">
-            En Origen Café combinamos tradición y pasión por el café. Desde la selección de los granos hasta tu taza, garantizamos calidad, sostenibilidad y sabor excepcional.
-        </p>
-    </section>
-    -->
-
-    <footer id="footer">
-        <div class="footer-content">
-            <span>
-                © 2026 <strong>Origen, Pasión y Café</strong>
-            </span>
-
-            <span>
-                📍 Bogotá, Colombia
-            </span>
-
-            <span>
-                ✉️ contacto@origenpasionycafe.com
-            </span>
-
-            <span>
-                📞 +57 3012669975
-            </span>
-
-            <span class="footer-social">
-                <a href="https://instagram.com/origenpasionycafe" target="_blank" rel="noopener noreferrer">Instagram</a>
-                ·
-                <a href="https://www.facebook.com/OrigenPasionyCafeCo" target="_blank" rel="noopener noreferrer">Facebook</a>
-                ·
-                <a href="https://www.tiktok.com/@origenpasionycafe" target="_blank" rel="noopener noreferrer">TikTok</a>
-            </span>
+      <div class="hero-bottom">
+        <div class="container hero-bottom__inner">
+          <div class="stats" data-aos="fade-up" data-aos-delay="250">
+            <div class="stat">
+              <div class="stat__k">Variedades</div>
+              <div class="stat__v">Descubre perfiles reales</div>
+            </div>
+            <div class="stat">
+              <div class="stat__k">Métodos</div>
+              <div class="stat__v">V60, prensa, espresso</div>
+            </div>
+            <div class="stat">
+              <div class="stat__k">Origen</div>
+              <div class="stat__v">Aprende a elegir mejor</div>
+            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
+    <section id="nosotros" class="section section-light">
+      <div class="container two-col">
+        <div data-aos="fade-up">
+          <h2>Un país cafetero no debería conformarse.</h2>
+          <p class="muted">
+            Colombia es reconocida mundialmente por lo que produce, pero en casa solemos tomar café
+            de baja calidad, con azúcar por costumbre y sin conocer que existen variedades,
+            procesos y métodos que transforman la experiencia.
+          </p>
+          <p>
+            En <strong>Origen, Pasión y Café</strong> creamos espacios para aprender, cuestionar hábitos y
+            disfrutar con criterio: el café como cultura, no como rutina.
+          </p>
 
+          <div class="quote" data-aos="fade-up" data-aos-delay="150">
+            <p>“Lo premium no es pagar más… es saber lo que estás tomando.”</p>
+          </div>
+        </div>
 
-    <a 
-    href="https://wa.me/573012669975?text=Hola%20vengo%20desde%20la%20página%20web%20y%20quiero%20conocer%20sus%20experiencias"
-    class="floating-btn whatsapp-btn"
-    target="_blank"
-    aria-label="Chatea por WhatsApp"    >
-    <!-- Logo oficial WhatsApp  -->
-    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-    <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-    </svg>
-        <span></span>
-    </a>
-    
+        <div class="reasons" data-aos="fade-up" data-aos-delay="150">
+          <h3 class="h3">¿Por qué elegirnos?</h3>
+          <div class="reasons-grid">
+            <article class="reason">
+              <div class="icon">🌿</div>
+              <div>
+                <h4>Calidad con criterio</h4>
+                <p>Seleccionamos cafés con trazabilidad y te enseñamos a reconocerlos.</p>
+              </div>
+            </article>
 
+            <article class="reason">
+              <div class="icon">☕</div>
+              <div>
+                <h4>Aprendizaje práctico</h4>
+                <p>Menos teoría, más método: molienda, receta, extracción y ajuste.</p>
+              </div>
+            </article>
+
+            <article class="reason">
+              <div class="icon">✨</div>
+              <div>
+                <h4>Experiencias memorables</h4>
+                <p>Ambiente cálido, guía cercana y una invitación a probar diferente.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencias" class="section section-dark">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <h2>Catas & Cursos</h2>
+          <p class="muted muted-on-dark">
+            Elige una experiencia. Nosotros hacemos el resto: guía, café, método y conversación.
+          </p>
+        </div>
+
+        <div class="cards" data-aos="fade-up" data-aos-delay="100">
+          <article class="card">
+            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80')"></div>
+            <div class="card-body">
+              <div class="card-top">
+                <h3>Cata de café de especialidad</h3>
+                <span class="badge">Ideal para empezar</span>
+              </div>
+              <p>
+                Aprende a identificar aroma, acidez, dulzor y cuerpo. Descubre cómo cambia un café
+                cuando entiendes su origen y proceso.
+              </p>
+              <div class="price-row">
+                <div class="price">
+                  <span class="price__from">Desde</span>
+                  <span class="price__value">$80.000</span>
+                </div>
+                <div class="meta">
+                  <span>60–90 min</span>
+                  <span>1–10 personas</span>
+                </div>
+              </div>
+              <a class="btn btn-primary btn-block" href="#reservar" data-preset="cata">Reservar esta cata</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1652007762236-fa98a594627b?auto=format&fit=crop&w=1400&q=80')"></div>
+            <div class="card-body">
+              <div class="card-top">
+                <h3>Curso de métodos (V60 / prensa / aeropress)</h3>
+                <span class="badge">Para amantes del detalle</span>
+              </div>
+              <p>
+                Recetas, ratios, control de agua, molienda y técnica. Sales con un método replicable
+                en casa y criterio para ajustar.
+              </p>
+              <div class="price-row">
+                <div class="price">
+                  <span class="price__from">Desde</span>
+                  <span class="price__value">$160.000</span>
+                </div>
+                <div class="meta">
+                  <span>2–3 horas</span>
+                  <span>1–6 personas</span>
+                </div>
+              </div>
+              <a class="btn btn-primary btn-block" href="#reservar" data-preset="curso_metodos">Reservar este curso</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1653491889108-7585d5b6e145?auto=format&fit=crop&w=1400&q=80')"></div>
+            <div class="card-body">
+              <div class="card-top">
+                <h3>Experiencia personalizada</h3>
+                <span class="badge">Diseñada para ti</span>
+              </div>
+              <p>
+                ¿Tu objetivo es espresso, latte art o mejorar tu método favorito? Armamos una sesión
+                según tu equipo y tus gustos.
+              </p>
+              <div class="price-row">
+                <div class="price">
+                  <span class="price__from">Desde</span>
+                  <span class="price__value">$220.000</span>
+                </div>
+                <div class="meta">
+                  <span>2–4 horas</span>
+                  <span>1–4 personas</span>
+                </div>
+              </div>
+              <a class="btn btn-primary btn-block" href="#reservar" data-preset="personalizada">Reservar sesión</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="callout" data-aos="fade-up" data-aos-delay="150">
+          <div>
+            <h3>¿Café para eventos?</h3>
+            <p class="muted muted-on-dark">Barra de café, bebidas y experiencia guiada para tu marca o celebración.</p>
+          </div>
+          <a class="btn btn-secondary" href="#reservar" data-preset="eventos">Cotizar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tienda" class="section section-light">
+      <div class="container">
+        <div class="section-head" data-aos="fade-up">
+          <h2>Café para casa</h2>
+          <p class="muted">
+            Comprar mejor café es un acto pequeño… que cambia tu mañana (y tu paladar).
+          </p>
+        </div>
+
+        <div class="products" data-aos="fade-up" data-aos-delay="100">
+          <article class="product">
+            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1400&q=80')"></div>
+            <div class="product-body">
+              <h3>Blend Casa</h3>
+              <p class="muted">Chocolate • Panela • Balanceado</p>
+              <div class="product-bottom">
+                <div class="product-price">$45.000</div>
+                <a class="btn btn-primary btn-small" href="#reservar" data-preset="blend_casa">Pedir</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1400&q=80')"></div>
+            <div class="product-body">
+              <h3>Origen Frutal</h3>
+              <p class="muted">Cítrico • Floral • Jugoso</p>
+              <div class="product-bottom">
+                <div class="product-price">$55.000</div>
+                <a class="btn btn-primary btn-small" href="#reservar" data-preset="origen_frutal">Pedir</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=1400&q=80')"></div>
+            <div class="product-body">
+              <h3>Espresso Intenso</h3>
+              <p class="muted">Cacao • Nuez • Cuerpo alto</p>
+              <div class="product-bottom">
+                <div class="product-price">$52.000</div>
+                <a class="btn btn-primary btn-small" href="#reservar" data-preset="espresso_intenso">Pedir</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="reflection" data-aos="fade-up" data-aos-delay="120">
+          <p><strong>Reflexión rápida:</strong> si necesitas azúcar para disfrutar el café, tal vez no era un buen café (o estaba mal extraído).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservar" class="section section-dark">
+      <div class="container reserve" data-aos="fade-up">
+        <div class="reserve-copy">
+          <h2>Reserva por WhatsApp</h2>
+          <p class="muted muted-on-dark">
+            Cuéntanos qué quieres (cata, curso o café) y tu disponibilidad. Te respondemos con opciones y confirmación.
+          </p>
+
+          <ul class="bullets">
+            <li>✔️ Recomendación según tu nivel</li>
+            <li>✔️ Ajuste por grupo y objetivo</li>
+            <li>✔️ Confirmación rápida</li>
+          </ul>
+        </div>
+
+        <div class="reserve-box" id="contacto">
+          <form class="form" onsubmit="return false;">
+            <label>
+              ¿Qué deseas reservar?
+              <select id="tipo">
+                <option value="Cata de café de especialidad">Cata de café</option>
+                <option value="Curso de métodos (V60 / prensa / aeropress)">Curso de métodos</option>
+                <option value="Experiencia personalizada">Experiencia personalizada</option>
+                <option value="Barra de café para eventos">Barra para eventos</option>
+                <option value="Comprar café para casa">Comprar café</option>
+              </select>
+            </label>
+
+            <label>
+              Fecha tentativa
+              <input id="fecha" type="text" placeholder="Ej: Sábado 4pm / 15 de marzo" />
+            </label>
+
+            <label>
+              Personas / cantidad
+              <input id="cantidad" type="text" placeholder="Ej: 4 personas / 2 bolsas de 340g" />
+            </label>
+
+            <label>
+              Comentario (opcional)
+              <textarea id="comentario" rows="3" placeholder="Cuéntanos tu nivel, método que usas o qué buscas mejorar"></textarea>
+            </label>
+
+            <a id="waBtn" class="btn btn-primary btn-block" href="#" target="_blank" rel="noreferrer">
+              Enviar por WhatsApp
+            </a>
+
+            <div class="contact-mini">
+              <div><strong>📍</strong> Bogotá, Colombia</div>
+              <div><strong>✉️</strong> <a href="mailto:contacto@origenpasionycafe.com">contacto@origenpasionycafe.com</a></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <img src="/img/logo3.png" alt="Origen, Pasión y Café" class="footer-logo" />
+        <p class="muted muted-on-dark">© 2026 Origen, Pasión y Café</p>
+        <p class="muted muted-on-dark">📍 Bogotá, Colombia · ✉️ contacto@origenpasionycafe.com · 📞 +57 3012669975</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#nosotros">Nuestro Café</a>
+        <a href="#experiencias">Catas & Cursos</a>
+        <a href="#tienda">Café para casa</a>
+        <a href="#reservar">Reservar</a>
+      </div>
+
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="TikTok">TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="#" id="waFloat" aria-label="WhatsApp" target="_blank" rel="noreferrer">
+    <span class="wa-float__icon">💬</span>
+    <span class="wa-float__text">Reservar</span>
+  </a>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
