@@ -1,12 +1,12 @@
 :root{
-  /* Brand palette */
+  /* Identidad cromática (OPC) */
   --color-brand-base: #3F3A2E;
   --color-brand-structure: #6B5E45;
   --color-brand-cream: #EFE6D3;
   --color-brand-accent: #C9A66B;
   --color-brand-text: #2B261C;
 
-  /* Backwards-compatible aliases (used across the current CSS) */
+  /* Aliases internos */
   --base: var(--color-brand-base);
   --structure: var(--color-brand-structure);
   --cream: var(--color-brand-cream);
@@ -71,9 +71,10 @@ img{ max-width:100%; display:block; }
 .hero-overlay{
   position:absolute; inset:0;
   background:
-    radial-gradient(1200px 600px at 20% 30%, rgba(0,0,0,.35), transparent 60%),
-    linear-gradient(90deg, rgba(63,58,46,.86) 0%, rgba(63,58,46,.72) 40%, rgba(63,58,46,.35) 70%, rgba(63,58,46,.15) 100%),
-    linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.45) 100%);
+    radial-gradient(1100px 620px at 18% 30%, rgba(201,166,107,.26), transparent 62%),
+    radial-gradient(900px 520px at 75% 65%, rgba(107,94,69,.22), transparent 60%),
+    linear-gradient(90deg, rgba(63,58,46,.92) 0%, rgba(107,94,69,.78) 42%, rgba(63,58,46,.38) 72%, rgba(63,58,46,.18) 100%),
+    linear-gradient(180deg, rgba(43,38,28,.18) 0%, rgba(43,38,28,.52) 100%);
 }
 .hero-inner{
   position:relative; z-index:1;
@@ -102,12 +103,6 @@ img{ max-width:100%; display:block; }
 /* Buttons */
 .btn{
   display:inline-flex; align-items:center; justify-content:center;
-  max-width:100%;
-  text-align:center;
-  white-space:normal;
-  line-height:1.2;
-  overflow-wrap:anywhere;
-  word-break:break-word;
   padding:12px 18px;
   border-radius:999px;
   font-weight:800; font-size:14px;
@@ -117,17 +112,22 @@ img{ max-width:100%; display:block; }
 .btn:hover{ transform:translateY(-1px); filter:brightness(1.03); }
 .btn:active{ transform:translateY(0); }
 .btn-primary{ background:var(--accent); color:var(--text); box-shadow:0 18px 45px rgba(201,166,107,.22); }
-.btn-secondary{ background:rgba(239,230,211,.08); border-color:rgba(239,230,211,.22); color:rgba(239,230,211,.93); }
+.btn-secondary{
+  background: rgba(107,94,69,.28);
+  border-color: rgba(239,230,211,.20);
+  color: rgba(239,230,211,.93);
+}
 .btn-secondary:hover{ border-color: rgba(201,166,107,.45); }
 .btn-block{ width:100%; border-radius:14px; padding:13px 18px; }
 .btn-small{ padding:10px 14px; font-size:13px; }
 
 /* Hero card */
 .hero-card{
-  background:rgba(43,38,28,.32);
-  border:1px solid rgba(239,230,211,.16);
+  background:rgba(43,38,28,.75);
+  border:1px solid rgba(239,230,211,.22);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
+  backdrop-filter: blur(8px);
   overflow:hidden;
 }
 .hero-card__top{ padding:18px 18px 12px; }
@@ -138,8 +138,11 @@ img{ max-width:100%; display:block; }
 .mini__title{ font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:rgba(239,230,211,.75); }
 .mini__value{ margin-top:6px; font-weight:900; color:rgba(239,230,211,.95); }
 .mini__meta{ margin-top:4px; font-size:12px; color:rgba(239,230,211,.72); }
-.hero-card .btn-block{ margin:0 18px 10px; }
+.hero-card .btn-block{ margin: 0 0 10px;}
+.hero-card{ padding-bottom: 16px;}
 .hero-card__fine{ margin:0 18px 16px; font-size:12px; color:rgba(239,230,211,.65); }
+.hero-card__cta{ padding: 0 18px 10px; }
+.hero-card__cta .btn-block{ width:100%; margin:0; }
 
 /* Stats */
 .hero-bottom{ position:absolute; left:0; right:0; bottom:0; z-index:1; padding:0 0 26px; }
@@ -215,20 +218,46 @@ p{ line-height:1.75; }
   border:1px solid rgba(239,230,211,.14);
   box-shadow:var(--shadowSoft);
 }
-.card-media{ height:190px; background-size:cover; background-position:center; filter:contrast(1.03) saturate(1.05); }
-.card-body{ padding:16px; }
-.card-top{ display:flex; justify-content:space-between; gap:12px; }
+.card-media{
+  height:190px;
+  background-size:cover;
+  background-position:center;
+  filter:contrast(1.03) saturate(1.05);
+  border-bottom:1px solid rgba(239,230,211,.10);
+}
+.card-body{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  padding:18px 18px 16px;   /* <- esto arregla lo “pegado” */
+}
+.card-top{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:10px;
+}
+
 .card h3{ margin:0; font-family:"Playfair Display",serif; font-size:20px; line-height:1.2; }
 .badge{
-  padding:8px 10px; border-radius:999px;
-  font-size:12px; font-weight:800;
-  background:rgba(201,166,107,.18);
-  border:1px solid rgba(201,166,107,.35);
+  align-self:flex-start;
+  padding:6px 10px;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  border-radius:999px;
+  background:rgba(201,166,107,.16);
+  border:1px solid rgba(201,166,107,.32);
   color:rgba(239,230,211,.92);
   white-space:nowrap;
 }
-.card p{ margin:10px 0 14px; color:rgba(239,230,211,.78); line-height:1.65; }
-.price-row{ display:flex; justify-content:space-between; gap:12px; margin-bottom:12px; align-items:flex-end; }
+
+.card p{
+  margin: 8px 0 14px;
+  color: rgba(239,230,211,.78);
+  line-height: 1.65;
+}
+.price-row{ display:flex; justify-content:space-between; gap:12px; margin-bottom:12px; align-items:center; margin-top:auto;}
 .price__from{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(239,230,211,.70); }
 .price__value{ display:block; margin-top:4px; font-weight:900; font-size:22px; color:rgba(239,230,211,.96); }
 .meta{ display:flex; flex-direction:column; gap:4px; font-size:12px; color:rgba(239,230,211,.70); text-align:right; }
@@ -330,9 +359,4 @@ textarea{ resize:vertical; min-height:90px; }
     border:1px solid rgba(239,230,211,.16);
   }
   .nav-list.is-open{ display:flex; }
-
-  /* Prevent button overflow on small screens */
-  .hero-cta .btn{ width:100%; }
-  .card .btn-block, .product-card .btn-block{ width:100%; }
-  .wa-float{ max-width:calc(100% - 36px); }
 }
