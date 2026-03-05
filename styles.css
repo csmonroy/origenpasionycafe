@@ -1,9 +1,17 @@
 :root{
-  --base:#3F3A2E;
-  --structure:#6B5E45;
-  --cream:#EFE6D3;
-  --accent:#C9A66B;
-  --text:#2B261C;
+  /* Brand palette */
+  --color-brand-base: #3F3A2E;
+  --color-brand-structure: #6B5E45;
+  --color-brand-cream: #EFE6D3;
+  --color-brand-accent: #C9A66B;
+  --color-brand-text: #2B261C;
+
+  /* Backwards-compatible aliases (used across the current CSS) */
+  --base: var(--color-brand-base);
+  --structure: var(--color-brand-structure);
+  --cream: var(--color-brand-cream);
+  --accent: var(--color-brand-accent);
+  --text: var(--color-brand-text);
 
   --radius:18px;
   --container:1120px;
@@ -94,6 +102,12 @@ img{ max-width:100%; display:block; }
 /* Buttons */
 .btn{
   display:inline-flex; align-items:center; justify-content:center;
+  max-width:100%;
+  text-align:center;
+  white-space:normal;
+  line-height:1.2;
+  overflow-wrap:anywhere;
+  word-break:break-word;
   padding:12px 18px;
   border-radius:999px;
   font-weight:800; font-size:14px;
@@ -316,4 +330,9 @@ textarea{ resize:vertical; min-height:90px; }
     border:1px solid rgba(239,230,211,.16);
   }
   .nav-list.is-open{ display:flex; }
+
+  /* Prevent button overflow on small screens */
+  .hero-cta .btn{ width:100%; }
+  .card .btn-block, .product-card .btn-block{ width:100%; }
+  .wa-float{ max-width:calc(100% - 36px); }
 }
