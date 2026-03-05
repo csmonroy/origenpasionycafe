@@ -31,55 +31,67 @@ function isMobileDevice() {
   );
 }
 
-function buildMessage() {
+function buildMessageDetailed() {
   const tipo = document.getElementById('tipo')?.value || '';
   const fecha = document.getElementById('fecha')?.value || '';
   const cantidad = document.getElementById('cantidad')?.value || '';
   const comentario = document.getElementById('comentario')?.value || '';
 
   const lines = [
-    'Hola 👋, quiero reservar con Origen, Pasión y Café.',
-    tipo ? `☕ Servicio: ${tipo}` : '',
-    fecha ? `📅 Fecha tentativa: ${fecha}` : '',
-    cantidad ? `👥 Personas / cantidad: ${cantidad}` : '',
-    comentario ? `📝 Comentario: ${comentario}` : '',
+    'Hola, quiero reservar con Origen, Pasión y Café.',
+    tipo ? `Servicio: ${tipo}` : '',
+    fecha ? `Fecha tentativa: ${fecha}` : '',
+    cantidad ? `Personas / cantidad: ${cantidad}` : '',
+    comentario ? `Comentario: ${comentario}` : '',
     '',
-    'Gracias 🙌'
+    'Gracias'
   ].filter(Boolean);
 
   return lines.join('\n');
 }
 
-function setWhatsLinks() {
-  const msg = encodeURIComponent(buildMessage());
-  // Mobile: intenta abrir la app directamente (deep link). Fallback: wa.me
+function buildMessageGeneric() {
+  return [
+    'Hola, quiero reservar con Origen, Pasión y Café.',
+    '¿Me ayudas con disponibilidad y opciones?',
+    '',
+    'Gracias'
+  ].join('\n');
+}
+
+function makeWhatsUrl(message) {
+  const msg = encodeURIComponent(message);
   const waMeUrl = `https://wa.me/${WHATS_NUMBER}?text=${msg}`;
   const deepLink = `whatsapp://send?phone=${WHATS_NUMBER}&text=${msg}`;
-  const url = isMobileDevice() ? deepLink : waMeUrl;
+  return isMobileDevice() ? deepLink : waMeUrl;
+}
 
+function setWhatsLinks() {
   const waBtn = document.getElementById('waBtn');
   const waFloat = document.getElementById('waFloat');
-  if (waBtn) waBtn.href = url;
-  if (waFloat) waFloat.href = url;
+
+  // Botón del formulario -> detallado
+  if (waBtn) waBtn.href = makeWhatsUrl(buildMessageDetailed());
+
+  // Flotante -> genérico (no se “contamina” con presets)
+  if (waFloat) waFloat.href = makeWhatsUrl(buildMessageGeneric());
 }
 
 // En móvil, forzamos intento de abrir la app (y si falla, cae a wa.me)
-function attachWhatsAppFallback(anchorId) {
+function attachWhatsAppFallback(anchorId, getMessageFn) {
   const a = document.getElementById(anchorId);
   if (!a) return;
+
   a.addEventListener('click', (e) => {
     if (!isMobileDevice()) return;
+
     e.preventDefault();
-    const msg = encodeURIComponent(buildMessage());
+    const msg = encodeURIComponent(getMessageFn());
     const deepLink = `whatsapp://send?phone=${WHATS_NUMBER}&text=${msg}`;
     const waMeUrl = `https://wa.me/${WHATS_NUMBER}?text=${msg}`;
 
-    // Intento abrir app
     window.location.href = deepLink;
-    // Fallback si el esquema no está soportado
-    setTimeout(() => {
-      window.location.href = waMeUrl;
-    }, 600);
+    setTimeout(() => { window.location.href = waMeUrl; }, 600);
   });
 }
 
@@ -108,5 +120,5 @@ document.querySelectorAll('[data-preset]').forEach(btn => {
 
 setWhatsLinks();
 
-attachWhatsAppFallback('waBtn');
-attachWhatsAppFallback('waFloat');
+attachWhatsAppFallback('waBtn', buildMessageDetailed);
+attachWhatsAppFallback('waFloat', buildMessageGeneric);
