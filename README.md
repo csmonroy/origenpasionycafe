@@ -15,6 +15,8 @@ Además de estas pruebas, revisar en navegador que los botones de las tarjetas s
 
 Publicar `index.html`, `styles.css`, `script.js`, `robots.txt`, `sitemap.xml` y la carpeta `img/` en el hosting actual. El dominio canónico configurado es `https://origenpasionycafe.com/`. Los cambios locales no actualizan por sí solos la web pública.
 
+El hosting es Cloudflare Pages, conectado a la rama `main` de este repositorio. Un push a `main` activa el despliegue. Al cambiar CSS o JavaScript, actualizar también el parámetro `v` de sus referencias en `index.html` para renovar la caché de los visitantes existentes.
+
 ## Contenido comercial
 
 - Cata: desde $80.000 COP, 60–90 minutos, 1–6 personas.
