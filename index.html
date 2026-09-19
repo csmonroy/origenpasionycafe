@@ -1,419 +1,218 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CO">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Origen, Pasión y Café</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catas y cursos de café en Bogotá | Origen, Pasión y Café</title>
+  <meta name="description" content="Descubre el café de especialidad en Bogotá: catas desde $80.000, cursos de métodos y café para casa. Elige tu experiencia con Origen, Pasión y Café.">
+  <meta name="theme-color" content="#302c23">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://origenpasionycafe.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:site_name" content="Origen, Pasión y Café">
+  <meta property="og:title" content="Tu próxima gran taza empieza aquí.">
+  <meta property="og:description" content="Catas y cursos de café en Bogotá. Aprende a reconocer lo que te gusta y lleva el café de especialidad a tu día a día.">
+  <meta property="og:url" content="https://origenpasionycafe.com/">
+  <meta property="og:image" content="https://origenpasionycafe.com/img/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Origen, Pasión y Café. Catas, cursos y café de especialidad en Bogotá.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Catas y cursos de café en Bogotá | Origen, Pasión y Café">
+  <meta name="twitter:description" content="Catas, métodos y café para casa. Descubre una nueva forma de disfrutar cada taza.">
+  <meta name="twitter:image" content="https://origenpasionycafe.com/img/social-card.png">
+  <link rel="icon" type="image/png" href="img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
-  <link rel="icon" type="image/png" href="/img/favicon.png">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Montserrat:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://origenpasionycafe.com/#organization",
+        "name": "Origen, Pasión y Café",
+        "url": "https://origenpasionycafe.com/",
+        "logo": "https://origenpasionycafe.com/img/logo.png",
+        "image": "https://origenpasionycafe.com/img/social-card.png",
+        "description": "Catas, cursos de métodos y café de especialidad en Bogotá, Colombia.",
+        "telephone": "+573012669975",
+        "email": "contacto@origenpasionycafe.com",
+        "areaServed": { "@type": "City", "name": "Bogotá" },
+        "contactPoint": { "@type": "ContactPoint", "telephone": "+573012669975", "contactType": "Reservas y pedidos", "availableLanguage": "Spanish" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://origenpasionycafe.com/#website",
+        "url": "https://origenpasionycafe.com/",
+        "name": "Origen, Pasión y Café",
+        "inLanguage": "es-CO",
+        "publisher": { "@id": "https://origenpasionycafe.com/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
-
-<body>
-  <header class="site-header" id="top">
+<body id="top">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Ir al inicio">
-        <img src="img/logo.png" alt="Origen, Pasión y Café" class="brand-logo" />
+      <a class="brand" href="#top" aria-label="Origen, Pasión y Café — Ir al inicio">
+        <img src="img/logo.png" alt="Origen, Pasión y Café" width="1644" height="726" class="brand-logo">
       </a>
-
       <nav class="nav" aria-label="Navegación principal">
-        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-
-        <ul class="nav-list">
-          <li><a href="#nosotros">Nuestro Café</a></li>
-          <li><a href="#experiencias">Catas & Cursos</a></li>
+        <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-list" hidden><span></span><span></span></button>
+        <ul class="nav-list" id="nav-list">
+          <li><a href="#experiencias">Catas y cursos</a></li>
+          <li><a href="#nosotros">Nuestra esencia</a></li>
           <li><a href="#tienda">Café para casa</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#preguntas">Preguntas frecuentes</a></li>
         </ul>
       </nav>
-
-      <a class="header-phone" href="tel:+57 3012669975" aria-label="Llamar">
-        <span class="header-phone__icon">📞</span>
-        <span class="header-phone__text">+57 3012669975</span>
-      </a>
+      <a class="header-cta" href="#reservar">Hablemos <span aria-hidden="true">↗</span></a>
     </div>
   </header>
-
-  <main>
-    <section class="hero" aria-label="Sección principal">
-      <div class="hero-bg" role="img" aria-label="Café espresso" style="background-image:url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=2000&q=80')"></div>
-      <div class="hero-overlay"></div>
-
+  <main id="contenido" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-inner">
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="900">
-          <p class="eyebrow">Colombia merece tomarse su mejor café.</p>
-
-          <h1>
-            Pasión por el origen,
-            <span class="emph">aprendizaje</span> en cada taza.
-          </h1>
-
-          <p class="lead">
-            Educamos y acompañamos a quienes quieren descubrir el café de especialidad:
-            variedades, métodos, molienda, extracción… y una nueva forma de consumir con intención.
-          </p>
-
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#reservar" data-track="cta_whatsapp_hero">Reservar por WhatsApp</a>
-            <a class="btn btn-secondary" href="#experiencias">Ver catas y cursos</a>
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="small-line" aria-hidden="true"></span> Del origen a tu taza · Bogotá</p>
+          <h1 id="hero-title">Catas y cursos de café en Bogotá.<br><em>Un nuevo sabor<br>a lo cotidiano.</em></h1>
+          <p class="hero-description">Hay mucho por descubrir en una taza. Aprende a reconocer aromas, explorar métodos y disfrutar el café de especialidad a tu manera.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#experiencias">Encuentra tu experiencia <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#tienda">Quiero café para casa <span aria-hidden="true">→</span></a>
           </div>
-
-          <div class="hero-note">
-            <span class="dot"></span>
-            <span>Una invitación a probar sin azúcar… y a entender por qué.</span>
-          </div>
+          <div class="hero-details"><span>Grupos pequeños</span><span>Aprendizaje práctico</span><span>Sin experiencia previa</span></div>
         </div>
-
-        <div class="hero-card" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
-          <div class="hero-card__top">
-            <h3>Reserva rápida</h3>
-            <p>Te guiamos según tu nivel: desde curiosos hasta apasionados.</p>
-          </div>
-
-          <div class="hero-card__grid">
-            <div class="mini">
-              <div class="mini__title">Catas</div>
-              <div class="mini__value">Desde $80.000</div>
-              <div class="mini__meta">60–90 min</div>
-            </div>
-            <div class="mini">
-              <div class="mini__title">Cursos y Talleres</div>
-              <div class="mini__value">Desde $200.000</div>
-              <div class="mini__meta">3–4 horas</div>
-            </div>
-          </div>
-
-          <div class="hero-card__cta">
-            <a class="btn btn-primary btn-block" href="#reservar">
-              Reservar ahora
-            </a>
-          </div>
-          <p class="hero-card__fine">*Valores referenciales.</p>
+        <div class="hero-visual">
+          <img class="hero-photo" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" srcset="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&amp;fit=crop&amp;w=480&amp;q=80 480w, https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&amp;fit=crop&amp;w=800&amp;q=80 800w, https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&amp;fit=crop&amp;w=1000&amp;q=80 1000w" sizes="(max-width: 760px) 92vw, 45vw" width="1000" height="1250" alt="Tazas de café con arte latte junto a plantas" fetchpriority="high">
+          <span class="image-caption">Una pausa. Muchos descubrimientos.</span>
+          <a class="hero-ticket" href="#reservar" data-preset="cata"><span class="ticket-icon" aria-hidden="true">↗</span><span><small>Tu primera cata</small><strong>Desde $80.000 <span>COP</span></strong><small>60–90 min · 1–6 personas</small></span></a>
         </div>
       </div>
-
-      <div class="hero-bottom">
-        <div class="container hero-bottom__inner">
-          <div class="stats" data-aos="fade-up" data-aos-delay="250">
-            <div class="stat">
-              <div class="stat__k">Variedades</div>
-              <div class="stat__v">Descubre perfiles reales</div>
-            </div>
-            <div class="stat">
-              <div class="stat__k">Métodos</div>
-              <div class="stat__v">V60, prensa, espresso</div>
-            </div>
-            <div class="stat">
-              <div class="stat__k">Origen</div>
-              <div class="stat__v">Aprende a elegir mejor</div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="hero-band"><div class="container"><span>Café con origen.</span><span>Aprende. Prueba. Disfruta.</span><span>Pasión que se comparte.</span></div></div>
     </section>
 
-    <section id="nosotros" class="section section-light">
-      <div class="container two-col">
-        <div data-aos="fade-up">
-          <h2>Un país cafetero no debería conformarse.</h2>
-          <p class="muted">
-            Colombia es reconocida mundialmente por lo que produce, pero en casa solemos tomar café
-            de baja calidad, con azúcar por costumbre y sin conocer que existen variedades,
-            procesos y métodos que transforman la experiencia.
-          </p>
-          <p>
-            En <strong>Origen, Pasión y Café</strong> creamos espacios para aprender, cuestionar hábitos y
-            disfrutar con criterio: el café como cultura, no como rutina.
-          </p>
-
-          <div class="quote" data-aos="fade-up" data-aos-delay="150">
-            <p>“Lo premium no es pagar más… es saber lo que estás tomando.”</p>
-          </div>
-        </div>
-
-        <div class="reasons" data-aos="fade-up" data-aos-delay="150">
-          <h3 class="h3">¿Por qué elegirnos?</h3>
-          <div class="reasons-grid">
-            <article class="reason">
-              <div class="icon">🌿</div>
-              <div>
-                <h4>Calidad con criterio</h4>
-                <p>Seleccionamos cafés con trazabilidad y te enseñamos a reconocerlos.</p>
-              </div>
-            </article>
-
-            <article class="reason">
-              <div class="icon">☕</div>
-              <div>
-                <h4>Aprendizaje práctico</h4>
-                <p>Menos teoría, más método: molienda, receta, extracción y ajuste.</p>
-              </div>
-            </article>
-
-            <article class="reason">
-              <div class="icon">✨</div>
-              <div>
-                <h4>Experiencias memorables</h4>
-                <p>Ambiente cálido, guía cercana y una invitación a probar diferente.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experiencias" class="section section-dark">
+    <section id="experiencias" class="section experiences" aria-labelledby="experiences-title">
       <div class="container">
-        <div class="section-head" data-aos="fade-up">
-          <h2>Catas & Cursos</h2>
-          <p class="muted muted-on-dark">
-            Elige una experiencia. Nosotros hacemos el resto: guía, café, método y conversación.
-          </p>
-        </div>
-
-        <div class="cards" data-aos="fade-up" data-aos-delay="100">
+        <div class="section-heading"><div><p class="eyebrow">01 / Encuentra tu momento</p><h2 id="experiences-title">Más que tomar café.<br><em>Vivirlo.</em></h2></div><p>Desde tu primera cata hasta afinar tu receta favorita. Elige por dónde quieres empezar; nosotros te acompañamos.</p></div>
+        <div class="cards">
           <article class="card">
-            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1400&q=80')"></div>
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&amp;fit=crop&amp;w=720&amp;q=75" width="720" height="480" loading="lazy" decoding="async" alt="Café servido para explorar sus aromas y sabores"><span class="image-tag">Tu primer encuentro</span></div>
             <div class="card-body">
-              <div class="card-top">
-                <h3>Cata de café de especialidad</h3>
-                <span class="badge">Ideal para empezar</span>
-              </div>
-              <p>
-                Aprende a identificar aroma, acidez, dulzor y cuerpo. Descubre cómo cambia un café
-                cuando entiendes su origen y proceso.
-              </p>
-              <div class="price-row">
-                <div class="price">
-                  <span class="price__from">Desde</span>
-                  <span class="price__value">$80.000</span>
-                </div>
-                <div class="meta">
-                  <span>60–90 min</span>
-                  <span>1–6 personas</span>
-                </div>
-              </div>
-              <a class="btn btn-primary btn-block" href="#reservar" data-preset="cata">Reservar esta cata</a>
+              <span class="card-number">01</span><h3>Cata de café de especialidad</h3>
+              <p>Descubre aroma, acidez, dulzor y cuerpo. Aprende a ponerle nombre a lo que sientes en cada sorbo, sin necesitar conocimientos previos.</p>
+              <ul class="card-meta"><li>60–90 minutos</li><li>1–6 personas</li></ul>
+              <div class="price-row"><span>Desde <strong>$80.000</strong> <small>COP</small></span><span class="price-decoration" aria-hidden="true">↗</span></div>
+              <a class="btn btn-outline" href="#reservar" data-preset="cata">Quiero vivir una cata</a>
             </div>
           </article>
-
           <article class="card">
-            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1652007762236-fa98a594627b?auto=format&fit=crop&w=1400&q=80')"></div>
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1652007762236-fa98a594627b?auto=format&amp;fit=crop&amp;w=720&amp;q=75" width="720" height="480" loading="lazy" decoding="async" alt="Preparación de café con equipo de molienda"><span class="image-tag">De la curiosidad a la técnica</span></div>
             <div class="card-body">
-              <div class="card-top">
-                <h3>Curso de métodos</h3>
-                <span class="badge">Para amantes del detalle</span>
-              </div>
-              <p>
-                Recetas, ratios, control de agua, molienda y técnica. Sales con un método replicable
-                en casa y criterio para ajustar.
-              </p>
-              <div class="price-row">
-                <div class="price">
-                  <span class="price__from">Desde</span>
-                  <span class="price__value">$160.000</span>
-                </div>
-                <div class="meta">
-                  <span>2–3 horas</span>
-                  <span>1–4 personas</span>
-                </div>
-              </div>
-              <a class="btn btn-primary btn-block" href="#reservar" data-preset="curso_metodos">Reservar este curso</a>
+              <span class="card-number">02</span><h3>Curso de métodos</h3>
+              <p>Explora molienda, proporciones, agua y extracción. Entiende qué cambiar en tu preparación y llévate una receta para practicar en casa.</p>
+              <ul class="card-meta"><li>2–3 horas</li><li>1–4 personas</li></ul>
+              <div class="price-row"><span>Desde <strong>$160.000</strong> <small>COP</small></span><span class="price-decoration" aria-hidden="true">↗</span></div>
+              <a class="btn btn-outline" href="#reservar" data-preset="curso_metodos">Quiero aprender métodos</a>
             </div>
           </article>
-
           <article class="card">
-            <div class="card-media" style="background-image:url('https://images.unsplash.com/photo-1653491889108-7585d5b6e145?auto=format&fit=crop&w=1400&q=80')"></div>
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1653491889108-7585d5b6e145?auto=format&amp;fit=crop&amp;w=720&amp;q=75" width="720" height="480" loading="lazy" decoding="async" alt="Máquina de espresso para preparar café"><span class="image-tag">A tu manera</span></div>
             <div class="card-body">
-              <div class="card-top">
-                <h3>Experiencia personalizada</h3>
-                <span class="badge">Diseñada para ti</span>
-              </div>
-              <p>
-                ¿Tu objetivo es espresso, latte art o mejorar tu método favorito? Armamos una sesión
-                según tu equipo y tus gustos.
-              </p>
-              <div class="price-row">
-                <div class="price">
-                  <span class="price__from">Desde</span>
-                  <span class="price__value">$220.000</span>
-                </div>
-                <div class="meta">
-                  <span>2–4 horas</span>
-                  <span>1–4 personas</span>
-                </div>
-              </div>
-              <a class="btn btn-primary btn-block" href="#reservar" data-preset="personalizada">Reservar sesión</a>
+              <span class="card-number">03</span><h3>Experiencia personalizada</h3>
+              <p>¿Espresso, latte art o tu método favorito? Diseñamos una sesión alrededor de tus intereses, tu nivel y el equipo que usas.</p>
+              <ul class="card-meta"><li>2–4 horas</li><li>1–4 personas</li></ul>
+              <div class="price-row"><span>Desde <strong>$220.000</strong> <small>COP</small></span><span class="price-decoration" aria-hidden="true">↗</span></div>
+              <a class="btn btn-outline" href="#reservar" data-preset="personalizada">Diseñemos mi experiencia</a>
             </div>
           </article>
         </div>
+        <p class="section-note">Precios de referencia en pesos colombianos. Confirmamos el valor total, el lugar y la disponibilidad por WhatsApp antes de reservar.</p>
+        <div class="event-callout"><div><p class="eyebrow">También nos encontramos en tus eventos</p><h3>Una buena conversación empieza con café.</h3><p>Barra de café y experiencias guiadas para tu marca o celebración.</p></div><a class="text-link" href="#reservar" data-preset="eventos">Cuéntanos tu idea <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
 
-        <div class="callout" data-aos="fade-up" data-aos-delay="150">
-          <div>
-            <h3>¿Café para eventos?</h3>
-            <p class="muted muted-on-dark">Barra de café, bebidas y experiencia guiada para tu marca o celebración.</p>
-          </div>
-          <a class="btn btn-secondary" href="#reservar" data-preset="eventos">Cotizar por WhatsApp</a>
+    <section id="nosotros" class="section story" aria-labelledby="story-title">
+      <div class="container story-grid">
+        <div class="story-intro"><p class="eyebrow">02 / Nuestra esencia</p><h2 id="story-title">El mejor café es el que<br><em>aprendes a disfrutar.</em></h2><p>Colombia tiene una riqueza cafetera que merece estar en nuestra vida diaria. En Origen, Pasión y Café acercamos ese mundo a tu taza: sin complicarlo, con curiosidad y con criterio.</p><p>En Bogotá creamos espacios para aprender haciendo, descubrir nuevos sabores y compartir lo que hace especial a cada café.</p><a class="text-link" href="#reservar">Conversemos sobre café <span aria-hidden="true">↗</span></a></div>
+        <div class="principles">
+          <article><span>01</span><div><h3>Origen que importa</h3><p>Seleccionamos cafés con trazabilidad y exploramos cómo el origen y el proceso cambian su sabor.</p></div></article>
+          <article><span>02</span><div><h3>Aprender con las manos</h3><p>Molienda, receta, extracción y ajuste. Menos términos difíciles; más herramientas para tu próxima taza.</p></div></article>
+          <article><span>03</span><div><h3>Un espacio para tu curiosidad</h3><p>Grupos pequeños y guía cercana. Puedes empezar desde cero o profundizar en lo que ya te apasiona.</p></div></article>
         </div>
       </div>
     </section>
 
-    <section id="tienda" class="section section-light">
+    <section id="tienda" class="section shop" aria-labelledby="shop-title">
       <div class="container">
-        <div class="section-head" data-aos="fade-up">
-          <h2>Café para casa</h2>
-          <p class="muted">
-            Comprar mejor café es un acto pequeño… que cambia tu mañana (y tu paladar).
-          </p>
-        </div>
-
-        <div class="products" data-aos="fade-up" data-aos-delay="100">
+        <div class="section-heading"><div><p class="eyebrow">03 / El ritual continúa en casa</p><h2 id="shop-title">Encuentra tu<br><em>próximo favorito.</em></h2></div><p>Tres perfiles para explorar el café de especialidad. Elige el que te llama la atención y te ayudamos con tu pedido.</p></div>
+        <div class="products">
           <article class="product">
-            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1400&q=80')"></div>
-            <div class="product-body">
-              <h3>Blend Casa</h3>
-              <p class="muted">Chocolate • Panela • Balanceado</p>
-              <div class="product-bottom">
-                <div class="product-price">$31.800</div>
-                <a class="btn btn-primary btn-small" href="#reservar" data-preset="blend_casa">Pedir</a>
-              </div>
-            </div>
+            <div class="product-art blend" aria-hidden="true"><span class="flavor-word">Balance</span><div class="coffee-label"><span>ORIGEN<br><small>PASIÓN Y CAFÉ</small></span><div class="label-rule"></div><strong>Blend Casa</strong><small>CHOCOLATE · PANELA</small></div><span class="profile-number">PERFIL / 01</span></div>
+            <div class="product-body"><h3>Blend Casa</h3><p>Chocolate · Panela · Balanceado</p><div class="product-bottom"><span class="product-price">$25.000 <small>COP / 250 g</small></span><a class="text-link" href="#reservar" data-preset="blend_casa" aria-label="Pedir Blend Casa">Lo quiero <span aria-hidden="true">↗</span></a></div></div>
           </article>
-
           <article class="product">
-            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1400&q=80')"></div>
-            <div class="product-body">
-              <h3>Origen Frutal</h3>
-              <p class="muted">Cítrico • Dulce • Jugoso</p>
-              <div class="product-bottom">
-                <div class="product-price">$31.800</div>
-                <a class="btn btn-primary btn-small" href="#reservar" data-preset="origen_frutal">Pedir</a>
-              </div>
-            </div>
+            <div class="product-art fruity" aria-hidden="true"><span class="flavor-word">Frescura</span><div class="coffee-label"><span>ORIGEN<br><small>PASIÓN Y CAFÉ</small></span><div class="label-rule"></div><strong>Origen Frutal</strong><small>CÍTRICO · DULCE</small></div><span class="profile-number">PERFIL / 02</span></div>
+            <div class="product-body"><h3>Origen Frutal</h3><p>Cítrico · Dulce · Jugoso</p><div class="product-bottom"><span class="product-price">$25.000 <small>COP / 250 g</small></span><a class="text-link" href="#reservar" data-preset="origen_frutal" aria-label="Pedir Origen Frutal">Lo quiero <span aria-hidden="true">↗</span></a></div></div>
           </article>
-
           <article class="product">
-            <div class="product-media" style="background-image:url('https://images.unsplash.com/photo-1453614512568-c4024d13c247?auto=format&fit=crop&w=1400&q=80')"></div>
-            <div class="product-body">
-              <h3>Origen Exótico</h3>
-              <p class="muted">Floral • Elegante • Afrutado</p>
-              <div class="product-bottom">
-                <div class="product-price">$47.800</div>
-                <a class="btn btn-primary btn-small" href="#reservar" data-preset="origen_exotico">Pedir</a>
-              </div>
-            </div>
+            <div class="product-art exotic" aria-hidden="true"><span class="flavor-word">Sorpresa</span><div class="coffee-label"><span>ORIGEN<br><small>PASIÓN Y CAFÉ</small></span><div class="label-rule"></div><strong>Origen Exótico</strong><small>FLORAL · AFRUTADO</small></div><span class="profile-number">PERFIL / 03</span></div>
+            <div class="product-body"><h3>Origen Exótico</h3><p>Floral · Elegante · Afrutado</p><div class="product-bottom"><span class="product-price">$40.000 <small>COP / 250 g</small></span><a class="text-link" href="#reservar" data-preset="origen_exotico" aria-label="Pedir Origen Exótico">Lo quiero <span aria-hidden="true">↗</span></a></div></div>
           </article>
         </div>
-
-        <div class="reflection" data-aos="fade-up" data-aos-delay="120">
-          <p><strong>Reflexión rápida:</strong> si necesitas azúcar para disfrutar el café, tal vez no era un buen café (o estaba mal extraído).</p>
-        </div>
+        <p class="section-note">Ilustraciones de los perfiles de sabor. Cada bolsa contiene 250 g. Consulta por WhatsApp la molienda disponible y el costo de envío antes de confirmar tu pedido.</p>
       </div>
     </section>
 
-    <section id="reservar" class="section section-dark">
-      <div class="container reserve" data-aos="fade-up">
-        <div class="reserve-copy">
-          <h2>Reserva por WhatsApp</h2>
-          <p class="muted muted-on-dark">
-            Cuéntanos qué quieres (cata, curso o café) y tu disponibilidad. Te respondemos con opciones y confirmación.
-          </p>
+    <section class="section how-it-works" aria-labelledby="steps-title"><div class="container">
+      <p class="eyebrow">Así de sencillo</p><h2 id="steps-title">De la curiosidad <em>a la primera taza.</em></h2>
+      <ol class="steps"><li><span>01</span><h3>Elige tu experiencia</h3><p>Una cata, un curso, una sesión a tu medida o café para casa.</p></li><li><span>02</span><h3>Cuéntanos tu idea</h3><p>Prepara tu consulta aquí y envíala por WhatsApp para revisar las opciones.</p></li><li><span>03</span><h3>Confirmamos contigo</h3><p>Acordamos disponibilidad, lugar y valor total antes de tu reserva o pedido.</p></li></ol>
+    </div></section>
 
-          <ul class="bullets">
-            <li>✔️ Recomendación según tu nivel</li>
-            <li>✔️ Ajuste por grupo y objetivo</li>
-            <li>✔️ Confirmación rápida</li>
-          </ul>
+    <section id="preguntas" class="section faq" aria-labelledby="faq-title"><div class="container faq-grid">
+      <div><p class="eyebrow">Antes de empezar</p><h2 id="faq-title">La curiosidad<br><em>es bienvenida.</em></h2><p>Algunas respuestas para elegir con tranquilidad.</p></div>
+      <div class="faq-list">
+        <details><summary>¿Necesito saber de café para ir a una cata?</summary><p>No. La cata está pensada para empezar desde la curiosidad. Te guiamos para reconocer aromas, acidez, dulzor y cuerpo, paso a paso.</p></details>
+        <details><summary>¿Dónde se realizan las experiencias?</summary><p>Estamos en Bogotá, Colombia. Al coordinar por WhatsApp confirmamos contigo el lugar, la fecha y la disponibilidad de la experiencia elegida.</p></details>
+        <details><summary>¿Qué diferencia hay entre una cata y un curso de métodos?</summary><p>En la cata exploras los aromas y sabores del café durante 60–90 minutos. En el curso de métodos trabajas la preparación: molienda, proporciones, agua y extracción, durante 2–3 horas.</p></details>
+        <details><summary>¿Puedo reservar para un grupo o un evento?</summary><p>Sí. Las catas están planteadas para 1–6 personas; los cursos y sesiones personalizadas, para 1–4. Para otros tamaños de grupo o una barra de café para eventos, cuéntanos tu idea y revisamos una propuesta.</p></details>
+        <details><summary>¿Cómo compro café para mi casa?</summary><p>Elige Blend Casa, Origen Frutal u Origen Exótico. Al pulsar “Lo quiero”, el formulario conserva tu selección. Las bolsas son de 250 g: Blend Casa y Origen Frutal cuestan $25.000 COP; Origen Exótico, $40.000 COP. Por WhatsApp confirmamos molienda, disponibilidad y envío.</p></details>
+        <details><summary>¿Enviar el mensaje confirma mi reserva?</summary><p>No. Es una consulta inicial. Tu reserva o pedido se confirma cuando acordemos contigo disponibilidad, valor total y los detalles por WhatsApp.</p></details>
+      </div>
+    </div></section>
+
+    <section id="reservar" class="section reserve-section" aria-labelledby="reserve-title">
+      <div class="container reserve-grid">
+        <div class="reserve-copy"><p class="eyebrow">Tu próxima taza empieza aquí</p><h2 id="reserve-title">Cuéntanos qué<br><em>te mueve.</em></h2><p>¿Aprender algo nuevo, compartir una experiencia o preparar mejor café en casa? Empecemos por una conversación.</p>
+          <div class="contact-details" id="contacto"><span>Bogotá, Colombia</span><a href="tel:+573012669975">+57 301 266 9975</a><a href="mailto:contacto@origenpasionycafe.com">contacto@origenpasionycafe.com</a></div><p class="contact-note">Atención directa por WhatsApp.<br>Confirmamos los detalles contigo antes de reservar.</p>
         </div>
-
-        <div class="reserve-box" id="contacto">
-          <form class="form" onsubmit="return false;">
-            <label>
-              ¿Qué deseas reservar?
-              <select id="tipo">
-                <option value="Cata de café de especialidad">Cata de café</option>
-                <option value="Curso de métodos (V60 / prensa / aeropress)">Curso de métodos</option>
-                <option value="Experiencia personalizada">Experiencia personalizada</option>
-                <option value="Barra de café para eventos">Barra para eventos</option>
-                <option value="Comprar café para casa">Comprar café</option>
-              </select>
-            </label>
-
-            <label>
-              Fecha tentativa
-              <input id="fecha" type="text" placeholder="Ej: Sábado 4pm / 15 de marzo" />
-            </label>
-
-            <label>
-              Personas / cantidad
-              <input id="cantidad" type="text" placeholder="Ej: 4 personas / 2 bolsas de 340g" />
-            </label>
-
-            <label>
-              Comentario (opcional)
-              <textarea id="comentario" rows="3" placeholder="Cuéntanos tu nivel, método que usas o qué buscas mejorar"></textarea>
-            </label>
-
-            <a id="waBtn" class="btn btn-primary btn-block" href="#" target="_blank" rel="noreferrer">
-              Enviar por WhatsApp
-            </a>
-
-            <div class="contact-mini">
-              <div><strong>📍</strong> Bogotá, Colombia</div>
-              <div><strong>✉️</strong> <a href="mailto:contacto@origenpasionycafe.com">contacto@origenpasionycafe.com</a></div>
-            </div>
-          </form>
-        </div>
+        <div class="reserve-box"><form id="reservation-form" class="form">
+          <h3>Hagamos un buen plan.</h3><p id="selection-status" class="selection-status" role="status" aria-live="polite">Elige una experiencia o un café.</p>
+          <label for="tipo">¿Qué te gustaría descubrir?</label>
+          <select id="tipo" name="tipo"><option value="Cata de café de especialidad">Cata de café de especialidad</option><option value="Curso de métodos">Curso de métodos</option><option value="Experiencia personalizada">Experiencia personalizada</option><option value="Barra de café para eventos">Barra de café para eventos</option><option value="Comprar café para casa">Café para casa</option></select>
+          <div id="product-field" class="form-field" hidden><label for="producto">Elige tu café</label><select id="producto" name="producto"><option value="">Quiero una recomendación</option><option value="Blend Casa">Blend Casa · 250 g</option><option value="Origen Frutal">Origen Frutal · 250 g</option><option value="Origen Exótico">Origen Exótico · 250 g</option></select></div>
+          <div class="form-row"><div id="date-field" class="form-field"><label for="fecha">Fecha tentativa (opcional)</label><input id="fecha" name="fecha" type="text" maxlength="100" placeholder="Ej. próximo sábado en la tarde"></div><div class="form-field"><label for="cantidad" id="quantity-label">Número de personas (opcional)</label><input id="cantidad" name="cantidad" type="text" maxlength="100" placeholder="Ej. 4 personas"></div></div>
+          <label for="comentario">Algo que quieras contarnos (opcional)</label><textarea id="comentario" name="comentario" rows="3" maxlength="1000" placeholder="Tus gustos, el método que usas o la ocasión que quieres celebrar"></textarea>
+          <a id="waBtn" class="btn btn-primary" href="https://wa.me/573012669975?text=Hola%2C%20quiero%20informacion%20sobre%20las%20experiencias%20y%20el%20cafe." target="_blank" rel="noopener noreferrer">Continuar en WhatsApp <span aria-hidden="true">↗</span></a>
+          <p class="form-note">Se abrirá WhatsApp con tu consulta. Revisa el mensaje antes de enviarlo; aún no estarás haciendo una reserva.</p>
+          <noscript><p class="form-note">Para compartir tu selección, escríbela directamente en WhatsApp al abrir el enlace.</p></noscript>
+        </form></div>
       </div>
     </section>
   </main>
-
-  <footer class="site-footer" id="footer">
-    <div class="container footer-inner">
-      <div class="footer-left">
-        <img src="img/logo.png" alt="Origen, Pasión y Café" class="footer-logo" />
-        <p class="muted muted-on-dark">© 2026 Origen, Pasión y Café</p>
-        <p class="muted muted-on-dark">✉️ contacto@origenpasionycafe.com</p>
-        <p class="muted muted-on-dark">📍 Bogotá, Colombia</p>
-        <p class="muted muted-on-dark">📞 +57 3012669975</p>
-      </div>
-
-      <div class="footer-links">
-        <a href="#nosotros">Nuestro Café</a>
-        <a href="#experiencias">Catas & Cursos</a>
-        <a href="#tienda">Café para casa</a>
-        <a href="#reservar">Reservar</a>
-      </div>
-
-      <div class="footer-social">
-        <a href="#" aria-label="Instagram">Instagram</a>
-        <a href="#" aria-label="Facebook">Facebook</a>
-        <a href="#" aria-label="TikTok">TikTok</a>
-      </div>
-    </div>
+  <footer class="site-footer">
+    <div class="container footer-main"><div><a href="#top" aria-label="Origen, Pasión y Café — Volver al inicio"><img src="img/logo.png" width="1644" height="726" loading="lazy" alt="Origen, Pasión y Café" class="footer-logo"></a><p>Pasión por el origen.<br>Aprendizaje en cada taza.</p></div><nav aria-label="Navegación al pie"><a href="#experiencias">Catas y cursos</a><a href="#tienda">Café para casa</a><a href="#nosotros">Nuestra esencia</a><a href="#preguntas">Preguntas frecuentes</a></nav><div class="footer-contact"><span>Nos encontramos en Bogotá.</span><a href="tel:+573012669975">+57 301 266 9975</a><a href="mailto:contacto@origenpasionycafe.com">Escríbenos por correo <span aria-hidden="true">↗</span></a></div></div>
+    <div class="container footer-bottom"><span>© 2026 Origen, Pasión y Café</span><span>Hecho con pasión por el café colombiano.</span></div>
   </footer>
-
-  <a class="wa-float" href="#" id="waFloat" aria-label="WhatsApp" target="_blank" rel="noreferrer">
-    <span class="wa-float__icon">
-      <svg xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="22"
-          fill="currentColor"
-          viewBox="0 0 16 16">
-        <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-      </svg>
-    </span>
-    <span class="wa-float__text">Reservar</span>
+  <a class="wa-float" id="waFloat" href="https://wa.me/573012669975?text=Hola%2C%20quiero%20conocer%20las%20experiencias%20y%20el%20cafe%20de%20Origen%2C%20Pasion%20y%20Cafe." target="_blank" rel="noopener noreferrer" aria-label="Hablar con Origen, Pasión y Café por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg><span>Hablemos</span>
   </a>
-
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
