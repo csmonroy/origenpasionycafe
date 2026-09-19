@@ -23,7 +23,8 @@ El hosting es Cloudflare Pages, conectado a la rama `main` de este repositorio. 
 - Curso de métodos: desde $160.000 COP, 2–3 horas, 1–4 personas.
 - Experiencia personalizada: desde $220.000 COP, 2–4 horas, 1–4 personas.
 - Bolsas de 250 g: Blend Casa y Origen Frutal, $25.000 COP; Origen Exótico, $40.000 COP.
-- Confirmar con el negocio molienda, envíos, lugar exacto y redes oficiales antes de incorporarlos. Los enlaces ficticios a redes fueron retirados.
+- Confirmar con el negocio molienda, envíos y lugar exacto antes de incorporarlos.
+- Redes oficiales: [Instagram](https://www.instagram.com/origenpasionycafe/), [Facebook](https://www.facebook.com/OrigenPasionyCafeCo/) y [TikTok](https://www.tiktok.com/@origenpasionycafe). Incluidas en el pie de página y en `sameAs` de la organización.
 - Las imágenes del catálogo son ilustraciones gráficas de los perfiles, no fotografías de empaques reales. Sustituirlas por fotografías propias cuando estén disponibles.
 - Actualizar conjuntamente tarjetas, opciones del formulario, preguntas frecuentes y metadatos si cambian los precios o condiciones.
 
