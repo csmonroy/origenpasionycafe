@@ -99,19 +99,7 @@ em { font-weight: 500; }
 .principles p { margin: 0; font-size: 12px; color: #5b5446; }
 .products { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 28px; }
 .product { min-width: 0; }
-.product-art { height: 320px; position: relative; display: grid; place-items: center; overflow: hidden; }
-.blend { background: #e2d5bc; --label: #68503a; }
-.fruity { background: #d8dcc8; --label: #56633c; }
-.exotic { background: #e2d3ce; --label: #785650; }
-.flavor-word { position: absolute; left: 14px; top: 3px; font-family: var(--serif); font-style: italic; font-size: 63px; color: #302c2324; }
-.coffee-label { background: #f9f5ea; width: 167px; min-height: 210px; padding: 23px 16px; text-align: center; box-shadow: 10px 14px 0 #302c2310, 0 15px 30px #302c2315; transform: rotate(-5deg); color: var(--label); border: 1px solid #ffffffa0; }
-.fruity .coffee-label { transform: rotate(3deg); }
-.exotic .coffee-label { transform: rotate(-3deg); }
-.coffee-label > span { font-family: Georgia, serif; font-size: 25px; line-height: 1; }
-.coffee-label small { display: block; font-size: 8px; letter-spacing: .12em; }
-.coffee-label strong { font-family: var(--serif); font-size: 20px; font-weight: 500; display: block; margin-bottom: 10px; }
-.label-rule { height: 28px; border-bottom: 1px solid var(--label); margin-bottom: 18px; }
-.profile-number { position: absolute; bottom: 13px; right: 15px; font-size: 9px; letter-spacing: .14em; }
+.product-image { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; background: #e9e1d1; }
 .product-body { padding-top: 23px; }
 .product-body h3 { font-size: 27px; }
 .product-body p { font-size: 11px; color: var(--muted); margin: 8px 0 16px; }
@@ -225,7 +213,6 @@ textarea { resize: vertical; min-height: 90px; }
   .event-callout > a { margin-top: 20px; }
   .story-grid { gap: 38px; }
   .products { gap: 38px; }
-  .product-art { height: 310px; }
   .steps { gap: 28px; margin-top: 30px; }
   .steps li { border-top: 1px solid var(--line); padding-top: 20px; }
   .steps li > span { margin-bottom: 8px; }

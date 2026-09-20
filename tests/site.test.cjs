@@ -43,13 +43,13 @@ test('all published presets select the correct service or coffee', () => {
   const expected = {
     cata: 'Cata de café de especialidad', curso_metodos: 'Curso de métodos',
     personalizada: 'Experiencia personalizada', eventos: 'Barra de café para eventos',
-    blend_casa: 'Blend Casa', origen_frutal: 'Origen Frutal', origen_exotico: 'Origen Exótico'
+    blend_de_casa: 'Blend de Casa', bourbon_rosado: 'Bourbon Rosado', bourbon_sidra: 'Bourbon Sidra'
   };
   for (const [, preset] of html.matchAll(/data-preset="([^"]+)"/g)) {
     assert.ok(expected[preset], 'Unknown HTML preset: ' + preset);
     s.choose(preset);
     assert.ok(s.message().includes(expected[preset]), 'Incorrect message for ' + preset);
-    assert.equal(s.fields.get('product-field').hidden, !preset.includes('casa') && !preset.startsWith('origen_'));
+    assert.equal(s.fields.get('product-field').hidden, !['blend_de_casa', 'bourbon_rosado', 'bourbon_sidra'].includes(preset));
   }
 });
 
@@ -57,31 +57,31 @@ test('switching from a reservation to coffee omits its date and resets quantity'
   const s = setup();
   s.fields.get('fecha').value = 'sábado';
   s.fields.get('cantidad').value = '4 personas';
-  s.choose('origen_exotico');
+  s.choose('bourbon_sidra');
   assert.equal(s.fields.get('date-field').hidden, true);
   assert.equal(s.fields.get('cantidad').value, '');
   assert.ok(!s.message().includes('sábado'));
   assert.ok(!s.message().includes('4 personas'));
-  assert.ok(s.message().includes('Café: Origen Exótico'));
+  assert.ok(s.message().includes('Café: Bourbon Sidra'));
   assert.ok(s.message().includes('Presentación: bolsa de 250 g'));
 });
 
 test('changing service clears the product and prevents stale coffee in reservations', () => {
   const s = setup();
-  s.choose('blend_casa');
+  s.choose('blend_de_casa');
   s.fields.get('cantidad').value = '2';
   s.fields.get('tipo').value = 'Curso de métodos';
   s.fields.get('tipo').fire('change');
   assert.equal(s.fields.get('producto').value, '');
   assert.equal(s.fields.get('cantidad').value, '');
   assert.equal(s.fields.get('date-field').hidden, false);
-  assert.ok(!s.message().includes('Blend Casa'));
+  assert.ok(!s.message().includes('Blend de Casa'));
   assert.ok(s.message().includes('Curso de métodos'));
 });
 
 test('WhatsApp safely round-trips accents, special characters and new lines', () => {
   const s = setup();
-  s.choose('origen_frutal');
+  s.choose('bourbon_rosado');
   const comment = '¿Café & más? + 50%\nMolido para V60';
   s.fields.get('comentario').value = comment;
   s.fields.get('cantidad').value = '2';

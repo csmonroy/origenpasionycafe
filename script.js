@@ -42,9 +42,9 @@ const presets = {
   curso_metodos: { service: 'Curso de métodos' },
   personalizada: { service: 'Experiencia personalizada' },
   eventos: { service: 'Barra de café para eventos' },
-  blend_casa: { service: 'Comprar café para casa', product: 'Blend Casa' },
-  origen_frutal: { service: 'Comprar café para casa', product: 'Origen Frutal' },
-  origen_exotico: { service: 'Comprar café para casa', product: 'Origen Exótico' }
+  blend_de_casa: { service: 'Comprar café para casa', product: 'Blend de Casa' },
+  bourbon_rosado: { service: 'Comprar café para casa', product: 'Bourbon Rosado' },
+  bourbon_sidra: { service: 'Comprar café para casa', product: 'Bourbon Sidra' }
 };
 function isCoffeeOrder() { return tipo?.value === 'Comprar café para casa'; }
 function buildMessageDetailed() {
