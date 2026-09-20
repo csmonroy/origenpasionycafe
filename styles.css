@@ -34,18 +34,19 @@ em { font-weight: 500; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 88px; }
 .brand-logo { width: 138px; height: auto; }
 .nav-list { display: flex; align-items: center; gap: 28px; list-style: none; padding: 0; margin: 0; }
-.nav-list a { display: block; padding: 12px 0; font-size: 12px; font-weight: 500; }
+.nav-list a { display: block; padding: 12px 0; font-size: 13px; font-weight: 500; }
 .nav-list a:hover, .footer-main a:hover { color: var(--gold); }
 .header-cta { border: 1px solid #c9a66b80; padding: 9px 20px; font-size: 12px; }
 .header-cta span { margin-left: 16px; color: var(--gold); }
 .nav-toggle { display: none; }
 .hero { background: var(--ink); color: var(--cream); }
 .hero-inner { display: grid; grid-template-columns: 1.08fr 1fr; gap: 64px; align-items: center; padding-top: 48px; padding-bottom: 72px; }
-.hero .eyebrow { color: #ddc297; display: flex; align-items: center; gap: 12px; }
+.hero .eyebrow { color: #ddc297; display: flex; align-items: center; gap: 12px; font-size: 11px; }
 .small-line { width: 27px; height: 1px; background: currentColor; flex: none; }
-.hero h1 em { display: inline-block; margin-top: 10px; color: #d5b57f; }
-.hero-description { max-width: 47ch; margin-top: 28px; color: #ded7c9; font-size: 14px; }
+.hero-tagline { max-width: 24ch; margin: 20px 0 0; color: #d5b57f; font-family: var(--serif); font-size: clamp(28px, 2.6vw, 38px); line-height: 1.3; letter-spacing: -.02em; }
+.hero-description { max-width: 47ch; margin-top: 24px; color: #ded7c9; font-size: 16px; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin: 28px 0; }
+.hero-actions .btn, .hero-actions .text-link { font-size: 13px; }
 .btn { display: inline-flex; justify-content: center; align-items: center; gap: 22px; min-height: 49px; padding: 13px 23px; font-size: 11px; font-weight: 600; line-height: 1.5; transition: background .2s, color .2s; text-align: center; }
 .btn-primary { background: var(--gold); color: #282419; border: 1px solid var(--gold); }
 .btn-primary:hover { background: #debf8d; }
@@ -54,19 +55,18 @@ em { font-weight: 500; }
 .text-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; padding: 9px 0; font-size: 11px; font-weight: 600; border-bottom: 1px solid currentColor; line-height: 1.6; }
 .text-link:hover { color: #926e38; }
 .hero .text-link:hover { color: var(--gold); }
-.hero-details { display: flex; flex-wrap: wrap; gap: 8px 16px; color: #c9c1b2; font-size: 9px; }
+.hero-details { display: flex; flex-wrap: wrap; gap: 8px 16px; color: #d8d0c1; font-size: 12px; }
 .hero-details span { display: flex; align-items: center; gap: 8px; }
 .hero-details span::before { content: ''; width: 3px; height: 3px; border-radius: 50%; background: var(--gold); }
 .hero-visual { position: relative; padding-bottom: 25px; }
 .hero-photo { width: 100%; height: 560px; object-fit: cover; border-radius: 180px 180px 3px 3px; }
-.image-caption { position: absolute; left: 24px; bottom: 44px; color: #fff; font-size: 9px; letter-spacing: .1em; text-shadow: 0 1px 5px #000; }
 .hero-ticket { position: absolute; bottom: -12px; right: -15px; display: flex; align-items: center; gap: 20px; padding: 21px 27px; background: var(--cream); color: var(--ink); box-shadow: 0 12px 30px #0002; }
 .ticket-icon { font-size: 32px; color: #7e6239; }
-.hero-ticket small { display: block; font-size: 10px; }
-.hero-ticket strong { display: block; font-size: 18px; font-weight: 600; }
-.hero-ticket strong span { font-size: 9px; font-weight: 400; }
+.hero-ticket small { display: block; font-size: 12px; }
+.hero-ticket strong { display: block; font-size: 20px; font-weight: 600; }
+.hero-ticket strong span { font-size: 10px; font-weight: 400; }
 .hero-band { border-top: 1px solid #ffffff20; }
-.hero-band .container { display: flex; justify-content: space-between; gap: 24px; padding-block: 20px; font-size: 10px; color: #d4c7b0; letter-spacing: .12em; text-transform: uppercase; }
+.hero-band .container { display: flex; justify-content: space-between; gap: 24px; padding-block: 20px; font-size: 11px; color: #d4c7b0; letter-spacing: .12em; text-transform: uppercase; }
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 50px; margin-bottom: 42px; }
 .section-heading > p { max-width: 42ch; margin: 0 0 3px; color: var(--muted); font-size: 13px; }
 .section-heading em, .story em, .faq em { color: #876c43; }
@@ -171,7 +171,7 @@ textarea { resize: vertical; min-height: 90px; }
 @media (min-width: 761px) and (max-width: 1050px) {
   .container { width: calc(100% - 48px); }
   .nav-list { gap: 17px; }
-  .nav-list a { font-size: 10px; }
+  .nav-list a { font-size: 12px; }
   .header-cta { display: none; }
   .hero-inner { gap: 30px; }
   .hero-photo { height: 530px; }
@@ -202,14 +202,13 @@ textarea { resize: vertical; min-height: 90px; }
   .nav-list.is-open { display: flex; }
   .hero-inner { grid-template-columns: 1fr; gap: 35px; padding-top: 38px; padding-bottom: 45px; }
   h1 { font-size: clamp(37px, 8vw, 54px); }
-  .hero-description { font-size: 13px; max-width: 52ch; }
+  .hero-description { font-size: 15px; max-width: 52ch; }
   .hero-actions { gap: 14px 22px; margin-bottom: 22px; }
-  .hero-details { font-size: 9px; gap: 8px 12px; }
+  .hero-details { gap: 8px 12px; }
   .hero-visual { width: 100%; max-width: 520px; margin: 0 auto; }
   .hero-photo { height: 370px; border-radius: 140px 140px 3px 3px; }
   .hero-ticket { right: 0; bottom: 0; padding: 17px 20px; }
-  .image-caption { bottom: 125px; font-size: 8px; }
-  .hero-band .container { flex-wrap: wrap; justify-content: center; text-align: center; gap: 8px 20px; font-size: 8px; padding-block: 16px; }
+  .hero-band .container { flex-wrap: wrap; justify-content: center; text-align: center; gap: 8px 20px; font-size: 10px; padding-block: 16px; }
   .section-heading { display: block; margin-bottom: 32px; }
   .section-heading > p { margin: 22px 0 0; max-width: 52ch; }
   .cards, .products, .story-grid, .faq-grid, .reserve-grid { grid-template-columns: 1fr; }
