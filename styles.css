@@ -59,9 +59,9 @@ em { font-weight: 500; }
 .hero-details { display: flex; flex-wrap: wrap; gap: 8px 16px; color: #d8d0c1; font-size: 12px; }
 .hero-details span { display: flex; align-items: center; gap: 8px; }
 .hero-details span::before { content: ''; width: 3px; height: 3px; border-radius: 50%; background: var(--gold); }
-.hero-visual { position: relative; padding-bottom: 25px; }
+.hero-visual { position: relative; }
 .hero-photo { width: 100%; height: 560px; object-fit: cover; border-radius: 180px 180px 3px 3px; }
-.hero-ticket { position: absolute; bottom: -12px; right: -15px; display: flex; align-items: center; gap: 20px; padding: 21px 27px; background: var(--cream); color: var(--ink); box-shadow: 0 12px 30px #0002; }
+.hero-ticket { position: absolute; bottom: 24px; right: 24px; max-width: calc(100% - 48px); display: flex; align-items: center; gap: 20px; padding: 21px 27px; background: var(--cream); color: var(--ink); box-shadow: 0 6px 20px #0002; }
 .ticket-icon { font-size: 32px; color: #7e6239; }
 .hero-ticket small { display: block; font-size: 12px; }
 .hero-ticket strong { display: block; font-size: 20px; font-weight: 600; }
@@ -191,7 +191,6 @@ textarea { resize: vertical; min-height: 90px; }
   .header-cta { display: none; }
   .hero-inner { gap: 30px; }
   .hero-photo { height: 530px; }
-  .hero-ticket { right: 0; }
   .card-body { padding: 18px; }
   .card h3 { font-size: 21px; }
   .cards, .products { gap: 16px; }
@@ -223,7 +222,10 @@ textarea { resize: vertical; min-height: 90px; }
   .hero-details { gap: 8px 12px; }
   .hero-visual { width: 100%; max-width: 520px; margin: 0 auto; }
   .hero-photo { height: 370px; border-radius: 140px 140px 3px 3px; }
-  .hero-ticket { right: 0; bottom: 0; padding: 17px 20px; }
+  .hero-ticket { right: 16px; bottom: 16px; max-width: calc(100% - 32px); gap: 10px; padding: 16px; }
+  .hero-ticket strong { font-size: 18px; }
+  .hero-ticket small { font-size: 11px; }
+  .ticket-icon { font-size: 20px; }
   .hero-band .container { flex-wrap: wrap; justify-content: center; text-align: center; gap: 8px 20px; font-size: 10px; padding-block: 16px; }
   .section-heading { display: block; margin-bottom: 32px; }
   .section-heading > p { margin: 22px 0 0; max-width: 52ch; }
