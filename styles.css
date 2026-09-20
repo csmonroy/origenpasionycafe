@@ -168,6 +168,21 @@ textarea { resize: vertical; min-height: 90px; }
   .hero-photo { height: clamp(400px, 56svh, 600px); }
   .experiences, .story, .shop, .reserve-section { min-height: calc(100svh - var(--header-height)); display: grid; align-content: center; }
 }
+@media (min-width: 1440px) {
+  .header-inner, .hero-inner, .hero-band .container { width: min(1840px, 88%); }
+  .hero-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: clamp(64px, 4vw, 104px); }
+  .hero h1 { font-size: clamp(60px, 3.5vw, 88px); text-wrap: balance; }
+  .hero-tagline { font-size: clamp(38px, 2vw, 48px); }
+  .hero-description { font-size: clamp(16px, .85vw, 20px); }
+  .hero .eyebrow { font-size: 12px; }
+  .hero-actions .btn, .hero-actions .text-link { font-size: 15px; }
+  .hero-actions .btn { min-height: 56px; padding-inline: 28px; }
+  .hero-details { font-size: 13px; }
+  .hero-band .container { padding-right: 64px; }
+  .hero-photo { height: clamp(480px, 68svh, 900px); border-radius: clamp(180px, 12vw, 300px) clamp(180px, 12vw, 300px) 3px 3px; }
+  .brand-logo { width: 154px; }
+  .nav-list a, .header-cta { font-size: 14px; }
+}
 @media (min-width: 761px) and (max-width: 1050px) {
   .container { width: calc(100% - 48px); }
   .nav-list { gap: 17px; }
