@@ -182,6 +182,11 @@ textarea { resize: vertical; min-height: 90px; }
   .brand-logo { width: 154px; }
   .nav-list a, .header-cta { font-size: 14px; }
 }
+@media (max-width: 1050px) {
+  .header-inner { gap: 16px; }
+  .wa-float { position: static; flex: none; justify-content: center; width: 44px; height: 44px; margin-left: auto; padding: 10px; box-shadow: none; }
+  .wa-float span { display: none; }
+}
 @media (min-width: 761px) and (max-width: 1050px) {
   .container { width: calc(100% - 48px); }
   .nav-list { gap: 17px; }
@@ -211,7 +216,7 @@ textarea { resize: vertical; min-height: 90px; }
   .nav:has(.nav-toggle[hidden]) { width: 100%; }
   .site-header:has(.nav-toggle[hidden]) { position: static; }
   .nav-list a { padding: 12px; font-size: 13px; }
-  .nav-list.is-enhanced { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--ink); padding: 10px 20px 20px; border-top: 1px solid #ffffff25; box-shadow: 0 15px 25px #0002; }
+  .nav-list.is-enhanced { display: none; position: absolute; top: 100%; left: 0; right: 0; max-height: calc(100svh - var(--header-height)); max-height: calc(100dvh - var(--header-height)); overflow-y: auto; overscroll-behavior: contain; background: var(--ink); padding: 10px 20px 20px; border-top: 1px solid #ffffff25; box-shadow: 0 15px 25px #0002; }
   .nav-list.is-open { display: flex; }
   .hero-inner { grid-template-columns: 1fr; gap: 35px; padding-top: 38px; padding-bottom: 45px; }
   h1 { font-size: clamp(37px, 8vw, 54px); }
@@ -249,9 +254,7 @@ textarea { resize: vertical; min-height: 90px; }
   .footer-main { grid-template-columns: 1fr 1fr; gap: 32px; }
   .footer-contact { grid-column: 1 / -1; }
   .footer-bottom { flex-direction: column; gap: 8px; }
-  .site-footer { padding-bottom: 94px; }
-  .wa-float { right: 14px; bottom: max(14px, env(safe-area-inset-bottom)); padding: 13px; }
-  .wa-float span { display: none; }
+  .site-footer { padding-bottom: max(32px, env(safe-area-inset-bottom)); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
