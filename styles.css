@@ -492,6 +492,32 @@ html { scroll-padding-top: calc(var(--header-height) + 16px); }
 .business-page .roasting-grid { align-items: center; }
 .business-page .roaster-photo { width: 100%; justify-self: end; }
 .business-page .roasting-notes { margin-top: 32px; }
+/* Cada servicio tiene un área reconocible dentro del recorrido empresarial. */
+.business-overview { background: #fffaf2; border-block: 1px solid #d6c9b5; }
+.business-overview .section-heading { padding-bottom: 30px; border-bottom: 1px solid #d6c9b5; }
+.business-overview .service-index { border-bottom: 0; }
+.business-services { background: #eae2d4; }
+.business-page .service-feature { background: #fffaf2; border: 1px solid #d2c3ad; border-top: 3px solid var(--gold); padding: clamp(24px, 3.5vw, 56px); margin-bottom: 32px; gap: clamp(28px, 4vw, 64px); }
+.business-page .service-list { list-style: none; padding: 0; border-block: 1px solid #ded3c2; }
+.business-page .service-list li { padding: 12px 0 12px 18px; margin: 0; position: relative; }
+.business-page .service-list li + li { border-top: 1px solid #ded3c2; }
+.business-page .service-list li::before { content: ''; position: absolute; top: 24px; left: 0; width: 5px; height: 5px; border-radius: 50%; background: #876c43; }
+.business-page .event-brief { border: 1px solid #d2c3ad; background: #eee5d5; padding: clamp(24px, 3vw, 42px); }
+.business-page .supply-grid { gap: 32px; }
+.business-page .supply-card { display: flex; flex-direction: column; background: #fffaf2; border: 1px solid #d2c3ad; }
+.business-page .supply-card > div { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: clamp(24px, 3vw, 40px); border-top: 3px solid var(--gold); }
+.business-page .supply-card .text-link { margin-top: auto; }
+.business-page .roasting-notes dl { padding: 0; gap: 0; border: 1px solid #c9a66b60; background: #ffffff05; }
+.business-page .roasting-notes dl > div { padding: 28px; }
+.business-page .roasting-notes dl > div + div { border-left: 1px solid #c9a66b60; }
+.business-page .business-contact { border-block: 1px solid #d2c3ad; }
+.business-page .business-contact .reserve-grid > div:first-child { border-left: 3px solid #a4814d; padding-left: clamp(20px, 2.5vw, 36px); }
+.business-page .business-contact .reserve-box { border: 1px solid #cbbfa9; }
+.business-page .faq-list { display: grid; gap: 12px; align-content: start; }
+.business-page .faq-list details { border: 1px solid #d2c3ad; background: #fffaf2; padding-inline: 22px; }
+.business-page .faq-list details[open] { border-color: #a4814d; }
+.business-page .faq-list details p { border-top: 1px solid #e1d7c7; padding: 18px 0 0; margin: 0 0 22px; }
+.business-page .brand-division { max-width: 15ch; }
 @media (min-width: 1051px) and (max-height: 700px) {
   .business-hero-grid { padding-block: 22px; }
   .business-hero h1 { font-size: clamp(40px, 3.4vw, 56px); }
@@ -534,10 +560,16 @@ html { scroll-padding-top: calc(var(--header-height) + 16px); }
   .business-photo-frame { aspect-ratio: 8 / 7; border-radius: 60px 3px 3px 3px; }
   .business-visual figcaption { text-align: left; }
   .business-page .section { padding-block: 44px; }
-  .business-page .service-feature { padding-top: 6px; }
+  .business-page .service-feature { padding: 22px; gap: 24px; }
+  .business-page .event-brief { padding: 22px; }
+  .business-page .supply-card > div { padding: 24px 22px; }
+  .business-page .roasting-notes dl > div { padding: 24px; }
+  .business-page .roasting-notes dl > div + div { border-left: 0; border-top: 1px solid #c9a66b60; }
+  .business-page .faq-list details { padding-inline: 18px; }
   .business-page .roaster-photo { width: 100%; justify-self: center; }
 }
 @media (max-width: 360px) {
+  .business-page { --header-height: 164px; }
   .business-page .brand-logo { width: 88px; }
   .business-page .brand-division { max-width: 88px; }
 }
