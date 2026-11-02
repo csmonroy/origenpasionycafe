@@ -369,3 +369,96 @@ textarea { resize: vertical; min-height: 90px; }
   .header-inner { gap: 6px; }
   .language-switch a { min-width: 30px; }
 }
+
+/* Jerarquía editorial: título, explicación y detalle legible. */
+body { font-size: 16px; }
+h2, .reserve-copy h2 { font-size: clamp(40px, 4.6vw, 64px); line-height: 1.13; text-wrap: balance; }
+h3, .card h3, .product-body h3, .principles h3, .reservation-steps h3 { font-size: clamp(27px, 2.4vw, 32px); line-height: 1.2; }
+.section-heading { align-items: start; gap: 48px; }
+.section-heading > div:first-child { flex: 1; min-width: 0; }
+.section-heading > p, .section-intro { flex: 0 1 39ch; max-width: 39ch; font-size: 17px; line-height: 1.75; }
+.eyebrow, .hero .eyebrow { font-size: 13px; line-height: 1.7; letter-spacing: .13em; }
+.hero-description, .business-hero > p { font-size: 18px; }
+.nav-list a, .header-cta, .hero-actions .btn, .hero-actions .text-link, .btn, .text-link { font-size: 15px; }
+.btn { min-height: 52px; }
+.text-link { min-height: 44px; }
+.language-switch a { font-size: 14px; }
+.hero-details, .hero-band .container, .hero-offer strong span, .hero-offer-duration { font-size: 14px; }
+.hero-offer strong { font-size: 21px; }
+.card-body > p, .story-intro > p:not(.eyebrow), .principles p, .product-body p, .faq-grid > div > p:not(.eyebrow), .faq-list details p, .reserve-copy > p:not(.eyebrow), .reservation-steps p, .freshness-strip p, .service-feature p:not(.eyebrow), .supply-card p:not(.eyebrow), .service-list, .roasting-details dd { font-size: 16px; line-height: 1.75; }
+.card-number, .image-tag, .card-meta, .price-row, .price-row small, .product-price small, .section-note, .event-callout p:last-child, .principles article > span, .step-number, .selection-status, .form label, .form-note, .business-hero .business-caption, .business-visual figcaption, .freshness-strip span { font-size: 14px; }
+.image-tag { line-height: 1.4; }
+.card-body { padding: 28px; }
+.card-body > p { margin-block: 20px 26px; }
+.card-meta { padding-bottom: 20px; gap: 10px 18px; }
+.price-row { margin-block: 16px; }
+.price-row strong, .product-price { font-size: 27px; }
+.product-bottom { flex-wrap: wrap; }
+.product-body { padding-top: 26px; }
+.product-body p { margin-block: 12px 20px; }
+.faq-list summary { font-size: 17px; line-height: 1.6; padding-block: 24px; }
+.form h3 { font-size: 32px; margin-bottom: 8px; }
+input, select, textarea { font-size: 16px; }
+.form-note { line-height: 1.6; }
+.contact-details { font-size: 15px; }
+.footer-main p, .footer-main nav, .footer-contact, .footer-social a, .footer-bottom, .wa-float, .form-shortcut { font-size: 14px; }
+.footer-main nav a { min-height: 32px; }
+.freshness-strip { gap: 30px; padding-block: 32px; margin-bottom: 44px; }
+.freshness-strip h3 { font-size: 29px; margin: 8px 0 12px; }
+.service-index { gap: 0; padding-block: 32px; }
+.service-index a { display: grid; grid-template-columns: 1fr auto; align-content: start; gap: 14px 12px; padding: 12px 24px; min-height: 150px; border-left: 1px solid var(--line); }
+.service-index a:first-child { padding-left: 0; border-left: 0; }
+.service-index .service-number { grid-column: 1 / -1; color: #876c43; font-size: 14px; }
+.service-index strong { font-family: var(--serif); font-size: clamp(24px, 2.2vw, 32px); line-height: 1.2; font-weight: 500; }
+.service-index .icon-arrow { align-self: end; width: 20px; height: 20px; color: #876c43; }
+.service-index a:hover { background: #e9e1d166; text-decoration: none; }
+.supply-card h2 { font-size: clamp(38px, 3.6vw, 50px); }
+.service-feature { padding-top: 45px; }
+.roasting-grid { grid-template-columns: 1.05fr 1fr; gap: 64px; }
+.roaster-photo { margin: 0; background: #fff; color: var(--ink); }
+.roaster-photo img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; }
+.roaster-photo figcaption { display: grid; gap: 6px; padding: 18px 24px 22px; border-top: 1px solid var(--line); }
+.roaster-photo figcaption strong { font-family: var(--serif); font-size: 27px; font-weight: 500; }
+.roaster-photo figcaption a { font-size: 14px; line-height: 1.5; text-decoration: underline; text-underline-offset: 4px; }
+.roasting-notes { margin-top: 48px; }
+.roasting-notes dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 0; padding-top: 28px; border-top: 1px solid #c9a66b60; }
+.roasting-notes dt { font-family: var(--serif); font-size: 27px; line-height: 1.3; }
+.roasting-notes dd { margin: 14px 0 0; color: #ded7c9; font-size: 16px; }
+@media (min-width: 761px) and (max-width: 1050px) {
+  .cards { grid-template-columns: 1fr; }
+  .card { display: grid; grid-template-columns: .8fr 1.2fr; }
+  .card-image img { height: 100%; min-height: 320px; }
+  .hero-inner, .story-grid, .reserve-grid, .faq-grid { gap: 32px; }
+}
+@media (max-width: 1050px) {
+  .service-index { grid-template-columns: 1fr 1fr; }
+  .service-index a { min-height: 130px; padding: 18px; }
+  .service-index a:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .service-index a:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .section-heading { gap: 30px; }
+}
+@media (max-width: 760px) {
+  h2, .reserve-copy h2 { font-size: clamp(38px, 9vw, 48px); }
+  .section-heading > p, .section-intro { max-width: none; font-size: 16px; }
+  .hero-description { font-size: 17px; }
+  .hero-actions .btn, .hero-actions .text-link { font-size: 15px; }
+  .hero-band .container { font-size: 13px; letter-spacing: .07em; }
+  .hero-details { font-size: 14px; }
+  .freshness-strip { gap: 26px; padding-block: 28px; }
+  .freshness-strip h3 { font-size: 28px; }
+  .service-index strong { font-size: 25px; }
+  .service-index a { padding: 18px 12px; gap: 12px 8px; }
+  .service-index .icon-arrow { width: 16px; height: 16px; }
+  .roasting-grid, .roasting-notes dl { grid-template-columns: 1fr; gap: 32px; }
+  .roasting-notes { margin-top: 32px; }
+  .roasting-notes dl { gap: 24px; }
+  .roasting-notes dt { font-size: 25px; }
+  .roasting-notes dd { margin-top: 8px; }
+  .footer-main { grid-template-columns: 1fr; }
+  .footer-contact { grid-column: auto; }
+}
+@media (max-width: 360px) {
+  .service-index strong { font-size: 23px; }
+  .service-index a { grid-template-columns: 1fr; }
+  .service-index .icon-arrow { display: none; }
+}

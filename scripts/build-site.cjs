@@ -7,7 +7,7 @@ const origin = 'https://origenpasionycafe.com';
 const pages = [
   { file: 'index.html', enFile: 'en/index.html', es: '/', en: '/en/', business: false,
     titles: ['Café fresco, catas y cursos de café en Bogotá | Origen, Pasión y Café', 'Fresh specialty coffee & tastings in Bogotá | Origen, Pasión y Café'],
-    descriptions: ['Café de especialidad tostado a demanda en Bogotá. Bolsas de 250 g desde $25.000 COP, catas y cursos. Descubre la frescura con Origen, Pasión y Café.', 'Specialty coffee roasted to order in Bogotá. 250 g bags from COP $25,000, coffee tastings and brewing classes. Discover Origen, Pasión y Café.'] },
+    descriptions: ['Café de especialidad de tostión reciente en Bogotá. Bolsas de 250 g desde $25.000 COP, catas y cursos. Descubre la frescura con Origen, Pasión y Café.', 'Recently roasted specialty coffee in Bogotá. 250 g bags from COP $25,000, coffee tastings and brewing classes. Discover Origen, Pasión y Café.'] },
   { file: 'empresas/index.html', enFile: 'en/business/index.html', es: '/empresas/', en: '/en/business/', business: true,
     titles: ['Barra de café para eventos y empresas en Bogotá | Origen, Pasión y Café', 'Event coffee bars & business coffee in Bogotá | Origen, Pasión y Café'],
     descriptions: ['Barra de café para eventos corporativos y asambleas en Bogotá. Café verde, café por volumen y tostión de microlotes con Kaleido M10S. Solicita tu propuesta.', 'Coffee bars for corporate events and condominium meetings in Bogotá. Green coffee, bulk orders and microlot roasting with Kaleido M10S. Request a proposal.'] }
@@ -50,7 +50,7 @@ function metadata(html, page, english) {
     content.mainEntity={'@type':'ItemList',itemListElement:esNames.map((name,j)=>({'@type':'ListItem',position:j+1,item:{'@type':'Service',name:english?enNames[j]:name,url:url+'#'+ids[j],provider:{'@id':org['@id']},areaServed:{'@type':'City',name:'Bogotá'}}}))};
   } else {
     const products=[['Blend de Casa','blend-de-casa',25000],['Bourbon Rosado','bourbon-rosado',40000],['Bourbon Sidra','bourbon-sidra',40000]];
-    content.mainEntity={'@type':'ItemList',itemListElement:products.map(([name,id,price],j)=>({'@type':'ListItem',position:j+1,item:{'@type':'Product',name:name+' · 250 g',image:origin+'/img/'+id+'.jpg',description:english?'Specialty coffee roasted in batches to order. 250 g bag.':'Café de especialidad tostado en lotes a demanda. Bolsa de 250 g.',brand:{'@type':'Brand',name:org.name},weight:{'@type':'QuantitativeValue',value:250,unitCode:'GRM'},offers:{'@type':'Offer',price,priceCurrency:'COP',url:url+'#'+id,seller:{'@id':org['@id']}}}}))};
+    content.mainEntity={'@type':'ItemList',itemListElement:products.map(([name,id,price],j)=>({'@type':'ListItem',position:j+1,item:{'@type':'Product',name:name+' · 250 g',image:origin+'/img/'+id+'.jpg',description:english?'Recently roasted specialty coffee. 250 g bag.':'Café de especialidad de tostión reciente. Bolsa de 250 g.',brand:{'@type':'Brand',name:org.name},weight:{'@type':'QuantitativeValue',value:250,unitCode:'GRM'},offers:{'@type':'Offer',price,priceCurrency:'COP',url:url+'#'+id,seller:{'@id':org['@id']}}}}))};
   }
   const schema = {'@context':'https://schema.org','@graph':[org,web,content]};
   return html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, '<script type="application/ld+json">\n'+JSON.stringify(schema,null,2)+'\n  </script>');

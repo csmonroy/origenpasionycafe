@@ -4,7 +4,7 @@ Sitio estático en HTML, CSS y JavaScript. No requiere dependencias para servirl
 
 ## Páginas e idiomas
 
-- `/`: café fresco tostado a demanda, tienda, catas y cursos.
+- `/`: café fresco de tostión reciente, tienda, catas y cursos.
 - `/empresas/`: barra para eventos corporativos y asambleas de copropietarios, café verde, pedidos por volumen y tostión de microlotes con Kaleido M10S.
 - `/en/` y `/en/business/`: versiones completas en inglés, incluidos formularios y mensajes de consulta.
 
@@ -41,6 +41,8 @@ El hosting es Cloudflare Pages, conectado a la rama `main` de este repositorio. 
 - Las imágenes del catálogo son ilustraciones de bolsas generadas con IA, no fotografías de empaques reales. Sustituirlas por fotografías propias cuando estén disponibles. El registro de prompts y archivos está en `docs/imagenes-catalogo.md`.
 - Actualizar conjuntamente tarjetas, opciones del formulario, preguntas frecuentes y metadatos si cambian los precios o condiciones.
 - La tostión a demanda y los cuatro servicios para organizaciones fueron confirmados por el negocio el 2 de noviembre de 2026. No publicar capacidades de la Kaleido, pedidos mínimos, precios empresariales o plazos sin confirmarlos. Los formularios preparan consultas de WhatsApp; no envían datos automáticamente ni confirman contratos.
+- El mensaje para consumidores se centra en café de tostión reciente y sus aromas y matices. Evitar decir que cada pedido requiere programar una tostión; consultar disponibilidad sin prometer inventario o entrega inmediata. Los textos y metadatos se mantienen coherentes en español e inglés.
+- La jerarquía visual usa títulos de sección grandes, explicaciones de 16–18 px y detalles de 14 px. El índice de servicios empresariales presenta cuatro accesos grandes. Comprobar las cuatro páginas en móvil y escritorio al cambiar textos o tipografías.
 
 ## SEO después de publicar
 
