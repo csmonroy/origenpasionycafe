@@ -32,7 +32,7 @@ El hosting es Cloudflare Pages, conectado a la rama `main` de este repositorio. 
 
 ## Contenido comercial
 
-- Cata: desde $80.000 COP, 60–90 minutos, 1–6 personas.
+- Cata: desde $80.000 COP, 2 horas, 4–6 personas.
 - Curso de métodos: desde $160.000 COP, 2–3 horas, 1–4 personas.
 - Experiencia personalizada: desde $220.000 COP, 2–4 horas, 1–4 personas.
 - Bolsas de 250 g: Blend de Casa, $25.000 COP; Bourbon Rosado y Bourbon Sidra, $40.000 COP cada uno.
@@ -58,7 +58,7 @@ Se verifican enlaces internos, imágenes locales, secciones de destino, precios 
 
 El sitio ofrece contenido legible sin JavaScript y permite rastreo en `robots.txt`. Esto facilita el descubrimiento; no garantiza indexación, posiciones ni citas de IA. Queda pendiente comprobar impresiones e indexación desde las cuentas de Google Search Console y Bing Webmaster Tools, enviar allí el sitemap y medir Core Web Vitals con datos reales. No se ha realizado una auditoría de esas cuentas ni una medición de campo de rendimiento.
 
-Hay diferencias comerciales entre el PDF y la web anterior (por ejemplo, duración y tamaño de grupo de la cata). El PDF se conserva intacto: confirmar con el negocio antes de unificar condiciones. Las ilustraciones del catálogo no acreditan instalaciones o equipos reales.
+Las condiciones de la cata se unificaron con el catálogo por confirmación del negocio: 2 horas, 4–6 personas y precio desde $80.000 COP. El PDF se conserva intacto. Las ilustraciones del catálogo no acreditan instalaciones o equipos reales.
 
 Fuentes oficiales: [Guía de SEO de Google](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) y [datos estructurados de organizaciones](https://developers.google.com/search/docs/appearance/structured-data/organization).
 
