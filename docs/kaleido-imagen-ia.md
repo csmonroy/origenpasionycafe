@@ -1,5 +1,7 @@
 # Kaleido en un ambiente de tostión
 
+Versión anterior, sustituida por la máquina blanca a petición del negocio. La imagen actual y sus prompts se documentan en `docs/kaleido-blanca-ia.md`.
+
 Archivo publicado: `img/kaleido-taller-ia.webp` (1440 × 960). Generado con la herramienta integrada ImageGen, no mediante CLI. Se usó `img/kaleido-m10s.jpg` exclusivamente como referencia visual del equipo. La escena y el espacio son imaginados; no documentan las instalaciones de Origen. La web lo identifica como escena ilustrativa creada con IA.
 
 Original conservado: `C:\Users\Carlos\.codex\generated_images\01a0bb20-762f-7491-a217-b859b6cb41ff\exec-345953e5-7bae-49b2-b54e-04fe5afe1502.png`. La copia web se redujo y codificó como WebP de calidad 86, sin cambios creativos.

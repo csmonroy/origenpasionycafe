@@ -28,6 +28,8 @@ Prompt final:
 
 # Imágenes adicionales para empresas (2 de noviembre de 2026)
 
+Actualización de la tostadora: el negocio confirmó que su Kaleido es blanca. La versión actual usa `img/kaleido-blanca-tostion.webp`, sin aviso visible de IA por solicitud del negocio. Véase `docs/kaleido-blanca-ia.md`; los párrafos siguientes conservan la procedencia de las versiones previas.
+
 Se reutilizan ilustraciones suministradas por el negocio desde `C:\Users\Carlos\.codex\generated_images\01a14fa1-99c5-76a2-bec3-018f96d68ea1`. Se optimizaron a WebP para su publicación, conservando los originales:
 
 - `exec-3e0d3254-be98-473d-9fc7-9c4086d69584.png` → `img/barra-eventos.webp`.
