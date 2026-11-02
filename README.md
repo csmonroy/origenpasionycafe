@@ -8,6 +8,8 @@ Sitio estático en HTML, CSS y JavaScript. No requiere dependencias para servirl
 - `/empresas/`: barra para eventos corporativos y asambleas de copropietarios, café verde, pedidos por volumen y tostión de microlotes con Kaleido M10S.
 - `/en/` y `/en/business/`: versiones completas en inglés, incluidos formularios y mensajes de consulta.
 
+El botón dorado «Empresas y eventos» separa el acceso empresarial del menú de consumidores. Empresas tiene identidad y navegación propias, con un acceso de regreso a «Café y experiencias». La portada empresarial usa una imagen recortada y espacios compactos; en móvil las secciones conservan altura natural para evitar recortes. Al revisar el encabezado, comprobar ambos idiomas, el menú desplegable y los destinos de los enlaces con el encabezado fijo.
+
 Editar el contenido español en `index.html` y `empresas/index.html`. Mantener sus traducciones en `content/en.json` y ejecutar `node scripts/build-site.cjs` antes de publicar. El generador actualiza metadatos, datos estructurados, versiones inglesas y sitemap; falla si falta traducir texto visible. Los archivos generados de `en/` se guardan en Git. El hosting sigue sirviendo archivos estáticos sin compilación adicional. No editar directamente las páginas inglesas generadas.
 
 Los títulos y descripciones SEO se mantienen en `scripts/build-site.cjs`; las etiquetas dinámicas de los formularios, en `script.js`. El selector ES/EN mantiene la página equivalente. No se fuerza el idioma según navegador o ubicación. El PDF original continúa en español y así se identifica en los enlaces de la versión inglesa.
