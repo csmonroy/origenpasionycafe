@@ -36,7 +36,7 @@ Se reutilizan ilustraciones suministradas por el negocio desde `C:\Users\Carlos\
 
 Los textos alternativos las identifican como ilustraciones.
 
-La sección de tostión incorpora `img/kaleido-m10s.jpg`, fotografía de referencia de producto publicada en la [ficha M10S de Kaleido Sniper Japan](https://kaleido-sniper.jp/products/item.php?id=CR-M10), distribuidor oficial japonés. Archivo de origen: `https://kaleido-sniper.jp/asset/img/ms/m6-10-b.jpg`. Se mantiene el archivo sin modificar y se acredita la fuente al pie. Es una foto de referencia del equipo, no una fotografía del taller de Origen. La ficha indica que la caja de enfriamiento mostrada corresponde a una versión anterior.
+La referencia original `img/kaleido-m10s.jpg` procede de la [ficha M10S de Kaleido Sniper Japan](https://kaleido-sniper.jp/products/item.php?id=CR-M10), distribuidor oficial japonés. Archivo de origen: `https://kaleido-sniper.jp/asset/img/ms/m6-10-b.jpg`. Se conserva sin modificar como referencia del equipo; la ficha indica que la caja de enfriamiento corresponde a una versión anterior. Por solicitud del negocio, la sección de tostión ahora muestra `img/kaleido-taller-ia.webp`, una escena generada con IA a partir de esa referencia. No representa las instalaciones reales de Origen. El prompt completo y la procedencia están en `docs/kaleido-imagen-ia.md`.
 
 La explicación breve sobre conservación de aromas y frescura se apoya en [Coffee Decoded: freshly roasted coffee, SCA](https://sca.coffee/sca-news/coffee-decoded-9-fresh-coffee). No se prometen días exactos de frescura ni se equipara café recién salido de la tostadora con el momento óptimo para cualquier método.
 
