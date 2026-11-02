@@ -118,7 +118,7 @@ test('SEO metadata and sitemap agree on the canonical domain', () => {
   assert.match(html, /name="description" content="[^"]+"/);
   assert.ok(html.includes('rel="canonical" href="' + canonical + '"'));
   const schema = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
-  for (const item of schema['@graph']) assert.equal(item.url, canonical);
+  for (const item of schema['@graph'].filter(item => ['Organization','WebSite','WebPage'].includes(item['@type']))) assert.equal(item.url, canonical);
   assert.ok(fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8').includes('<loc>' + canonical + '</loc>'));
   assert.ok(fs.readFileSync(path.join(root, 'robots.txt'), 'utf8').includes(canonical + 'sitemap.xml'));
   assert.ok(fs.existsSync(path.join(root, 'img/social-card.png')));
@@ -202,5 +202,38 @@ test('social descriptions preserve currency and do not leak text outside head ta
     assert.equal(page.match(/<meta name="twitter:description" content="([^"]+)">/)[1],description);
     const head=page.match(/<head>([\s\S]*?)<\/head>/)[1].replace(/<script[^>]*>[\s\S]*?<\/script>/g,'').replace(/<title>[\s\S]*?<\/title>/g,'').replace(/<[^>]*>/g,'').trim();
     assert.equal(head,'',file+' has visible text in head');
+  }
+});
+
+test('experience descriptions resolve to visible service cards in both languages', () => {
+  for (const file of ['index.html','en/index.html']) {
+    const page=fs.readFileSync(path.join(root,file),'utf8');
+    const graph=JSON.parse(page.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+    const services=graph.filter(item=>item['@type']==='Service');
+    assert.equal(services.length,3);
+    for (const service of services) {
+      const id=new URL(service.url).hash.slice(1);
+      const card=page.match(new RegExp(`<article class="card" id="${id}">([\\s\\S]*?)</article>`));
+      assert.ok(card,service.url);
+      assert.ok(card[1].includes(service.name),service.name);
+    }
+    assert.match(services[0].description,/2 (horas|hours),.*4–6/);
+    assert.doesNotMatch(JSON.stringify(graph),/aggregateRating|InStock|streetAddress/);
+  }
+});
+
+test('responsive image candidates exist and declare their actual widths', () => {
+  for (const file of Object.values(routes)) {
+    const page=fs.readFileSync(path.join(root,file),'utf8');
+    for (const [,srcset] of page.matchAll(/srcset="([^"]+)"/g)) {
+      for (const candidate of srcset.split(',')) {
+        const [src,width]=candidate.trim().split(/\s+/);
+        if (src.startsWith('https:')) continue;
+        assert.ok(fs.existsSync(path.join(root,src.slice(1))),src);
+        assert.match(width,/^\d+w$/);
+        const explicitWidth=src.match(/-(\d+)\.webp$/)?.[1];
+        if (explicitWidth) assert.equal(width,explicitWidth+'w');
+      }
+    }
   }
 });

@@ -6,7 +6,7 @@ const dictionary = JSON.parse(fs.readFileSync(path.join(root, 'content/en.json')
 const origin = 'https://origenpasionycafe.com';
 const pages = [
   { file: 'index.html', enFile: 'en/index.html', es: '/', en: '/en/', business: false,
-    titles: ['Café fresco, catas y cursos de café en Bogotá | Origen, Pasión y Café', 'Fresh specialty coffee & tastings in Bogotá | Origen, Pasión y Café'],
+    titles: ['Café fresco, catas y cursos de café en Bogotá | Origen, Pasión y Café', 'Coffee, tastings & brewing classes in Bogotá | Origen, Pasión y Café'],
     descriptions: ['Café de especialidad de tostión reciente en Bogotá. Bolsas de 250 g desde $25.000 COP, catas y cursos. Descubre la frescura con Origen, Pasión y Café.', 'Recently roasted specialty coffee in Bogotá. 250 g bags from COP $25,000, coffee tastings and brewing classes. Discover Origen, Pasión y Café.'] },
   { file: 'empresas/index.html', enFile: 'en/business/index.html', es: '/empresas/', en: '/en/business/', business: true,
     titles: ['Barra de café para eventos y empresas en Bogotá | Origen, Pasión y Café', 'Event coffee bars & business coffee in Bogotá | Origen, Pasión y Café'],
@@ -43,6 +43,7 @@ function metadata(html, page, english) {
   const org = {'@type':'Organization','@id':origin+'/#organization',name:'Origen, Pasión y Café',url:origin+'/',logo:origin+'/img/logo.png',telephone:'+573012669975',email:'contacto@origenpasionycafe.com',areaServed:{'@type':'City',name:'Bogotá'},sameAs:['https://www.facebook.com/OrigenPasionyCafeCo/','https://www.instagram.com/origenpasionycafe/','https://www.tiktok.com/@origenpasionycafe']};
   const web = {'@type':'WebSite','@id':origin+'/#website',url:origin+'/',name:org.name,inLanguage:['es-CO','en'],publisher:{'@id':org['@id']}};
   const content = {'@type':'WebPage','@id':url+'#webpage',url,name:page.titles[i],description:page.descriptions[i],inLanguage:lang,isPartOf:{'@id':web['@id']},about:{'@id':org['@id']}};
+  const services = [];
   if (page.business) {
     const esNames=['Barra de café para eventos','Café en verde','Café tostado por volumen','Tostión de microlotes'];
     const enNames=['Coffee bar for events','Green coffee','Bulk roasted coffee','Microlot roasting'];
@@ -50,9 +51,18 @@ function metadata(html, page, english) {
     content.mainEntity={'@type':'ItemList',itemListElement:esNames.map((name,j)=>({'@type':'ListItem',position:j+1,item:{'@type':'Service',name:english?enNames[j]:name,url:url+'#'+ids[j],provider:{'@id':org['@id']},areaServed:{'@type':'City',name:'Bogotá'}}}))};
   } else {
     const products=[['Blend de Casa','blend-de-casa',25000],['Bourbon Rosado','bourbon-rosado',40000],['Bourbon Sidra','bourbon-sidra',40000]];
-    content.mainEntity={'@type':'ItemList',itemListElement:products.map(([name,id,price],j)=>({'@type':'ListItem',position:j+1,item:{'@type':'Product',name:name+' · 250 g',image:origin+'/img/'+id+'.jpg',description:english?'Recently roasted specialty coffee. 250 g bag.':'Café de especialidad de tostión reciente. Bolsa de 250 g.',brand:{'@type':'Brand',name:org.name},weight:{'@type':'QuantitativeValue',value:250,unitCode:'GRM'},offers:{'@type':'Offer',price,priceCurrency:'COP',url:url+'#'+id,seller:{'@id':org['@id']}}}}))};
+    content.mainEntity={'@type':'ItemList',itemListElement:products.map(([name,id,price],j)=>({'@type':'ListItem',position:j+1,item:{'@type':'Product','@id':url+'#product-'+id,name:name+' · 250 g',url:url+'#'+id,image:origin+'/img/'+id+'-1254.webp',description:english?'Recently roasted specialty coffee. 250 g bag.':'Café de especialidad de tostión reciente. Bolsa de 250 g.',brand:{'@type':'Brand',name:org.name},weight:{'@type':'QuantitativeValue',value:250,unitCode:'GRM'},offers:{'@type':'Offer',price,priceCurrency:'COP',url:url+'#'+id,seller:{'@id':org['@id']}}}}))};
+    const experiences = [
+      ['cata','Cata de café de especialidad','Specialty coffee tasting','2 horas, para 4–6 personas. Desde $80.000 COP.','2 hours, for 4–6 people. From COP $80,000.'],
+      ['curso-metodos','Curso de métodos','Brewing methods class','2–3 horas, para 1–4 personas. Desde $160.000 COP.','2–3 hours, for 1–4 people. From COP $160,000.'],
+      ['experiencia-personalizada','Experiencia personalizada','Personalised experience','2–4 horas, para 1–4 personas. Desde $220.000 COP.','2–4 hours, for 1–4 people. From COP $220,000.']
+    ];
+    for (const [id,esName,enName,esDescription,enDescription] of experiences) {
+      services.push({'@type':'Service','@id':url+'#'+id,url:url+'#'+id,name:english?enName:esName,description:english?enDescription:esDescription,provider:{'@id':org['@id']},areaServed:{'@type':'City',name:'Bogotá'}});
+    }
+    content.about = [{'@id':org['@id']},...services.map(service=>({'@id':service['@id']}))];
   }
-  const schema = {'@context':'https://schema.org','@graph':[org,web,content]};
+  const schema = {'@context':'https://schema.org','@graph':[org,web,content,...services]};
   return html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, '<script type="application/ld+json">\n'+JSON.stringify(schema,null,2)+'\n  </script>');
 }
 for (const page of pages) {

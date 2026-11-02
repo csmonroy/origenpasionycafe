@@ -2,3 +2,15 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   X-Frame-Options: SAMEORIGIN
+
+# Archivos de mantenimiento: accesibles, pero fuera de los resultados de búsqueda.
+/README.md
+  X-Robots-Tag: noindex
+/docs/*
+  X-Robots-Tag: noindex
+/scripts/*
+  X-Robots-Tag: noindex
+/tests/*
+  X-Robots-Tag: noindex
+/content/*
+  X-Robots-Tag: noindex

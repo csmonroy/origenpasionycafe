@@ -69,3 +69,28 @@ Fuentes oficiales: [Guía de SEO de Google](https://developers.google.com/search
 Referencias para esta revisión: [Google: funciones de IA](https://developers.google.com/search/docs/appearance/ai-features), [sitios multilingües](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites) y [directrices de Bing y Copilot](https://www.bing.com/webmasters/help/bing-webmaster-guidelines-30fba23a).
 
 La página empresarial agrupa el título y el índice en una introducción delimitada. Los servicios de eventos, café verde y volumen tienen paneles con fondo, borde y márgenes internos; los detalles de tostión y las preguntas frecuentes también conservan agrupación visual. Mantener la portada a alto de pantalla en escritorio y la altura natural en móvil.
+
+## Auditoría SEO y rendimiento — 2 de noviembre de 2026, 12:12 (Bogotá)
+
+Medición inicial de la portada pública con PageSpeed Insights, móvil emulado y red 4G lenta: rendimiento 97, accesibilidad 97, buenas prácticas 100 y SEO técnico 100; LCP 1,7 s, bloqueo total 0 ms y CLS 0. [Informe inicial](https://pagespeed.web.dev/analysis/https-origenpasionycafe-com/bf6jo4yrba?form_factor=mobile). No hay datos de campo suficientes en ese informe. Estas notas son de laboratorio y no miden posición, indexación ni visibilidad en respuestas de IA.
+
+Correcciones derivadas de la auditoría:
+
+- Bolsas en WebP con variantes de 480, 800 y 1254 px; selección por ancho de pantalla. Las tres versiones de 800 px suman 73.474 bytes frente a 358.054 bytes de los JPG originales, una reducción del 79,5 %. Se conservan los originales.
+- Logo web de 480 px y variantes pequeñas para las imágenes empresariales. Se conservan dimensiones explícitas, carga diferida fuera de portada y prioridad alta para la imagen principal.
+- Contraste de los números de beneficios y tarjetas corregido, conservando la paleta.
+- Títulos de experiencias explícitos y datos estructurados de los tres servicios con duración, grupos y precios de referencia reales; anclas propias para cada tarjeta. El marcado de productos mantiene 250 g y precios en COP. No se añaden valoraciones ni inventario no confirmado. Una lista de productos en una landing no equivale a una ficha individual elegible para resultados de producto.
+- Cabeceras `X-Robots-Tag: noindex` para README, documentación, scripts, pruebas y traducciones de mantenimiento. No se bloquea su rastreo en robots.txt, para permitir que se lea noindex. El catálogo PDF sigue accesible e indexable.
+- Regla en Cloudflare, fuera del repositorio: «Dominio canónico: www a origenpasionycafe.com». Redirige `https://www.origenpasionycafe.com/*` mediante 301 a `https://origenpasionycafe.com/${1}`, conservando parámetros. Comprobada con `/en/business/?seo=check`. HTTP ya redirigía a HTTPS.
+
+Comprobaciones: cuatro rutas públicas con 200 y canonical correcto; robots y sitemap accesibles; una ruta inexistente devuelve 404 real; index.html y rutas sin barra final se normalizan mediante 308. Quince pruebas cubren enlaces, formularios, idiomas, precios, anclas, datos estructurados y archivos de imágenes. Revisadas las cuatro páginas a 390 y 1280 px sin desbordamiento horizontal.
+
+Prioridades siguientes:
+
+1. Conectar/verificar el sitio en Google Search Console y Bing Webmaster Tools y enviar el sitemap. La sesión de Google consultada mostró la bienvenida para añadir sitio; no se obtuvo información de consultas, cobertura o posiciones y no se creó una propiedad. No interpretar esto como prueba de que el dominio no está indexado o de que no existe una propiedad en otra cuenta.
+2. Completar el Perfil de Empresa de Google, si el negocio reúne los requisitos, con datos reales de atención y ubicación/área de servicio, fotografías propias y reseñas auténticas.
+3. Crear páginas específicas de catas, cursos y barra para eventos cuando se disponga de suficiente contenido propio: qué incluye, público, logística, ejemplos reales y preguntas de clientes. Evitar páginas casi idénticas creadas solo para palabras clave.
+4. Ampliar las fichas de los cafés con origen, productor, proceso, perfil y fecha de tostión confirmados. No inventar esos datos para SEO.
+5. Comparar clics, impresiones y consultas por servicio cuando haya datos; medir conversiones a consultas respetando las preferencias de privacidad. No hay analítica nueva ni rastreadores añadidos en esta revisión.
+
+Referencias: [Google: fundamentos SEO](https://developers.google.com/search/docs/essentials), [visibilidad en funciones de IA](https://developers.google.com/search/docs/appearance/ai-features), [Bing y Copilot](https://www.bing.com/webmasters/help/bing-webmaster-guidelines-30fba23a). No hacen falta archivos especiales para IA ni se pueden garantizar primeras posiciones.
