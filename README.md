@@ -1,20 +1,26 @@
 # Origen, Pasión y Café
 
-Sitio estático en HTML, CSS y JavaScript. No requiere dependencias para servirlo. Incluye inicio y página independiente de empresas y eventos, en español e inglés.
+Sitio estático en HTML, CSS y JavaScript. No requiere dependencias para servirlo. Incluye cuatro páginas, cada una en español e inglés: inicio, empresas, café para eventos y experiencias de café.
 
 ## Páginas e idiomas
 
 - `/`: café fresco de tostión reciente, tienda, catas y cursos.
 - `/empresas/`: barra para eventos corporativos y asambleas de copropietarios, café verde, pedidos por volumen y tostión de microlotes con Kaleido M10S.
-- `/en/` y `/en/business/`: versiones completas en inglés, incluidos formularios y mensajes de consulta.
+- `/cafe-para-eventos/`: barra de café en Bogotá, ocasiones, planificación y solicitud de propuesta.
+- `/experiencias-de-cafe/`: cata, curso de métodos y experiencia personalizada, condiciones y consulta.
+- `/en/`, `/en/business/`, `/en/event-coffee/` y `/en/coffee-experiences/`: versiones completas en inglés.
 
 El botón dorado «Para empresas y eventos» separa el acceso empresarial del menú de consumidores. Empresas tiene identidad y navegación propias, con un acceso de regreso a «Para personas». La portada empresarial ocupa como mínimo el alto disponible de la pantalla en escritorio, descontando el encabezado. En móvil las secciones conservan altura natural para evitar recortes. La tostadora blanca aparece en una escena generada con IA integrada sobre el fondo oscuro. Por solicitud del negocio, el pie visible muestra únicamente «Kaleido M10S»; la procedencia y los prompts se conservan en docs/kaleido-blanca-ia.md. Al revisar el encabezado, comprobar ambos idiomas, el menú desplegable y los destinos de los enlaces con el encabezado fijo.
 
-Editar el contenido español en `index.html` y `empresas/index.html`. Mantener sus traducciones en `content/en.json` y ejecutar `node scripts/build-site.cjs` antes de publicar. El generador actualiza metadatos, datos estructurados, versiones inglesas y sitemap; falla si falta traducir texto visible. Los archivos generados de `en/` se guardan en Git. El hosting sigue sirviendo archivos estáticos sin compilación adicional. No editar directamente las páginas inglesas generadas.
+Editar el contenido español en `index.html`, `empresas/index.html`, `cafe-para-eventos/index.html` y `experiencias-de-cafe/index.html`. Mantener sus traducciones en `content/en.json` y ejecutar `node scripts/build-site.cjs` antes de publicar. El generador actualiza metadatos, datos estructurados, versiones inglesas y sitemap; falla si falta traducir texto visible. Los archivos generados de `en/` se guardan en Git. El hosting sigue sirviendo archivos estáticos sin compilación adicional. No editar directamente las páginas inglesas generadas.
 
 Los títulos y descripciones SEO se mantienen en `scripts/build-site.cjs`; las etiquetas dinámicas de los formularios, en `script.js`. El selector ES/EN mantiene la página equivalente. No se fuerza el idioma según navegador o ubicación. El PDF original continúa en español y así se identifica en los enlaces de la versión inglesa.
 
 ## Comprobaciones
+
+Las páginas dedicadas a eventos y experiencias comparten tipografía, paleta y navegación con el sitio. Cada una tiene su propio título, descripción, canonical, enlaces de idioma, datos de servicios y ruta de navegación. El sitemap contiene ocho páginas. Los formularios preparan una consulta y no envían mensajes automáticamente. Las pruebas incluyen sus destinos, traducciones y condiciones comerciales; la revisión visual contempla escritorio de 1280 px y móvil de 390 px.
+
+Search Console: propiedad de dominio `origenpasionycafe.com` verificada mediante un registro DNS TXT en Cloudflare el 2 de noviembre de 2026. Conservar ese registro para mantener la verificación. El sitemap público es `https://origenpasionycafe.com/sitemap.xml`. La verificación y el envío del sitemap no equivalen a indexación ni garantizan posiciones.
 
 ```sh
 node scripts/build-site.cjs
@@ -28,7 +34,7 @@ Además de estas pruebas, revisar en navegador que los botones de las tarjetas s
 
 El catálogo se publica como `catalogo.pdf` en la raíz del sitio y se enlaza desde experiencias, café para casa y el pie de página. Su dirección pública es `https://origenpasionycafe.com/catalogo.pdf`. Para actualizarlo, reemplazar ese archivo por el nuevo PDF conservando el nombre y publicar el cambio en `main`. Editar el archivo original de Marketing no actualiza automáticamente la copia de la web. Comprobar que las condiciones del catálogo y la página coincidan antes de una nueva publicación.
 
-Publicar `index.html`, `empresas/`, `en/`, `404.html`, `_headers`, `catalogo.pdf`, `styles.css`, `script.js`, `robots.txt`, `sitemap.xml` y `img/` en el hosting actual. El dominio canónico configurado es `https://origenpasionycafe.com/`. Los cambios locales no actualizan por sí solos la web pública.
+Publicar `index.html`, `empresas/`, `cafe-para-eventos/`, `experiencias-de-cafe/`, `en/`, `404.html`, `_headers`, `catalogo.pdf`, `styles.css`, `script.js`, `robots.txt`, `sitemap.xml` y `img/` en el hosting actual. El dominio canónico configurado es `https://origenpasionycafe.com/`. Los cambios locales no actualizan por sí solos la web pública.
 
 El hosting es Cloudflare Pages, conectado a la rama `main` de este repositorio. Un push a `main` activa el despliegue. Al cambiar CSS o JavaScript, actualizar también el parámetro `v` de sus referencias en `index.html` para renovar la caché de los visitantes existentes.
 
