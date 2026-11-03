@@ -16,7 +16,10 @@ const pages = [
     descriptions: ['Barra de café de especialidad para eventos corporativos, asambleas de copropietarios y encuentros de marca en Bogotá. Cotiza una propuesta para tu evento.', 'Specialty coffee bars for corporate events, condominium meetings and brand gatherings in Bogotá. Request a proposal tailored to your event.'] },
   { file: 'experiencias-de-cafe/index.html', enFile: 'en/coffee-experiences/index.html', es: '/experiencias-de-cafe/', en: '/en/coffee-experiences/', business: false, kind: 'experiences',
     titles: ['Experiencias y catas de café en Bogotá | Origen, Pasión y Café', 'Coffee experiences & tastings in Bogotá | Origen, Pasión y Café'],
-    descriptions: ['Descubre experiencias de café en Bogotá: catas desde $80.000 COP, cursos de métodos y sesiones personalizadas. Grupos pequeños y aprendizaje práctico.', 'Discover coffee experiences in Bogotá: tastings from COP $80,000, brewing classes and personalised sessions. Small groups and hands-on learning.'] }
+    descriptions: ['Descubre experiencias de café en Bogotá: catas desde $80.000 COP, cursos de métodos y sesiones personalizadas. Grupos pequeños y aprendizaje práctico.', 'Discover coffee experiences in Bogotá: tastings from COP $80,000, brewing classes and personalised sessions. Small groups and hands-on learning.'] },
+  { file: 'privacidad/index.html', enFile: 'en/privacy/index.html', es: '/privacidad/', en: '/en/privacy/', kind: 'privacy',
+    titles: ['Privacidad | Origen, Pasión y Café','Privacy | Origen, Pasión y Café'],
+    descriptions: ['Cómo usamos los datos de contacto y la medición opcional del sitio de Origen, Pasión y Café.','How Origen, Pasión y Café uses contact information and optional website analytics.'] }
 ];
 function translate(html) {
   // Traduce texto y atributos accesibles; conserva IDs y valores internos del formulario.
@@ -59,7 +62,7 @@ function metadata(html, page, english) {
     const enNames=['Coffee bar for events','Green coffee','Bulk roasted coffee','Microlot roasting'];
     const ids=['barra','verde','volumen','tostion'];
     content.mainEntity={'@type':'ItemList',itemListElement:esNames.map((name,j)=>({'@type':'ListItem',position:j+1,item:{'@type':'Service',name:english?enNames[j]:name,url:url+'#'+ids[j],provider:{'@id':org['@id']},areaServed:{'@type':'City',name:'Bogotá'}}}))};
-  } else {
+  } else if (page.kind !== 'privacy') {
     const products=[['Blend de Casa','blend-de-casa',25000],['Bourbon Rosado','bourbon-rosado',40000],['Bourbon Sidra','bourbon-sidra',40000]];
     if (page.kind !== 'experiences') content.mainEntity={'@type':'ItemList',itemListElement:products.map(([name,id,price],j)=>({'@type':'ListItem',position:j+1,item:{'@type':'Product','@id':url+'#product-'+id,name:name+' · 250 g',url:url+'#'+id,image:origin+'/img/'+id+'-1254.webp',description:english?'Recently roasted specialty coffee. 250 g bag.':'Café de especialidad de tostión reciente. Bolsa de 250 g.',brand:{'@type':'Brand',name:org.name},weight:{'@type':'QuantitativeValue',value:250,unitCode:'GRM'},offers:{'@type':'Offer',price,priceCurrency:'COP',url:url+'#'+id,seller:{'@id':org['@id']}}}}))};
     const experiences = [
@@ -74,7 +77,7 @@ function metadata(html, page, english) {
     if (page.kind === 'experiences') content.mainEntity = {'@type':'ItemList',itemListElement:services.map((service,j)=>({'@type':'ListItem',position:j+1,item:{'@id':service['@id']}}))};
   }
   const schema = {'@context':'https://schema.org','@graph':[org,web,content,...services]};
-  if (page.kind) {
+  if (page.kind && page.kind !== 'privacy') {
     const parent=page.business ? (english?'/en/business/':'/empresas/') : (english?'/en/':'/');
     const breadcrumb={'@type':'BreadcrumbList','@id':url+'#breadcrumb',itemListElement:[
       {'@type':'ListItem',position:1,name:page.business?(english?'For businesses & events':'Para empresas y eventos'):(english?'For individuals':'Para personas'),item:origin+parent},
@@ -110,5 +113,5 @@ for (const page of pages) {
   fs.writeFileSync(path.join(root,page.enFile),metadata(english,page,true));
   fs.writeFileSync(path.join(root,page.file),metadata(spanish,page,false));
 }
-fs.writeFileSync(path.join(root,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+pages.flatMap(p=>[p.es,p.en]).map(url=>'  <url><loc>'+origin+url+'</loc></url>').join('\n')+'\n</urlset>\n');
+fs.writeFileSync(path.join(root,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+pages.filter(p=>p.kind!=='privacy').flatMap(p=>[p.es,p.en]).map(url=>'  <url><loc>'+origin+url+'</loc></url>').join('\n')+'\n</urlset>\n');
 console.log(`${pages.length*2} páginas estáticas y sitemap generados.`);

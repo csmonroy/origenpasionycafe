@@ -18,6 +18,18 @@ Los títulos y descripciones SEO se mantienen en `scripts/build-site.cjs`; las e
 
 ## Comprobaciones
 
+## Medición de contactos y privacidad
+
+Google Analytics 4: cuenta `414507569`, propiedad `562075213`, flujo web `16258680038`, ID público `G-PF2M4L02YS`. `analytics.js` solo carga la etiqueta en el dominio de producción y después de aceptar la medición. La elección dura 180 días y se puede cambiar desde el pie. Las vistas previas locales no envían datos. Mantener desactivada la **medición mejorada** en el flujo: los enlaces de WhatsApp pueden contener textos privados. No activar capturas automáticas de formularios o enlaces.
+
+El evento `whatsapp_click` registra `page_type`, `contact_placement`, `service_interest` y `content_language`, con categorías controladas. Nunca contiene texto libre del formulario ni la URL completa de WhatsApp. Los clics son intención de contacto, no conversaciones, reservas o ventas confirmadas. Se configura como evento clave sin importe monetario y una vez por sesión. No se envían eventos de compra. Para evaluar ventas reales, contrastar con las consultas recibidas y pedidos confirmados por el negocio.
+
+Aviso y controles en español e inglés; políticas en `/privacidad/` y `/en/privacy/` (noindex, fuera del sitemap comercial). La medición elimina parámetros y fragmentos de la URL; solo conserva el origen del referente. Publicidad y Google Signals desactivados. Al retirar permiso se desactiva la etiqueta, se eliminan sus cookies accesibles y se recarga la página. El rechazo no impide consultar el sitio ni enviar consultas.
+
+Bing: conservar la etiqueta `msvalidate.01` de la portada para mantener la verificación. Search Console: solicitudes individuales de indexación aceptadas para `/cafe-para-eventos/` y `/experiencias-de-cafe/`; no equivalen a indexación completada.
+
+Ejecutar también `node --test tests/analytics.test.cjs`: consentimiento, rechazo, caducidad, entornos locales, exclusión de textos privados y retirada del permiso.
+
 Las páginas dedicadas a eventos y experiencias comparten tipografía, paleta y navegación con el sitio. Cada una tiene su propio título, descripción, canonical, enlaces de idioma, datos de servicios y ruta de navegación. El sitemap contiene ocho páginas. Los formularios preparan una consulta y no envían mensajes automáticamente. Las pruebas incluyen sus destinos, traducciones y condiciones comerciales; la revisión visual contempla escritorio de 1280 px y móvil de 390 px.
 
 Search Console: propiedad de dominio `origenpasionycafe.com` verificada mediante un registro DNS TXT en Cloudflare el 2 de noviembre de 2026. Conservar ese registro para mantener la verificación. El sitemap público es `https://origenpasionycafe.com/sitemap.xml`. La verificación y el envío del sitemap no equivalen a indexación ni garantizan posiciones.

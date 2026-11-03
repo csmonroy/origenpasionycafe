@@ -575,6 +575,20 @@ html { scroll-padding-top: calc(var(--header-height) + 16px); }
 }
 
 /* Páginas de servicio: la misma identidad, con un recorrido propio. */
+.privacy-panel { position: fixed; z-index: 100; bottom: 20px; left: 20px; width: min(560px,calc(100% - 40px)); padding: 24px; color: var(--ink); background: #fffaf2; border: 1px solid #b69a68; box-shadow: 0 8px 40px #0003; max-height: calc(100svh - 40px); overflow: auto; }
+.privacy-panel[hidden] { display: none; }
+.privacy-panel h2 { font-size: 26px; margin: 0 0 12px; }
+.privacy-panel p { font-size: 14px; line-height: 1.6; margin: 0 0 16px; }
+.privacy-panel p a { text-decoration: underline; }
+.privacy-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.privacy-actions button { padding: 12px 18px; min-height: 44px; border: 1px solid #8b7046; background: transparent; color: var(--ink); font: inherit; font-size: 14px; cursor: pointer; }
+.privacy-actions button:first-child { background: var(--gold); }
+.privacy-settings { border: 0; padding: 0; background: transparent; color: inherit; font: inherit; text-align: left; text-decoration: underline; cursor: pointer; min-height: 44px; }
+.privacy-copy { max-width: 840px; padding-block: 64px; }
+.privacy-copy h1 { font-size: clamp(38px,5vw,60px); margin-bottom: 24px; }
+.privacy-copy h2 { font-size: 28px; margin: 36px 0 16px; }
+.privacy-copy p { font-size: 16px; line-height: 1.8; }
+.privacy-copy a { text-decoration: underline; }
 .service-hero { min-height: calc(100svh - var(--header-height)); display: grid; align-items: center; }
 .service-hero-grid { display: grid; grid-template-columns: 1.08fr 1fr; gap: clamp(32px,5vw,76px); align-items: center; padding-block: clamp(32px,5svh,60px); }
 .service-hero h1 { font-size: clamp(44px,4.4vw,68px); line-height: 1.12; text-wrap: balance; }
