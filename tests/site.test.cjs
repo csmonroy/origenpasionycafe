@@ -126,7 +126,8 @@ test('SEO metadata and sitemap agree on the canonical domain', () => {
 
 test('English booking and coffee messages use the selected language and retain product names', () => {
   const s = setup('en');
-  s.choose('curso_metodos');
+  s.fields.get('tipo').value = 'Curso de métodos';
+  s.fields.get('tipo').fire('change');
   assert.match(s.message(), /Service: Brewing methods class/);
   assert.match(s.fields.get('selection-status').textContent, /Your selection: Brewing methods class/);
   s.choose('bourbon_rosado');
@@ -237,20 +238,33 @@ test('social descriptions preserve currency and do not leak text outside head ta
   }
 });
 
-test('experience descriptions resolve to visible service cards in both languages', () => {
+test('experience descriptions resolve to the dedicated service detail in both languages', () => {
   for (const file of ['index.html','en/index.html','experiencias-de-cafe/index.html','en/coffee-experiences/index.html']) {
     const page=fs.readFileSync(path.join(root,file),'utf8');
     const graph=JSON.parse(page.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
     const services=graph.filter(item=>item['@type']==='Service');
     assert.equal(services.length,3);
     for (const service of services) {
-      const id=new URL(service.url).hash.slice(1);
-      const card=page.match(new RegExp(`<article class="card" id="${id}">([\\s\\S]*?)</article>`));
-      assert.ok(card,service.url);
-      assert.ok(card[1].includes(service.name),service.name);
+      const target=new URL(service.url);
+      const destination=fs.readFileSync(path.join(root,routes[target.pathname]),'utf8');
+      const detail=destination.match(new RegExp(`<article class="experience-detail" id="${target.hash.slice(1)}"[^>]*>([\\s\\S]*?)</article>`));
+      assert.ok(detail,service.url);
+      assert.ok(detail[1].includes(service.name),service.name);
+      assert.match(detail[1],/data-preset=/);
     }
     assert.match(services[0].description,/2 (horas|hours),.*4–6/);
     assert.doesNotMatch(JSON.stringify(graph),/aggregateRating|InStock|streetAddress/);
+  }
+});
+
+test('home experience choices lead to the guide without duplicating its offer cards', () => {
+  for (const [homeFile,guideRoute] of [['index.html','/experiencias-de-cafe/'],['en/index.html','/en/coffee-experiences/']]) {
+    const home=fs.readFileSync(path.join(root,homeFile),'utf8');
+    const overview=home.match(/<section id="experiencias"[\s\S]*?<\/section>/)[0];
+    assert.doesNotMatch(overview,/<img|data-preset=|class="card"/);
+    for (const id of ['cata','curso-metodos','experiencia-personalizada']) assert.ok(overview.includes(`href="${guideRoute}#${id}"`));
+    const guide=fs.readFileSync(path.join(root,routes[guideRoute]),'utf8');
+    assert.ok(guide.indexOf('id="preguntas"') < guide.indexOf('<section id="reservar"'));
   }
 });
 

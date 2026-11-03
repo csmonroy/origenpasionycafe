@@ -71,7 +71,8 @@ function metadata(html, page, english) {
       ['experiencia-personalizada','Experiencia personalizada','Personalised experience','2–4 horas, para 1–4 personas. Desde $220.000 COP.','2–4 hours, for 1–4 people. From COP $220,000.']
     ];
     for (const [id,esName,enName,esDescription,enDescription] of experiences) {
-      services.push({'@type':'Service','@id':url+'#'+id,url:url+'#'+id,name:english?enName:esName,description:english?enDescription:esDescription,provider:{'@id':org['@id']},areaServed:{'@type':'City',name:'Bogotá'}});
+      const serviceUrl = origin + (english ? '/en/coffee-experiences/' : '/experiencias-de-cafe/') + '#' + id;
+      services.push({'@type':'Service','@id':serviceUrl,url:serviceUrl,name:english?enName:esName,description:english?enDescription:esDescription,provider:{'@id':org['@id']},areaServed:{'@type':'City',name:'Bogotá'}});
     }
     content.about = [{'@id':org['@id']},...services.map(service=>({'@id':service['@id']}))];
     if (page.kind === 'experiences') content.mainEntity = {'@type':'ItemList',itemListElement:services.map((service,j)=>({'@type':'ListItem',position:j+1,item:{'@id':service['@id']}}))};

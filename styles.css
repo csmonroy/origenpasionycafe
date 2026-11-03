@@ -625,7 +625,7 @@ html { scroll-padding-top: calc(var(--header-height) + 16px); }
 .service-related .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; padding-block: 32px; }
 .service-page .section-heading > p { font-size: 17px; }
 /* La página de experiencias empieza por la elección, sin repetir la portada. */
-.experience-intro { background: #f8efe2; border-bottom: 1px solid var(--line); padding-block: 28px 36px; }
+.experience-intro { background: #f8efe2; border-bottom: 1px solid var(--line); padding-block: 28px 40px; }
 .experience-intro .service-breadcrumb { margin-bottom: 26px; color: var(--muted); }
 .experience-intro-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 72px); align-items: center; }
 .experience-intro h1 { font-size: clamp(40px, 4.2vw, 68px); line-height: 1.15; }
@@ -633,28 +633,70 @@ html { scroll-padding-top: calc(var(--header-height) + 16px); }
 .experience-intro .eyebrow { margin-bottom: 14px; }
 .experience-intro-copy > p { max-width: 48ch; margin: 0 0 16px; font-size: 17px; line-height: 1.7; }
 .experience-intro-copy .experience-welcome { color: var(--muted); font-size: 14px; }
+.event-guide-intro .hero-actions { margin-bottom: 0; }
+.event-guide-caption { border-top: 1px solid var(--line); padding-top: 22px; margin: 32px 0 0; color: var(--muted); font-size: 15px; }
 .experience-jump { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 .experience-jump a { display: inline-flex; align-items: center; min-height: 44px; border-bottom: 1px solid #9b7b49; font-size: 15px; font-weight: 600; }
 .experience-jump a:hover { color: #765b33; }
-.experience-service #elige { padding-block: 32px 64px; }
-.experience-choice-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 24px; margin-bottom: 24px; }
-.experience-choice-heading h2 { font-size: clamp(28px, 2.5vw, 36px); }
-.experience-choice-heading p { margin: 0; color: var(--muted); font-size: 15px; }
-.experience-service .card-image img { height: clamp(150px, 14vw, 210px); }
-.experience-service .card-body { padding: 24px; }
-.experience-service .card h3 { font-size: clamp(26px, 2.1vw, 32px); }
-.experience-service .card .price-row { margin: 16px 0 12px; }
-.experience-service .card-meta { margin: 0; padding-bottom: 16px; }
-.experience-service .card-body > p { margin: 18px 0 24px; }
-.experience-service .card-body > .btn { margin-top: auto; }
-@media (min-width: 1051px) {
-  .experience-service .card h3 { min-height: 2.4em; }
-}
+.experience-gateway { background: #eae2d3; }
+.experience-gateway-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
+.experience-gateway-copy > p:not(.eyebrow) { max-width: 43ch; margin: 26px 0; color: #5b5446; font-size: 17px; }
+.experience-gateway-copy > p.gateway-caption { font-size: 14px; margin: 12px 0 0; }
+.experience-gateway h2 em { color: #876c43; }
+.experience-paths { border-top: 1px solid #bfb19a; }
+.experience-path { display: grid; grid-template-columns: 26px minmax(0, 1fr) 22px; align-items: center; gap: 18px; padding: 28px 12px; border-bottom: 1px solid #bfb19a; transition: background .2s; }
+.experience-path:hover { background: #fffdf870; }
+.path-number { font-size: 14px; color: #7a6039; }
+.experience-path p { font-size: 14px; color: #696254; margin: 0 0 8px; }
+.experience-path h3 { font-size: clamp(24px, 2.2vw, 32px); }
+.catalog-strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; border-top: 1px solid #bfb19a; margin-top: 44px; padding-top: 24px; }
+.catalog-strip p { margin: 0; font-size: 15px; font-weight: 600; }
+.catalog-strip p span { display: block; font-weight: 400; color: #696254; }
+.catalog-strip .text-link { flex-shrink: 0; }
+.experience-selector { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 32px; }
+.experience-selector > a { display: flex; flex-direction: column; min-width: 0; padding: 24px; background: var(--paper); border: 1px solid #cfc2ad; transition: border-color .2s, background .2s; }
+.experience-selector > a:hover { background: #f4e8d4; border-color: #8c6d3d; }
+.selector-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; color: #876c43; }
+.experience-selector strong { font-family: var(--serif); font-size: clamp(24px, 2vw, 30px); font-weight: 500; line-height: 1.2; }
+.selector-purpose { display: block; color: var(--muted); font-size: 15px; line-height: 1.65; margin: 14px 0 20px; }
+.selector-facts { display: block; margin-top: auto; font-size: 14px; }
+.selector-price { display: block; font-size: 14px; margin-top: 5px; }
+.selector-price b { font-size: 20px; font-weight: 500; }
+.selector-link { display: block; border-top: 1px solid var(--line); margin-top: 18px; padding-top: 14px; font-size: 14px; font-weight: 600; }
+.experience-details { background: var(--paper); }
+.experience-detail { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(36px, 7vw, 100px); padding-block: clamp(48px, 6vw, 80px); border-bottom: 1px solid var(--line); scroll-margin-top: 22px; }
+.experience-detail:last-child { border-bottom: 0; }
+.experience-detail h2 { font-size: clamp(36px, 3.5vw, 52px); max-width: 16ch; text-wrap: balance; }
+.experience-fit { margin: 24px 0; font-size: 17px; color: var(--muted); max-width: 46ch; }
+.detail-outcome { border-left: 2px solid #bb955a; padding-left: 22px; }
+.detail-outcome h3 { font-family: var(--sans); font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+.detail-outcome p { font-size: 16px; color: var(--muted); margin: 0; }
+.experience-detail-content > h3 { font-size: 27px; margin-bottom: 22px; }
+.learning-list { list-style: none; padding: 0; margin: 0; }
+.learning-list li { position: relative; padding: 0 0 18px 24px; font-size: 16px; line-height: 1.7; }
+.learning-list li::before { content: ''; position: absolute; left: 0; top: .65em; width: 6px; height: 6px; border: 1px solid #8c6d3d; border-radius: 50%; }
+.session-outline { border-block: 1px solid var(--line); margin: 6px 0 24px; }
+.session-outline summary { cursor: pointer; padding: 18px 28px 18px 0; font-size: 15px; font-weight: 600; position: relative; list-style: none; }
+.session-outline summary::-webkit-details-marker { display: none; }
+.session-outline summary::after { content: '+'; position: absolute; right: 0; font-size: 20px; line-height: 1.3; font-weight: 400; }
+.session-outline[open] summary::after { content: '−'; }
+.session-outline p { font-size: 16px; color: var(--muted); }
+.detail-booking { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 24px; justify-content: space-between; }
+.detail-booking p { margin: 0; font-size: 14px; }
+.detail-booking strong, .detail-booking span { display: block; }
+.detail-booking strong { font-size: 19px; font-weight: 500; }
+.detail-booking span { color: var(--muted); margin-top: 4px; }
+.detail-booking .btn { font-size: 14px; padding-inline: 18px; }
+.experience-faq { background: #eae2d3; }
+.experience-service .reserve-section { min-height: 0; }
 @media (min-width: 1440px) {
-  .experience-intro > .container, .experience-service #elige > .container { width: min(1640px, 88%); }
+.experience-intro > .container, .experience-details > .container, .experience-gateway > .container { width: min(1520px, 88%); }
 }
-@media (min-width: 761px) and (max-width: 1050px) {
-  .experience-service .card-image img { height: 100%; min-height: 0; }
+@media (max-width: 1050px) {
+  .experience-gateway-grid { gap: 36px; }
+  .experience-selector { gap: 12px; }
+  .experience-selector > a { padding: 20px; }
+  .experience-detail { gap: 36px; }
 }
 @media (max-width: 760px) {
   .experience-intro { padding-block: 20px 28px; }
@@ -664,9 +706,20 @@ html { scroll-padding-top: calc(var(--header-height) + 16px); }
   .experience-intro-copy > p { font-size: 16px; margin-bottom: 12px; }
   .experience-jump { gap: 6px 16px; }
   .experience-jump a { font-size: 14px; }
-  .experience-service #elige { padding-block: 28px 44px; }
-  .experience-choice-heading p { max-width: 30ch; }
-  .experience-service .card-image img { height: auto; aspect-ratio: 2 / 1; }
+  .experience-gateway-grid, .experience-selector, .experience-detail { grid-template-columns: 1fr; }
+  .experience-gateway-copy > p:not(.eyebrow) { font-size: 16px; }
+  .experience-gateway-copy > p.gateway-caption { font-size: 14px; }
+  .experience-path { padding: 24px 0; gap: 14px; }
+  .catalog-strip { margin-top: 32px; }
+  .experience-selector { gap: 14px; margin-top: 24px; }
+  .experience-selector > a { padding: 22px; }
+  .experience-selector strong { font-size: 27px; }
+  .selector-top { margin-bottom: 10px; }
+  .selector-purpose { margin: 12px 0; }
+  .experience-detail { padding-block: 44px; gap: 30px; }
+  .experience-detail h2 { font-size: clamp(34px, 9vw, 44px); }
+  .experience-fit { font-size: 16px; }
+  .detail-booking { align-items: stretch; flex-direction: column; }
 }
 @media (min-width: 1440px) { .service-hero-grid { width: min(1640px,88%); } .service-hero h1 { font-size: clamp(64px,4.2vw,80px); } }
 @media (max-width: 1050px) { .service-panels { gap: 16px; } .service-panels article { padding: 24px; } }
