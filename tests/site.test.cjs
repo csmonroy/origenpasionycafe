@@ -203,7 +203,7 @@ test('social descriptions preserve currency and do not leak text outside head ta
     const description=page.match(/<meta name="description" content="([^"]+)">/)[1];
     assert.equal(page.match(/<meta property="og:description" content="([^"]+)">/)[1],description);
     assert.equal(page.match(/<meta name="twitter:description" content="([^"]+)">/)[1],description);
-    const head=page.match(/<head>([\s\S]*?)<\/head>/)[1].replace(/<script[^>]*>[\s\S]*?<\/script>/g,'').replace(/<title>[\s\S]*?<\/title>/g,'').replace(/<[^>]*>/g,'').trim();
+    const head=page.match(/<head>([\s\S]*?)<\/head>/)[1].replace(/<script[^>]*>[\s\S]*?<\/script>/g,'').replace(/<style[^>]*>[\s\S]*?<\/style>/g,'').replace(/<title>[\s\S]*?<\/title>/g,'').replace(/<[^>]*>/g,'').trim();
     assert.equal(head,'',file+' has visible text in head');
   }
 });
@@ -244,6 +244,18 @@ test('structured event enquiry includes all supplied details without sending a m
     for(const value of ['15/12, 9:00','Bogotá & norte','80','3 h']) assert.ok(s.message().includes(value));
     assert.match(s.message(),language==='en'?/Service: Coffee bar for events/:/Servicio: Barra de café para eventos/);
     assert.equal(s.context.destination,undefined);
+  }
+});
+
+test('tasting price is per person in visible content, structured data and enquiry in both languages', () => {
+  for(const [language,file,unit] of [['es-CO','index.html','por persona'],['en','en/index.html','per person']]) {
+    const page=fs.readFileSync(path.join(root,file),'utf8');
+    const tasting=page.match(/<article class="experience-card" id="cata"[\s\S]*?<\/article>/)[0];
+    assert.ok(tasting.includes(unit));
+    const graph=JSON.parse(page.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+    assert.ok(graph.find(item=>item['@type']==='Service'&&item.url.endsWith('#cata')).description.includes(unit));
+    const s=setup(language);s.choose('cata');assert.ok(s.message().includes(unit));
+    s.choose('curso_metodos');assert.ok(!s.message().includes('80.000')&&!s.message().includes('80,000'));
   }
 });
 

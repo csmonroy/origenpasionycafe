@@ -74,6 +74,7 @@ function buildMessageDetailed() {
   return [
     coffee ? text('Hola, quiero pedir café con Origen, Pasión y Café.', 'Hello, I’d like to order coffee from Origen, Pasión y Café.') : text('Hola, quiero reservar con Origen, Pasión y Café.', 'Hello, I’d like to book an experience with Origen, Pasión y Café.'),
     text('Servicio: ', 'Service: ') + serviceName(value('tipo')),
+    value('tipo') === 'Cata de café de especialidad' ? text('Precio de referencia: desde $80.000 COP por persona.', 'Indicative price: from COP $80,000 per person.') : '',
     coffee && value('producto') ? text('Café: ', 'Coffee: ') + value('producto') : '',
     coffee ? text('Presentación: bolsa de 250 g', 'Size: 250 g bag') : '',
     !coffee && value('fecha') ? text('Fecha tentativa: ', 'Tentative date: ') + value('fecha') : '',

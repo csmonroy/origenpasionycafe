@@ -21,6 +21,9 @@ const navigation = {
   business: [['/empresas/#top', 'Inicio'], ['/empresas/#barra', 'Eventos'], ['/empresas/#cafe-negocio', 'Café para tu negocio'], ['/empresas/#tostion', 'Tostión'], ['/empresas/#cotizar', 'Cotizar']]
 };
 function sharedNavigation(html, page) {
+  // El menú móvil ya nace cerrado: evitar que su ocultación tardía desplace el contenido.
+  html = html.replace('aria-controls="nav-list" hidden', 'aria-controls="nav-list"');
+  if (!html.includes('id="navigation-fallback"')) html = html.replace('</head>', '<noscript id="navigation-fallback"><style>@media(max-width:1050px){html .site-header .nav-list{display:flex!important;position:static;flex-direction:column;align-items:stretch;max-height:none}html .site-header .nav-toggle{display:none!important}.site-header .nav{width:100%}.site-header .header-inner{flex-wrap:wrap}.site-header{position:static}}</style></noscript>\n</head>');
   const items = navigation[page.business ? 'business' : 'people'];
   const links = items.map(([href,label]) => `<a href="${href}"${href===page.es?' aria-current="page"':''}>${label}</a>`);
   html = html.replace(/<ul class="nav-list" id="nav-list">[\s\S]*?<\/ul>/, `<ul class="nav-list" id="nav-list">${links.map(link=>'<li>'+link+'</li>').join('')}</ul>`);
@@ -68,7 +71,7 @@ function metadata(html, page, english) {
     const products=[['Blend de Casa','blend-de-casa',25000],['Bourbon Rosado','bourbon-rosado',40000],['Bourbon Sidra','bourbon-sidra',40000]];
     content.mainEntity={'@type':'ItemList',itemListElement:products.map(([name,id,price],j)=>({'@type':'ListItem',position:j+1,item:{'@type':'Product','@id':url+'#product-'+id,name:name+' · 250 g',url:url+'#'+id,image:origin+'/img/'+id+'-1254.webp',description:english?'Recently roasted specialty coffee. 250 g bag.':'Café de especialidad de tostión reciente. Bolsa de 250 g.',brand:{'@type':'Brand',name:org.name},weight:{'@type':'QuantitativeValue',value:250,unitCode:'GRM'},offers:{'@type':'Offer',price,priceCurrency:'COP',url:url+'#'+id,seller:{'@id':org['@id']}}}}))};
     const experiences = [
-      ['cata','Cata de café de especialidad','Specialty coffee tasting','2 horas, para 4–6 personas. Desde $80.000 COP.','2 hours, for 4–6 people. From COP $80,000.'],
+      ['cata','Cata de café de especialidad','Specialty coffee tasting','2 horas, para 4–6 personas. Desde $80.000 COP por persona.','2 hours, for 4–6 people. From COP $80,000 per person.'],
       ['curso-metodos','Curso de métodos','Brewing methods class','2–3 horas, para 1–4 personas. Desde $160.000 COP.','2–3 hours, for 1–4 people. From COP $160,000.'],
       ['experiencia-personalizada','Experiencia personalizada','Personalised experience','2–4 horas, para 1–4 personas. Desde $220.000 COP.','2–4 hours, for 1–4 people. From COP $220,000.']
     ];

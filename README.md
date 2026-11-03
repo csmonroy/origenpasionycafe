@@ -48,7 +48,7 @@ Perfil de Empresa de Google creado como servicio en Bogotá, sin dirección púb
 
 ## Datos comerciales vigentes
 
-Blend de Casa: $25.000 COP; Bourbon Rosado y Bourbon Sidra: $40.000 COP cada uno. Bolsas de 250 g. Cata: desde $80.000 COP, 2 horas, 4–6 personas. Curso de métodos: desde $160.000 COP, 2–3 horas, 1–4 personas. Experiencia personalizada: desde $220.000 COP, 2–4 horas, 1–4 personas. Confirmar disponibilidad, valor total y logística por WhatsApp. No inventar inventario, reseñas, orígenes de lotes o fechas de tostión.
+Blend de Casa: $25.000 COP; Bourbon Rosado y Bourbon Sidra: $40.000 COP cada uno. Bolsas de 250 g. Cata: desde $80.000 COP por persona, 2 horas, 4–6 personas. Curso de métodos: desde $160.000 COP, 2–3 horas, 1–4 personas. Experiencia personalizada: desde $220.000 COP, 2–4 horas, 1–4 personas. Confirmar disponibilidad, valor total y logística por WhatsApp. No inventar inventario, reseñas, orígenes de lotes o fechas de tostión.
 
 ## Registro histórico
 

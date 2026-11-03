@@ -162,7 +162,8 @@ textarea { resize: vertical; min-height: 90px; }
 .footer-social a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 12px; }
 .footer-social a:hover { color: var(--gold); }
 .footer-bottom { border-top: 1px solid #ffffff20; padding-top: 22px; display: flex; justify-content: space-between; gap: 24px; font-size: 9px; color: #b4ad9f; }
-.wa-float { position: fixed; bottom: 20px; right: 20px; z-index: 25; display: flex; align-items: center; gap: 9px; padding: 13px 18px; background: #d6bc8c; color: #302c23; border: 1px solid #f5f0e650; border-radius: 50px; box-shadow: 0 5px 25px #0002; font-size: 11px; font-weight: 600; }
+.wa-float { position: static; flex: none; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 10px; background: #d6bc8c; color: #302c23; border: 1px solid #f5f0e650; border-radius: 50px; }
+.wa-float span { display: none; }
 .wa-float:hover { background: #e5cfa9; }
 /* Pantallas amplias: capítulos con espacio propio, sin alturas fijas ni recortes. */
 @media (min-width: 1051px) {
@@ -780,6 +781,8 @@ html { scroll-padding-top: calc(var(--header-height) + 16px); }
 .experience-card-price p { margin: 0 0 20px; }
 .experience-card-price strong { display: block; font-size: 20px; font-weight: 500; }
 .experience-card-price span { display: block; font-size: 14px; margin-top: 6px; color: var(--muted); }
+.experience-card-price .price-unit { font-weight: 600; color: var(--ink); }
+.experience-card-price { min-height: 102px; }
 .experience-more { border-block: 1px solid var(--line); margin-bottom: 24px; }
 .experience-more summary, .event-planning summary { cursor: pointer; font-size: 15px; font-weight: 600; min-height: 54px; padding: 16px 24px 16px 0; position: relative; list-style: none; }
 .experience-more summary::-webkit-details-marker, .event-planning summary::-webkit-details-marker { display: none; }
@@ -799,7 +802,12 @@ html { scroll-padding-top: calc(var(--header-height) + 16px); }
 .event-planning details:first-child { border-top: 1px solid var(--line); }
 .event-planning p { font-size: 16px; }
 .event-fields[hidden] { display: none; }
+.business-contact .form-shortcut { color: var(--ink); }
+@media (max-width: 1050px) {
+  .nav-list:not(.is-open) { display: none; }
+}
 @media (min-width: 1051px) and (max-width: 1200px) {
+  .business-page .brand-division { display: none; }
   .header-inner { gap: 14px; }
   .nav-list { gap: 16px; }
   .nav-list a { font-size: 13px; }
