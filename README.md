@@ -29,7 +29,7 @@ Conservar estas redirecciones. No recrear las antiguas páginas con contenido du
 
 ## Verificación y publicación
 
-La revisión más reciente, mediciones y estados observados en Google/Bing están en [docs/revision-2026-11-02.md](docs/revision-2026-11-02.md). WhatsApp se integra en el encabezado; el menú móvil evita desplazamientos al inicializar y mantiene una alternativa sin JavaScript.
+La revisión de estructura y rendimiento está en [docs/revision-2026-11-02.md](docs/revision-2026-11-02.md). La configuración y los estados más recientes de Google, Analytics y Bing están en [docs/revision-google-analytics-2026-11-03.md](docs/revision-google-analytics-2026-11-03.md). WhatsApp se integra en el encabezado; el menú móvil evita desplazamientos al inicializar y mantiene una alternativa sin JavaScript.
 
 Ejecutar `node scripts/build-site.cjs` y `node --test tests/*.test.cjs`. Las pruebas cubren precios, presets, mensajes bilingües, privacidad, enlaces, anclas, imágenes, sitemap y destinos de redirección. Revisar también menús, detalles desplegables y formularios en móvil y escritorio. Los cambios se publican al enviar main al repositorio conectado a Cloudflare Pages. Comprobar las respuestas 301 reales en producción: un servidor estático genérico puede ignorar `_redirects`.
 
@@ -41,9 +41,9 @@ El contacto del encabezado usa `contact_placement: header_contact`; los datos hi
 
 Aviso y controles en español e inglés; políticas en `/privacidad/` y `/en/privacy/` (noindex, fuera del sitemap comercial). La medición elimina parámetros y fragmentos de la URL; solo conserva el origen del referente. Publicidad y Google Signals desactivados. Al retirar permiso se desactiva la etiqueta, se eliminan sus cookies accesibles y se recarga la página. El rechazo no impide consultar el sitio ni enviar consultas.
 
-Bing: dominio verificado mediante el CNAME `4867a5249b293ffe0ac2c5f9228f054b` hacia `verify.bing.com`, con DNS only en Cloudflare. Conservar ese registro; la etiqueta `msvalidate.01` también permanece en la portada. Sitemap actualizado con las cuatro URL comerciales. Los últimos estados de Google y Bing están en `docs/revision-2026-11-02.md`; las solicitudes de indexación no equivalen a indexación completada.
+Bing: dominio verificado mediante el CNAME `4867a5249b293ffe0ac2c5f9228f054b` hacia `verify.bing.com`, con DNS only en Cloudflare. Conservar ese registro; la etiqueta `msvalidate.01` también permanece en la portada. Sitemap actualizado con las cuatro URL comerciales. Crawler Hints está activado en Cloudflare. Los últimos estados de Google y Bing están en `docs/revision-google-analytics-2026-11-03.md`; las solicitudes de indexación no equivalen a indexación completada.
 
-Se confirmó en el informe en tiempo real de GA4 una visita y un `whatsapp_click` de prueba, sin enviar mensajes. Las cuatro dimensiones personalizadas están creadas. No interpretar esta comprobación como un cliente real.
+Se confirmó en el informe en tiempo real de GA4 una visita y un `whatsapp_click` de prueba, sin enviar mensajes. Las cuatro dimensiones personalizadas están creadas. No interpretar esta comprobación como un cliente real. Desde el 3 de noviembre, Search Console está vinculado al flujo web y sus informes están disponibles en Analytics. La personalización publicitaria también está desactivada en todas las regiones de la propiedad, con autorización del propietario.
 
 Perfil de Empresa de Google creado como servicio en Bogotá, sin dirección pública, con teléfono, WhatsApp, web, servicios y descripción. Atención solo con reserva; la descripción informa consultas de lunes a domingo de 8 a. m. a 9 p. m. No se publica un horario de acceso libre. Google exige verificación mediante vídeo real del negocio por parte de su responsable; el perfil aún no es visible para clientes. Fotografías y testimonios reales siguen pendientes por decisión del negocio.
 
