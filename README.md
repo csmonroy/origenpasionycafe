@@ -16,8 +16,6 @@ Editar el contenido español en `index.html`, `empresas/index.html`, `cafe-para-
 
 Los títulos y descripciones SEO se mantienen en `scripts/build-site.cjs`; las etiquetas dinámicas de los formularios, en `script.js`. El selector ES/EN mantiene la página equivalente. No se fuerza el idioma según navegador o ubicación. El PDF original continúa en español y así se identifica en los enlaces de la versión inglesa.
 
-## Comprobaciones
-
 ## Medición de contactos y privacidad
 
 Google Analytics 4: cuenta `414507569`, propiedad `562075213`, flujo web `16258680038`, ID público `G-PF2M4L02YS`. `analytics.js` solo carga la etiqueta en el dominio de producción y después de aceptar la medición. La elección dura 180 días y se puede cambiar desde el pie. Las vistas previas locales no envían datos. Mantener desactivada la **medición mejorada** en el flujo: los enlaces de WhatsApp pueden contener textos privados. No activar capturas automáticas de formularios o enlaces.
@@ -26,7 +24,13 @@ El evento `whatsapp_click` registra `page_type`, `contact_placement`, `service_i
 
 Aviso y controles en español e inglés; políticas en `/privacidad/` y `/en/privacy/` (noindex, fuera del sitemap comercial). La medición elimina parámetros y fragmentos de la URL; solo conserva el origen del referente. Publicidad y Google Signals desactivados. Al retirar permiso se desactiva la etiqueta, se eliminan sus cookies accesibles y se recarga la página. El rechazo no impide consultar el sitio ni enviar consultas.
 
-Bing: conservar la etiqueta `msvalidate.01` de la portada para mantener la verificación. Search Console: solicitudes individuales de indexación aceptadas para `/cafe-para-eventos/` y `/experiencias-de-cafe/`; no equivalen a indexación completada.
+Bing: dominio verificado mediante el CNAME `4867a5249b293ffe0ac2c5f9228f054b` hacia `verify.bing.com`, con DNS only en Cloudflare. Conservar ese registro; la etiqueta `msvalidate.01` también permanece en la portada. Sitemap enviado, inicialmente en procesamiento. Search Console: solicitudes individuales de indexación aceptadas para `/cafe-para-eventos/` y `/experiencias-de-cafe/`; no equivalen a indexación completada.
+
+Se confirmó en el informe en tiempo real de GA4 una visita y un `whatsapp_click` de prueba, sin enviar mensajes. Las cuatro dimensiones personalizadas están creadas. No interpretar esta comprobación como un cliente real.
+
+Perfil de Empresa de Google creado como servicio en Bogotá, sin dirección pública, con teléfono, WhatsApp, web, servicios y descripción. Atención solo con reserva; la descripción informa consultas de lunes a domingo de 8 a. m. a 9 p. m. No se publica un horario de acceso libre. Google exige verificación mediante vídeo real del negocio por parte de su responsable; el perfil aún no es visible para clientes. Fotografías y testimonios reales siguen pendientes por decisión del negocio.
+
+## Comprobaciones
 
 Ejecutar también `node --test tests/analytics.test.cjs`: consentimiento, rechazo, caducidad, entornos locales, exclusión de textos privados y retirada del permiso.
 
@@ -46,7 +50,7 @@ Además de estas pruebas, revisar en navegador que los botones de las tarjetas s
 
 El catálogo se publica como `catalogo.pdf` en la raíz del sitio y se enlaza desde experiencias, café para casa y el pie de página. Su dirección pública es `https://origenpasionycafe.com/catalogo.pdf`. Para actualizarlo, reemplazar ese archivo por el nuevo PDF conservando el nombre y publicar el cambio en `main`. Editar el archivo original de Marketing no actualiza automáticamente la copia de la web. Comprobar que las condiciones del catálogo y la página coincidan antes de una nueva publicación.
 
-Publicar `index.html`, `empresas/`, `cafe-para-eventos/`, `experiencias-de-cafe/`, `en/`, `404.html`, `_headers`, `catalogo.pdf`, `styles.css`, `script.js`, `robots.txt`, `sitemap.xml` y `img/` en el hosting actual. El dominio canónico configurado es `https://origenpasionycafe.com/`. Los cambios locales no actualizan por sí solos la web pública.
+Publicar `index.html`, `empresas/`, `cafe-para-eventos/`, `experiencias-de-cafe/`, `en/`, `privacidad/`, `404.html`, `_headers`, `catalogo.pdf`, `styles.css`, `script.js`, `analytics.js`, `robots.txt`, `sitemap.xml` y `img/` en el hosting actual. El dominio canónico configurado es `https://origenpasionycafe.com/`. Los cambios locales no actualizan por sí solos la web pública.
 
 El hosting es Cloudflare Pages, conectado a la rama `main` de este repositorio. Un push a `main` activa el despliegue. Al cambiar CSS o JavaScript, actualizar también el parámetro `v` de sus referencias en `index.html` para renovar la caché de los visitantes existentes.
 
