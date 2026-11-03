@@ -36,6 +36,8 @@ Ejecutar también `node --test tests/analytics.test.cjs`: consentimiento, rechaz
 
 Las páginas dedicadas a eventos y experiencias comparten tipografía, paleta y navegación con el sitio. Cada una tiene su propio título, descripción, canonical, enlaces de idioma, datos de servicios y ruta de navegación. El sitemap contiene ocho páginas. Los formularios preparan una consulta y no envían mensajes automáticamente. Las pruebas incluyen sus destinos, traducciones y condiciones comerciales; la revisión visual contempla escritorio de 1280 px y móvil de 390 px.
 
+La página de experiencias tiene una introducción breve sobre fondo claro y accesos a las tres experiencias. No repite la foto ni la portada a pantalla completa del inicio. Las tarjetas muestran precio, duración y grupo antes de la explicación, y el menú ofrece un regreso explícito al inicio. Mantener altura natural y contenido completo en móvil; no imponer un alto fijo ni ocultar el desbordamiento vertical para hacer caber una sección.
+
 Search Console: propiedad de dominio `origenpasionycafe.com` verificada mediante un registro DNS TXT en Cloudflare el 2 de noviembre de 2026. Conservar ese registro para mantener la verificación. El sitemap público es `https://origenpasionycafe.com/sitemap.xml`. La verificación y el envío del sitemap no equivalen a indexación ni garantizan posiciones.
 
 ```sh
