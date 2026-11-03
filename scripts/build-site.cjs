@@ -20,7 +20,13 @@ const navigation = {
   people: [['/#top', 'Inicio'], ['/#tienda', 'Café para casa'], ['/#experiencias', 'Catas y cursos'], ['/#nosotros', 'Nuestra esencia'], ['/#reservar', 'Consultar']],
   business: [['/empresas/#top', 'Inicio'], ['/empresas/#barra', 'Eventos'], ['/empresas/#cafe-negocio', 'Café para tu negocio'], ['/empresas/#tostion', 'Tostión'], ['/empresas/#cotizar', 'Cotizar']]
 };
+function languageControl(page, english) {
+  const chevron='<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg>';
+  const check='<svg class="language-check" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8 3 3 7-7"/></svg>';
+  return `<nav class="language-switch" aria-label="${english?'Language':'Idioma'}"><details class="language-picker"><summary class="language-trigger" aria-label="${english?'Current language: English. Change language':'Idioma actual: español. Cambiar idioma'}"><span>${english?'EN':'ES'}</span>${chevron}</summary><div class="language-options"><a href="${page.es}" lang="es" hreflang="es"${english?'':' aria-current="page"'}><span>Español</span>${english?'':check}</a><a href="${page.en}" lang="en" hreflang="en"${english?' aria-current="page"':''}><span>English</span>${english?check:''}</a></div></details></nav>`;
+}
 function sharedNavigation(html, page) {
+  html = html.replace(/<nav class="language-switch"[\s\S]*?<\/nav>/, languageControl(page, false));
   // El menú móvil ya nace cerrado: evitar que su ocultación tardía desplace el contenido.
   html = html.replace('aria-controls="nav-list" hidden', 'aria-controls="nav-list"');
   if (!html.includes('id="navigation-fallback"')) html = html.replace('</head>', '<noscript id="navigation-fallback"><style>@media(max-width:1050px){html .site-header .nav-list{display:flex!important;position:static;flex-direction:column;align-items:stretch;max-height:none}html .site-header .nav-toggle{display:none!important}.site-header .nav{width:100%}.site-header .header-inner{flex-wrap:wrap}.site-header{position:static}}</style></noscript>\n</head>');
@@ -92,7 +98,7 @@ for (const page of pages) {
       const target=pages.find(candidate=>candidate.es===pathname);
       return target ? `href="${target.en}${fragment.length?'#'+fragment.join('#'):''}"` : all;
     })
-    .replace(/<nav class="language-switch"[\s\S]*?<\/nav>/, `<nav class="language-switch" aria-label="Language"><a href="${page.es}" lang="es" hreflang="es" aria-label="Español">ES</a><a href="${page.en}" lang="en" hreflang="en" aria-label="English" aria-current="page">EN</a></nav>`)
+    .replace(/<nav class="language-switch"[\s\S]*?<\/nav>/, languageControl(page, true))
     .replace(/href="https:\/\/wa.me\/573012669975\?text=([^"]+)"/g,(all,encoded)=> {
       const original = decodeURIComponent(encoded);
       let message = 'Hello, I’d like to ask about coffee and experiences at Origen, Pasión y Café.';

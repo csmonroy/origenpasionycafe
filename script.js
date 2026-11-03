@@ -5,6 +5,23 @@ const serviceNames = { 'Cata de café de especialidad': 'Specialty coffee tastin
 const serviceName = value => isEnglish ? serviceNames[value] || value : value;
 const toggle = document.querySelector('.nav-toggle');
 const menu = document.querySelector('.nav-list');
+const languagePicker = document.querySelector('.language-picker');
+if (languagePicker) {
+  languagePicker.addEventListener('toggle', () => { if (languagePicker.open) closeMenu(); });
+  languagePicker.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && languagePicker.open) {
+      languagePicker.open = false;
+      languagePicker.querySelector('summary').focus();
+    }
+  });
+  languagePicker.addEventListener('focusout', event => {
+    if (event.relatedTarget && !languagePicker.contains(event.relatedTarget)) languagePicker.open = false;
+  });
+  document.addEventListener('click', event => {
+    if (!languagePicker.contains(event.target)) languagePicker.open = false;
+  });
+  languagePicker.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { languagePicker.open = false; }));
+}
 // El menú mantiene sus destinos; el estado indica la página o sección actual.
 if (window.location?.href) {
   const languageLinks = [...document.querySelectorAll('.language-switch a')].map(link => ({ link, base: link.getAttribute('href').split('#')[0] }));
@@ -32,6 +49,7 @@ if (toggle && menu) {
   toggle.hidden = false;
   menu.classList.add('is-enhanced');
   toggle.addEventListener('click', () => {
+    if (languagePicker) languagePicker.open = false;
     const open = menu.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? text('Cerrar menú', 'Close menu') : text('Abrir menú', 'Open menu'));
