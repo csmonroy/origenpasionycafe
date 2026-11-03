@@ -29,6 +29,8 @@ Conservar estas redirecciones. No recrear las antiguas páginas con contenido du
 
 ## Verificación y publicación
 
+La revisión más reciente, mediciones y estados observados en Google/Bing están en [docs/revision-2026-11-02.md](docs/revision-2026-11-02.md). WhatsApp se integra en el encabezado; el menú móvil evita desplazamientos al inicializar y mantiene una alternativa sin JavaScript.
+
 Ejecutar `node scripts/build-site.cjs` y `node --test tests/site.test.cjs tests/analytics.test.cjs`. Las pruebas cubren precios, presets, mensajes bilingües, privacidad, enlaces, anclas, imágenes, sitemap y destinos de redirección. Revisar también menús, detalles desplegables y formularios en móvil y escritorio. Los cambios se publican al enviar main al repositorio conectado a Cloudflare Pages. Comprobar las respuestas 301 reales en producción: un servidor estático genérico puede ignorar `_redirects`.
 
 ## Medición de contactos y privacidad
