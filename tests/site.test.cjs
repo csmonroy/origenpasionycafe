@@ -261,10 +261,30 @@ test('home experience choices lead to the guide without duplicating its offer ca
   for (const [homeFile,guideRoute] of [['index.html','/experiencias-de-cafe/'],['en/index.html','/en/coffee-experiences/']]) {
     const home=fs.readFileSync(path.join(root,homeFile),'utf8');
     const overview=home.match(/<section id="experiencias"[\s\S]*?<\/section>/)[0];
-    assert.doesNotMatch(overview,/<img|data-preset=|class="card"/);
+    assert.doesNotMatch(overview,/data-preset=|class="card"/);
     for (const id of ['cata','curso-metodos','experiencia-personalizada']) assert.ok(overview.includes(`href="${guideRoute}#${id}"`));
     const guide=fs.readFileSync(path.join(root,routes[guideRoute]),'utf8');
     assert.ok(guide.indexOf('id="preguntas"') < guide.indexOf('<section id="reservar"'));
+  }
+});
+
+test('each audience has identical primary navigation labels, order and destinations', () => {
+  const groups=[['index.html','experiencias-de-cafe/index.html','privacidad/index.html'],['empresas/index.html','cafe-para-eventos/index.html'],['en/index.html','en/coffee-experiences/index.html','en/privacy/index.html'],['en/business/index.html','en/event-coffee/index.html']];
+  for(const group of groups){
+    const menus=group.map(file=>fs.readFileSync(path.join(root,file),'utf8').match(/<ul class="nav-list" id="nav-list">([\s\S]*?)<\/ul>/)[1].replace(/ aria-current="[^"]+"/g,''));
+    for(const menu of menus) assert.equal(menu,menus[0],group.join(', '));
+  }
+});
+
+test('structured event enquiry includes all supplied details without sending a message', () => {
+  for(const [language,file] of [['es-CO','cafe-para-eventos/index.html'],['en','en/event-coffee/index.html']]){
+    const s=setup(language,true,file);
+    s.fields.get('business-service').value='Barra de café para eventos';
+    for(const [id,value] of [['event-date','15/12, 9:00'],['event-place','Bogotá & norte'],['event-guests','80'],['event-duration','3 h']]) s.fields.get(id).value=value;
+    s.fields.get('business-form').fire('input');
+    for(const value of ['15/12, 9:00','Bogotá & norte','80','3 h']) assert.ok(s.message().includes(value));
+    assert.match(s.message(),language==='en'?/Service: Coffee bar for events/:/Servicio: Barra de café para eventos/);
+    assert.equal(s.context.destination,undefined);
   }
 });
 

@@ -5,6 +5,22 @@ const serviceNames = { 'Cata de café de especialidad': 'Specialty coffee tastin
 const serviceName = value => isEnglish ? serviceNames[value] || value : value;
 const toggle = document.querySelector('.nav-toggle');
 const menu = document.querySelector('.nav-list');
+// El menú mantiene sus destinos; el estado indica la página o sección actual.
+if (window.location?.href) {
+  const languageLinks = [...document.querySelectorAll('.language-switch a')].map(link => ({ link, base: link.getAttribute('href').split('#')[0] }));
+  function updateNavigationContext() {
+    const current = new URL(window.location.href);
+    document.querySelectorAll('.nav-list a').forEach(link => {
+      const target = new URL(link.href, current);
+      const matches = target.pathname === current.pathname && (target.hash ? target.hash === current.hash : !current.hash || current.pathname !== '/' && current.pathname !== '/en/' && current.pathname !== '/empresas/' && current.pathname !== '/en/business/');
+      if (matches) link.setAttribute('aria-current', target.hash ? 'location' : 'page');
+      else link.removeAttribute('aria-current');
+    });
+    languageLinks.forEach(({link,base}) => link.setAttribute('href', base + current.hash));
+  }
+  window.addEventListener('hashchange', updateNavigationContext);
+  updateNavigationContext();
+}
 function closeMenu(returnFocus = false) {
   menu?.classList.remove('is-open');
   toggle?.setAttribute('aria-expanded', 'false');
@@ -111,8 +127,12 @@ if (businessForm) {
     const value = id => document.getElementById(id)?.value.trim() || '';
     const message = [
       text('Hola, me gustaría una propuesta de café para mi organización.', 'Hello, I’d like a coffee proposal for my organisation.'),
-      text('Servicio: ', 'Service: ') + value('business-service'),
+      text('Servicio: ', 'Service: ') + serviceName(value('business-service')),
       value('business-organization') ? text('Organización: ', 'Organisation: ') + value('business-organization') : '',
+      value('event-date') ? text('Fecha y horario: ', 'Date and time: ') + value('event-date') : '',
+      value('event-place') ? text('Lugar del evento: ', 'Event location: ') + value('event-place') : '',
+      value('event-guests') ? text('Asistentes: ', 'Attendees: ') + value('event-guests') : '',
+      value('event-duration') ? text('Duración del servicio: ', 'Service duration: ') + value('event-duration') : '',
       value('business-details') ? text('Detalles: ', 'Details: ') + value('business-details') : '',
       text('¿Podemos revisar disponibilidad, alcance y valor? Gracias.', 'Could we discuss availability, scope and pricing? Thank you.')
     ].filter(Boolean).join('\n');

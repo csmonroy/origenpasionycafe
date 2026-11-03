@@ -21,6 +21,18 @@ const pages = [
     titles: ['Privacidad | Origen, Pasión y Café','Privacy | Origen, Pasión y Café'],
     descriptions: ['Cómo usamos los datos de contacto y la medición opcional del sitio de Origen, Pasión y Café.','How Origen, Pasión y Café uses contact information and optional website analytics.'] }
 ];
+// Una sola definición por segmento: mismos nombres, orden y destinos en todas sus páginas.
+const navigation = {
+  people: [['/', 'Inicio'], ['/#tienda', 'Café para casa'], ['/experiencias-de-cafe/', 'Catas y cursos'], ['/#nosotros', 'Nuestra esencia']],
+  business: [['/empresas/', 'Inicio'], ['/cafe-para-eventos/', 'Eventos'], ['/empresas/#cafe-negocio', 'Café para tu negocio'], ['/empresas/#tostion', 'Tostión'], ['/empresas/#cotizar', 'Cotizar']]
+};
+function sharedNavigation(html, page) {
+  const items = navigation[page.business ? 'business' : 'people'];
+  const links = items.map(([href,label]) => `<a href="${href}"${href===page.es?' aria-current="page"':''}>${label}</a>`);
+  html = html.replace(/<ul class="nav-list" id="nav-list">[\s\S]*?<\/ul>/, `<ul class="nav-list" id="nav-list">${links.map(link=>'<li>'+link+'</li>').join('')}</ul>`);
+  const switchLink = page.business ? '<a href="/">Para personas</a>' : '<a href="/empresas/">Para empresas y eventos</a>';
+  return html.replace(/<nav aria-label="Navegación al pie">[\s\S]*?<\/nav>/, `<nav aria-label="Navegación al pie">${links.join('')}<a href="/catalogo.pdf" type="application/pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver catálogo en PDF (se abre en otra pestaña)">Catálogo (PDF)</a>${switchLink}<a href="/privacidad/">Privacidad</a><button class="privacy-settings" type="button" data-privacy-settings>Preferencias de privacidad</button></nav>`);
+}
 function translate(html) {
   // Traduce texto y atributos accesibles; conserva IDs y valores internos del formulario.
   const chunks = html.split(/(<[^>]*>)/g);
@@ -90,7 +102,7 @@ function metadata(html, page, english) {
   return html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, '<script type="application/ld+json">\n'+JSON.stringify(schema,null,2)+'\n  </script>');
 }
 for (const page of pages) {
-  let spanish = fs.readFileSync(path.join(root,page.file),'utf8');
+  let spanish = sharedNavigation(fs.readFileSync(path.join(root,page.file),'utf8'), page);
   const english = translate(spanish)
     .replace(/href="(\/[^"\s]*)"/g,(all,href)=>{
       const [pathname,...fragment]=href.split('#');

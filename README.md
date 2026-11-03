@@ -4,6 +4,10 @@ Sitio estático en HTML, CSS y JavaScript. No requiere dependencias para servirl
 
 ## Páginas e idiomas
 
+La navegación se genera desde una definición común por público en `scripts/build-site.cjs`: personas conserva Inicio, Café para casa, Catas y cursos y Nuestra esencia; empresas conserva Inicio, Eventos, Café para tu negocio, Tostión y Cotizar. Cabecera y pie usan los mismos destinos. Los enlaces internos de cada guía se agrupan bajo «En esta página», separados del menú principal. El selector de idioma conserva también el ancla actual.
+
+La sección de experiencias de la portada tiene fondo oscuro y Nuestra esencia fondo claro. Las imágenes editoriales de cata, métodos, espresso, eventos y origen se sirven en WebP de 480 y 960 px, con carga diferida; su procedencia y prompts están en `content/editorial-images.json`. Complementan el contenido sin acreditar instalaciones reales. La guía permite volver a comparar; el formulario de eventos solicita fecha, lugar, asistentes y duración como datos opcionales, sin enviar mensajes automáticamente.
+
 - `/`: café fresco de tostión reciente, tienda, catas y cursos.
 - `/empresas/`: barra para eventos corporativos y asambleas de copropietarios, café verde, pedidos por volumen y tostión de microlotes con Kaleido M10S.
 - `/cafe-para-eventos/`: barra de café en Bogotá, ocasiones, planificación y solicitud de propuesta.

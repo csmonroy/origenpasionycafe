@@ -1,0 +1,46 @@
+{
+  "generatedWith": "OpenAI built-in image_gen",
+  "purpose": "Illustrative editorial website scenes; not documentary photographs of the venue, clients or actual events.",
+  "images": [
+    {
+      "name": "cata",
+      "prompt": "A premium editorial photograph for a Colombian specialty coffee tasting website. Landscape 3:2. Close overhead oblique view of three cream ceramic cupping bowls filled with black filter coffee arranged in a gentle diagonal on a warm dark walnut table, two polished cupping spoons resting on a folded oatmeal linen napkin, small ceramic dish with roasted beans. Soft natural morning window light, rich charcoal shadows, warm ivory and muted caramel palette. Accurate real-world coffee cupping equipment, restrained upscale food magazine photography, tactile materials, natural imperfections, no people, no text, no logos, no packaging, not a collage, all important subjects within center 80%. This is an illustrative editorial scene, not documentation of a specific venue.",
+      "files": [
+        "img/cata-editorial-480.webp",
+        "img/cata-editorial-960.webp"
+      ]
+    },
+    {
+      "name": "metodos",
+      "prompt": "A premium editorial photograph for a Colombian specialty coffee brewing class website. Landscape 3:2. White ceramic V60 dripper with paper filter and coffee grounds on a clear glass carafe standing on a slim black coffee scale, brushed steel gooseneck kettle to the side, small bowl of roasted beans, warm walnut worktop and soft out of focus beige plaster background. Side-on close three-quarter view, soft natural window light, restrained warm ivory charcoal walnut caramel palette, realistic equipment and proportions, minimal upscale food magazine composition, tactile materials, no people, no text, no readable display, no logos, not a collage, keep subjects within center 80% of frame.",
+      "files": [
+        "img/metodos-editorial-480.webp",
+        "img/metodos-editorial-960.webp"
+      ]
+    },
+    {
+      "name": "espresso",
+      "prompt": "A premium editorial photograph for a Colombian specialty coffee personalised espresso workshop website. Landscape 3:2. Close detailed view of a white prosumer espresso machine with polished E61-style grouphead, walnut portafilter handle, one small ivory ceramic cup beneath the portafilter, espresso with rich crema visible; a stainless steel milk pitcher and a second latte with delicate rosetta on the walnut counter. Warm white painted body, brushed chrome accurate mechanical details, shallow depth of field. Natural side light, understated cream charcoal walnut caramel palette, polished realistic food magazine photography. No people, no invented branding or readable text, no signs, no collage. Not a photograph documenting a real business.",
+      "files": [
+        "img/espresso-editorial-480.webp",
+        "img/espresso-editorial-960.webp"
+      ]
+    },
+    {
+      "name": "eventos",
+      "prompt": "A premium editorial photograph for a specialty coffee service at a corporate event in Bogotá. Landscape 3:2. Close low angle view of a refined coffee service setup: orderly cream ceramic cups and saucers, a glass filter-coffee server, linen napkins on a walnut coffee counter, a softly blurred white espresso machine in background and subtle out of focus meeting-room chairs beyond. No people. Natural daylight, warm ivory and walnut with charcoal accents, restrained premium hospitality photography, realistic not excessive or ornate, no text, no logos, no watermarks, not a collage. Illustrative scene not evidence of an actual event. Keep important subjects centered for responsive crop.",
+      "files": [
+        "img/eventos-editorial-480.webp",
+        "img/eventos-editorial-960.webp"
+      ]
+    },
+    {
+      "name": "origen",
+      "prompt": "Use case: photorealistic-natural. Asset type: editorial illustration for the brand-story section of a Colombian specialty-coffee website. Landscape 3:2 photograph. A modest wooden sorting tray with ripe red coffee cherries on one side and unroasted pale green coffee beans in a small handmade ivory ceramic bowl beside it, a second small bowl of medium roasted beans farther back, on a dark walnut tabletop. One glossy coffee branch with leaves and ripe cherries lies naturally across a cream linen cloth. Close three-quarter overhead angle, tactile believable materials, understated premium editorial photography, soft natural window light, warm walnut ivory muted green and burgundy palette. No people, no text, no labels, no logos, no collage. Not documentation of a specific farm or producer. Keep central composition suitable for responsive crop.",
+      "files": [
+        "img/origen-editorial-480.webp",
+        "img/origen-editorial-960.webp"
+      ]
+    }
+  ]
+}
