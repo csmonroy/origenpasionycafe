@@ -1,10 +1,10 @@
 # Imágenes del catálogo
 
-Generadas con la herramienta integrada ImageGen (modo product-mockup). Son ilustraciones del empaque, no fotografías del producto real. Los PNG originales se conservaron en la carpeta de imágenes generadas; se codificaron copias JPEG de calidad 85 para el sitio, sin recortar ni alterar el diseño.
+Generadas con la herramienta integrada ImageGen (modo product-mockup). Son ilustraciones del empaque, no fotografías del producto real. Los PNG originales se conservaron en la carpeta de imágenes generadas; el sitio utiliza copias WebP de 480, 800 y 1254 px. Las copias JPEG intermedias se retiraron de la publicación y permanecen en el historial de Git.
 
 ## blend-de-casa
 
-Archivo publicado: `img/blend-de-casa.jpg`.
+Archivos publicados: `img/blend-de-casa-480.webp`, `img/blend-de-casa-800.webp` e `img/blend-de-casa-1254.webp`.
 
 Prompt final:
 
@@ -12,7 +12,7 @@ Prompt final:
 
 ## bourbon-rosado
 
-Archivo publicado: `img/bourbon-rosado.jpg`.
+Archivos publicados: `img/bourbon-rosado-480.webp`, `img/bourbon-rosado-800.webp` e `img/bourbon-rosado-1254.webp`.
 
 Prompt final:
 
@@ -20,7 +20,7 @@ Prompt final:
 
 ## bourbon-sidra
 
-Archivo publicado: `img/bourbon-sidra.jpg`.
+Archivos publicados: `img/bourbon-sidra-480.webp`, `img/bourbon-sidra-800.webp` e `img/bourbon-sidra-1254.webp`.
 
 Prompt final:
 
@@ -28,7 +28,7 @@ Prompt final:
 
 # Imágenes adicionales para empresas (2 de noviembre de 2026)
 
-Actualización de la tostadora: el negocio confirmó que su Kaleido es blanca. La versión actual usa `img/kaleido-blanca-tostion.webp`, sin aviso visible de IA por solicitud del negocio. Véase `docs/kaleido-blanca-ia.md`; los párrafos siguientes conservan la procedencia de las versiones previas.
+La tostadora vigente usa `img/kaleido-blanca-sola.webp` y su variante de 720 px. Su procedencia y prompts están en [Kaleido blanca](kaleido-blanca-ia.md). Las versiones sustituidas se conservan en Git.
 
 Se reutilizan ilustraciones suministradas por el negocio desde `C:\Users\Carlos\.codex\generated_images\01a14fa1-99c5-76a2-bec3-018f96d68ea1`. Se optimizaron a WebP para su publicación, conservando los originales:
 
@@ -38,7 +38,7 @@ Se reutilizan ilustraciones suministradas por el negocio desde `C:\Users\Carlos\
 
 Los textos alternativos las identifican como ilustraciones.
 
-La referencia original `img/kaleido-m10s.jpg` procede de la [ficha M10S de Kaleido Sniper Japan](https://kaleido-sniper.jp/products/item.php?id=CR-M10), distribuidor oficial japonés. Archivo de origen: `https://kaleido-sniper.jp/asset/img/ms/m6-10-b.jpg`. Se conserva sin modificar como referencia del equipo; la ficha indica que la caja de enfriamiento corresponde a una versión anterior. Por solicitud del negocio, la sección de tostión ahora muestra `img/kaleido-taller-ia.webp`, una escena generada con IA a partir de esa referencia. No representa las instalaciones reales de Origen. El prompt completo y la procedencia están en `docs/kaleido-imagen-ia.md`.
+La referencia inicial de la tostadora procedía de la [ficha M10S de Kaleido Sniper Japan](https://kaleido-sniper.jp/products/item.php?id=CR-M10). La imagen publicada es una escena generada; no representa las instalaciones reales de Origen.
 
 La explicación breve sobre conservación de aromas y frescura se apoya en [Coffee Decoded: freshly roasted coffee, SCA](https://sca.coffee/sca-news/coffee-decoded-9-fresh-coffee). No se prometen días exactos de frescura ni se equipara café recién salido de la tostadora con el momento óptimo para cualquier método.
 

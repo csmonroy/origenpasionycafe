@@ -10,7 +10,7 @@ function setup(saved,hostname='origenpasionycafe.com') {
   const context=vm.createContext({window,document,Date,URL,localStorage:{getItem:()=>saved,setItem:(k,v)=>writes.push([k,v])}});
   vm.runInContext(source,context);
   const anchor={id:'waBtn',href:'https://wa.me/573012669975?text=Secret%20customer%20message',closest:()=>null};
-  return {window,panel,scripts,writes,fields,choose:v=>buttons[v].click(),click:()=>handlers.click({target:{closest:()=>anchor}}),submit:()=>handlers.submit({target:{id:'reservation-form'}}),events:()=>Array.from(window.dataLayer||[],x=>Array.from(x))};
+  return {window,panel,scripts,writes,fields,anchor,choose:v=>buttons[v].click(),click:()=>handlers.click({target:{closest:()=>anchor}}),submit:()=>handlers.submit({target:{id:'reservation-form'}}),events:()=>Array.from(window.dataLayer||[],x=>Array.from(x))};
 }
 test('analytics loads only after valid consent, never on preview hosts',()=>{
   for(const saved of [null,'broken',JSON.stringify({value:'rejected',at:Date.now()}),JSON.stringify({value:'accepted',at:0}),JSON.stringify({value:'accepted',at:Date.now()+86400000})]){
@@ -32,6 +32,15 @@ test('events exclude query strings, fragments, WhatsApp messages and arbitrary f
 });
 test('withdrawal stops later contact events and unloads the tag',()=>{
   const s=setup(null);s.choose('accepted');const before=s.events().length;s.choose('rejected');s.click();s.submit();assert.equal(s.events().length,before);assert.equal(s.window.reloaded,true);assert.equal(s.window['ga-disable-G-PF2M4L02YS'],true);assert.equal(JSON.parse(s.writes.at(-1)[1]).value,'rejected');
+});
+test('header contact is distinguished from a business enquiry without retaining its message',()=>{
+  const s=setup(null);s.choose('accepted');s.anchor.id='waFloat';s.click();
+  assert.equal(s.events().at(-1)[2].contact_placement,'header_contact');
+  assert.equal(s.events().at(-1)[2].service_interest,'general');
+  s.anchor.id='business-whatsapp';s.fields['business-service'].value='Microlot roasting';s.click();
+  assert.equal(s.events().at(-1)[2].contact_placement,'business_form');
+  assert.equal(s.events().at(-1)[2].service_interest,'roasting');
+  assert.doesNotMatch(JSON.stringify(s.events()),/Secret|wa\.me/);
 });
 test('Bing verification, consent controls and bilingual privacy pages are published',()=>{
   const root=require('node:path').join(__dirname,'..');

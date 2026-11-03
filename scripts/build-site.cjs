@@ -27,11 +27,9 @@ function languageControl(page, english) {
 }
 function sharedNavigation(html, page) {
   html = html.replace(/<nav class="language-switch"[\s\S]*?<\/nav>/, languageControl(page, false));
-  // El menú móvil ya nace cerrado: evitar que su ocultación tardía desplace el contenido.
-  html = html.replace('aria-controls="nav-list" hidden', 'aria-controls="nav-list"');
   if (!html.includes('id="navigation-fallback"')) html = html.replace('</head>', '<noscript id="navigation-fallback"><style>@media(max-width:1050px){html .site-header .nav-list{display:flex!important;position:static;flex-direction:column;align-items:stretch;max-height:none}html .site-header .nav-toggle{display:none!important}.site-header .nav{width:100%}.site-header .header-inner{flex-wrap:wrap}.site-header{position:static}}</style></noscript>\n</head>');
   const items = navigation[page.business ? 'business' : 'people'];
-  const links = items.map(([href,label]) => `<a href="${href}"${href===page.es?' aria-current="page"':''}>${label}</a>`);
+  const links = items.map(([href,label]) => `<a href="${href}">${label}</a>`);
   html = html.replace(/<ul class="nav-list" id="nav-list">[\s\S]*?<\/ul>/, `<ul class="nav-list" id="nav-list">${links.map(link=>'<li>'+link+'</li>').join('')}</ul>`);
   const switchLink = page.business ? '<a href="/">Para personas</a>' : '<a href="/empresas/">Para empresas y eventos</a>';
   return html.replace(/<nav aria-label="Navegación al pie">[\s\S]*?<\/nav>/, `<nav aria-label="Navegación al pie">${links.join('')}<a href="/catalogo.pdf" type="application/pdf" target="_blank" rel="noopener noreferrer" aria-label="Ver catálogo en PDF (se abre en otra pestaña)">Catálogo (PDF)</a>${switchLink}<a href="/privacidad/">Privacidad</a><button class="privacy-settings" type="button" data-privacy-settings>Preferencias de privacidad</button></nav>`);
@@ -99,16 +97,8 @@ for (const page of pages) {
       return target ? `href="${target.en}${fragment.length?'#'+fragment.join('#'):''}"` : all;
     })
     .replace(/<nav class="language-switch"[\s\S]*?<\/nav>/, languageControl(page, true))
-    .replace(/href="https:\/\/wa.me\/573012669975\?text=([^"]+)"/g,(all,encoded)=> {
-      const original = decodeURIComponent(encoded);
-      let message = 'Hello, I’d like to ask about coffee and experiences at Origen, Pasión y Café.';
-      if (page.business) {
-        message='Hello, I’d like a coffee proposal for my organisation.';
-        if(original.includes('barra de café')) message='Hello, I’m interested in a coffee bar for an event. Could we discuss a proposal?';
-        else if(original.includes('en verde')) message='Hello, I’m interested in green coffee. Could we discuss available lots?';
-        else if(original.includes('por volumen')) message='Hello, I’m interested in bulk roasted coffee. Could we discuss a quote?';
-        else if(original.includes('microlotes')) message='Hello, I’m interested in microlot roasting with your Kaleido M10S. Could we discuss a proposal?';
-      }
+    .replace(/href="https:\/\/wa.me\/573012669975\?text=[^"]+"/g,()=> {
+      const message = page.business ? 'Hello, I’d like a coffee proposal for my organisation.' : 'Hello, I’d like to ask about coffee and experiences at Origen, Pasión y Café.';
       return 'href="https://wa.me/573012669975?text='+encodeURIComponent(message)+'"';
     });
   fs.mkdirSync(path.dirname(path.join(root,page.enFile)),{recursive:true});

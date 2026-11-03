@@ -6,7 +6,7 @@
   const lifetime = 180 * 24 * 60 * 60 * 1000;
   const panel = document.getElementById('privacy-panel');
   if (!panel) return;
-  const routes = {'/':'home','/en/':'home','/empresas/':'business','/en/business/':'business','/cafe-para-eventos/':'events','/en/event-coffee/':'events','/experiencias-de-cafe/':'experiences','/en/coffee-experiences/':'experiences','/privacidad/':'privacy','/en/privacy/':'privacy'};
+  const routes = {'/':'home','/en/':'home','/empresas/':'business','/en/business/':'business','/privacidad/':'privacy','/en/privacy/':'privacy'};
   const page = routes[window.location.pathname];
   // Preview environments never send production measurements.
   const production = window.location.hostname === 'origenpasionycafe.com' && Boolean(page);
@@ -67,11 +67,10 @@
   }));
   function contact(anchor) {
     if(!production || choice!=='accepted' || !started || window['ga-disable-'+id]) return;
-    let placement='direct_contact',service=page==='events'?'events':'general';
+    let placement='direct_contact',service='general';
     if(anchor.id==='waBtn') { placement='reservation_form';service=services[document.getElementById('tipo')?.value]||'general'; }
     else if(anchor.id==='business-whatsapp') { placement='business_form';service=services[document.getElementById('business-service')?.value]||'general'; }
-    else if(anchor.id==='waFloat') placement='floating_button';
-    else { const article=anchor.closest('article');service=({barra:'events',verde:'green_coffee',volumen:'bulk_coffee',tostion:'roasting'})[article?.id]||service; }
+    else if(anchor.id==='waFloat') placement='header_contact';
     gtag('event','whatsapp_click',{page_type:page,contact_placement:placement,service_interest:service,content_language:document.documentElement.lang==='en'?'en':'es',transport_type:'beacon'});
   }
   document.addEventListener('click',event=>{

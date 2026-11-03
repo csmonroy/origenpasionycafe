@@ -8,9 +8,9 @@ Prompt de edición:
 
 > Edit this exact image. Remove the entire person on the right: torso, apron, arm and hand. Remove the hand-held sampling scoop with its beans; restore the roaster's sampling trier to its normal fully inserted position, with just its short black insulated handle attached naturally at the front sampling port. Reconstruct the occluded warm dark olive-brown wall, wooden workbench and right edge of the separate controller naturally. Keep absolutely everything else unchanged: the SAME white Kaleido M10S, white angular side panels, stainless central face/hopper, black perforated base, controller with roast curves, ventilation duct, window light, jars, plants, notebook, bowl, colors, camera angle and landscape 3:2 composition. The machine is the sole main subject; no people, hands or human silhouettes anywhere; no floating scoop, no new props, no captions or watermark. Preserve the premium warm editorial photography look of the supplied image.
 
-## Versión anterior con persona
+## Procedencia histórica de la edición
 
-Archivo publicado: `img/kaleido-blanca-tostion.webp`, 1440 × 960, WebP calidad 86. Creado con la herramienta integrada ImageGen. Sustituye a `img/kaleido-taller-ia.webp`; el negocio confirmó que su máquina es blanca y solicitó retirar el aviso visible de IA. La escena sigue siendo generada, no una fotografía de las instalaciones ni del personal de Origen.
+La versión previa con persona (1440 × 960) se retiró de la publicación y se conserva en Git. Fue creada con ImageGen; el negocio confirmó que su máquina es blanca y solicitó retirar el aviso visible de IA. La escena sigue siendo generada, no una fotografía de las instalaciones ni del personal de Origen.
 
 Se buscaron fotografías de la máquina blanca en uso, pero los resultados revisados ofrecían principalmente fotos de producto. Se usó como referencia de apariencia la [Kaleido M10S blanca de Kaleido Japan](https://kaleidojapan.base.shop/items/78428304), imagen `https://baseec-img-mng.akamaized.net/images/item/origin/c925cfe814badb1c00dea092f43ae39b.jpg?imformat=generic`. La escena anterior sirvió como referencia de luz y colores. No se publica la fotografía de terceros.
 

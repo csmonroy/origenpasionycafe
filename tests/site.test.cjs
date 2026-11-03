@@ -47,7 +47,7 @@ test('all published presets select the correct service or coffee', () => {
   const s = setup();
   const expected = {
     cata: 'Cata de café de especialidad', curso_metodos: 'Curso de métodos',
-    personalizada: 'Experiencia personalizada', eventos: 'Barra de café para eventos',
+    personalizada: 'Experiencia personalizada',
     blend_de_casa: 'Blend de Casa', bourbon_rosado: 'Bourbon Rosado', bourbon_sidra: 'Bourbon Sidra'
   };
   for (const [, preset] of html.matchAll(/data-preset="([^"]+)"/g)) {
@@ -275,7 +275,7 @@ test('responsive image candidates exist and declare their actual widths', () => 
   }
 });
 
- test('only two commercial pages per language are in the sitemap and menus stay within the audience', () => {
+test('only two commercial pages per language are in the sitemap and menus stay within the audience', () => {
   const sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
   assert.equal((sitemap.match(/<loc>/g)||[]).length,4);
   for(const [route,file] of Object.entries(routes)){

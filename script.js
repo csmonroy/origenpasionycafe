@@ -1,4 +1,3 @@
-/* Los enlaces de contacto funcionan también sin JavaScript. */
 const isEnglish = document.documentElement?.lang === 'en';
 const text = (es, en) => isEnglish ? en : es;
 const serviceNames = { 'Cata de café de especialidad': 'Specialty coffee tasting', 'Curso de métodos': 'Brewing methods class', 'Experiencia personalizada': 'Personalised experience', 'Barra de café para eventos': 'Coffee bar for events', 'Comprar café para casa': 'Coffee for home', 'Café en verde': 'Green coffee', 'Café tostado por volumen': 'Bulk roasted coffee', 'Tostión de microlotes': 'Microlot roasting' };
@@ -22,7 +21,6 @@ if (languagePicker) {
   });
   languagePicker.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { languagePicker.open = false; }));
 }
-// El menú mantiene sus destinos; el estado indica la página o sección actual.
 if (window.location?.href) {
   const languageLinks = [...document.querySelectorAll('.language-switch a')].map(link => ({ link, base: link.getAttribute('href').split('#')[0] }));
   function updateNavigationContext() {
@@ -46,7 +44,6 @@ function closeMenu(returnFocus = false) {
   if (returnFocus) toggle?.focus();
 }
 if (toggle && menu) {
-  toggle.hidden = false;
   menu.classList.add('is-enhanced');
   toggle.addEventListener('click', () => {
     if (languagePicker) languagePicker.open = false;
@@ -80,7 +77,6 @@ const presets = {
   cata: { service: 'Cata de café de especialidad' },
   curso_metodos: { service: 'Curso de métodos' },
   personalizada: { service: 'Experiencia personalizada' },
-  eventos: { service: 'Barra de café para eventos' },
   blend_de_casa: { service: 'Comprar café para casa', product: 'Blend de Casa' },
   bourbon_rosado: { service: 'Comprar café para casa', product: 'Bourbon Rosado' },
   bourbon_sidra: { service: 'Comprar café para casa', product: 'Bourbon Sidra' }
@@ -102,7 +98,6 @@ function buildMessageDetailed() {
   ].filter(Boolean).join('\n');
 }
 function makeWhatsUrl(message) {
-  // WhatsApp resuelve el enlace HTTPS en la app o en su versión web.
   return 'https://wa.me/' + WHATS_NUMBER + '?text=' + encodeURIComponent(message);
 }
 function setWhatsLink() { if (waBtn) waBtn.href = makeWhatsUrl(buildMessageDetailed()); }
