@@ -6,7 +6,7 @@ function setup(saved,hostname='origenpasionycafe.com') {
   for(const value of ['accepted','rejected'])buttons[value]={dataset:{privacyChoice:value},addEventListener:(_,fn)=>buttons[value].click=fn};
   const panel={hidden:true,querySelector:()=>({focus(){}})};
   const document={title:'Origen',documentElement:{lang:'es-CO'},referrer:'https://www.google.com/search?q=private@example.com',cookie:'_ga=abc; _ga_PF2M4L02YS=def; other=keep',getElementById:id=>id==='privacy-panel'?panel:fields[id],querySelectorAll:s=>s==='[data-privacy-choice]'?Object.values(buttons):[],addEventListener:(name,fn)=>handlers[name]=fn,createElement:()=>({}),head:{appendChild:s=>scripts.push(s)}};
-  const window={location:{hostname,pathname:'/experiencias-de-cafe/',search:'?email=private@example.com',hash:'#private',reload(){window.reloaded=true;}}};
+  const window={location:{hostname,pathname:'/',search:'?email=private@example.com',hash:'#private',reload(){window.reloaded=true;}}};
   const context=vm.createContext({window,document,Date,URL,localStorage:{getItem:()=>saved,setItem:(k,v)=>writes.push([k,v])}});
   vm.runInContext(source,context);
   const anchor={id:'waBtn',href:'https://wa.me/573012669975?text=Secret%20customer%20message',closest:()=>null};
@@ -23,7 +23,7 @@ test('analytics loads only after valid consent, never on preview hosts',()=>{
 test('events exclude query strings, fragments, WhatsApp messages and arbitrary form values',()=>{
   const s=setup(null);s.choose('accepted');s.click();s.submit();
   let events=s.events();const config=events.find(x=>x[0]==='config')[2];
-  assert.equal(config.page_location,'https://origenpasionycafe.com/experiencias-de-cafe/');assert.equal(config.page_referrer,'https://www.google.com/');
+  assert.equal(config.page_location,'https://origenpasionycafe.com/');assert.equal(config.page_referrer,'https://www.google.com/');
   assert.equal(config.allow_google_signals,false);assert.equal(config.allow_ad_personalization_signals,false);
   assert.equal(events.filter(x=>x[1]==='page_view').length,1);
   assert.equal(events.find(x=>x[1]==='whatsapp_click')[2].service_interest,'brewing_class');
@@ -35,7 +35,7 @@ test('withdrawal stops later contact events and unloads the tag',()=>{
 });
 test('Bing verification, consent controls and bilingual privacy pages are published',()=>{
   const root=require('node:path').join(__dirname,'..');
-  for(const file of ['index.html','empresas/index.html','cafe-para-eventos/index.html','experiencias-de-cafe/index.html','en/index.html','en/business/index.html','en/event-coffee/index.html','en/coffee-experiences/index.html','privacidad/index.html','en/privacy/index.html']){
+  for(const file of ['index.html','empresas/index.html','en/index.html','en/business/index.html','privacidad/index.html','en/privacy/index.html']){
     const html=fs.readFileSync(require('node:path').join(root,file),'utf8');assert.equal((html.match(/src="\/analytics.js/g)||[]).length,1);assert.equal((html.match(/id="privacy-panel"/g)||[]).length,1);assert.match(html,/data-privacy-choice="rejected"/);assert.match(html,/data-privacy-settings/);
     if(file.includes('privacy/')||file.startsWith('privacidad/')){assert.match(html,/noindex, follow/);assert.doesNotMatch(html,/"@type": "Product"|"@type": "Service"/);}
   }

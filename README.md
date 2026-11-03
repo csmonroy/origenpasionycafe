@@ -1,24 +1,35 @@
 # Origen, Pasión y Café
 
-Sitio estático en HTML, CSS y JavaScript. No requiere dependencias para servirlo. Incluye cuatro páginas, cada una en español e inglés: inicio, empresas, café para eventos y experiencias de café.
+Sitio estático en HTML, CSS y JavaScript, publicado en Cloudflare Pages desde la rama main de GitHub. No requiere dependencias para servirlo.
 
-## Páginas e idiomas
+## Dos páginas comerciales, dos idiomas
 
-La navegación se genera desde una definición común por público en `scripts/build-site.cjs`: personas conserva Inicio, Café para casa, Catas y cursos y Nuestra esencia; empresas conserva Inicio, Eventos, Café para tu negocio, Tostión y Cotizar. Cabecera y pie usan los mismos destinos. Los enlaces internos de cada guía se agrupan bajo «En esta página», separados del menú principal. El selector de idioma conserva también el ancla actual.
+- Personas: `/` y `/en/`. Café para casa, catas y cursos, nuestra esencia, consulta y preguntas frecuentes.
+- Empresas y eventos: `/empresas/` y `/en/business/`. Barra para eventos, café verde, volumen, tostión y cotización.
+- Privacidad: `/privacidad/` y `/en/privacy/`, fuera del sitemap y con noindex. El catálogo PDF conserva su dirección.
 
-La sección de experiencias de la portada tiene fondo oscuro y Nuestra esencia fondo claro. Las imágenes editoriales de cata, métodos, espresso, eventos y origen se sirven en WebP de 480 y 960 px, con carga diferida; su procedencia y prompts están en `content/editorial-images.json`. Complementan el contenido sin acreditar instalaciones reales. La guía permite volver a comparar; el formulario de eventos solicita fecha, lugar, asistentes y duración como datos opcionales, sin enviar mensajes automáticamente.
+Cada menú comercial salta a secciones de su misma página. El botón destacado cambia de público. La definición compartida está en `scripts/build-site.cjs`; los enlaces del pie siguen los mismos destinos. El selector ES/EN conserva la sección visitada.
 
-- `/`: café fresco de tostión reciente, tienda, catas y cursos.
-- `/empresas/`: barra para eventos corporativos y asambleas de copropietarios, café verde, pedidos por volumen y tostión de microlotes con Kaleido M10S.
-- `/cafe-para-eventos/`: barra de café en Bogotá, ocasiones, planificación y solicitud de propuesta.
-- `/experiencias-de-cafe/`: cata, curso de métodos y experiencia personalizada, condiciones y consulta.
-- `/en/`, `/en/business/`, `/en/event-coffee/` y `/en/coffee-experiences/`: versiones completas en inglés.
+Editar `index.html` y `empresas/index.html`; mantener las traducciones en `content/en.json` y ejecutar `node scripts/build-site.cjs`. El generador produce las versiones inglesas, metadatos, datos estructurados y sitemap. No editar directamente los HTML de `en/`.
 
-El botón dorado «Para empresas y eventos» separa el acceso empresarial del menú de consumidores. Empresas tiene identidad y navegación propias, con un acceso de regreso a «Para personas». La portada empresarial ocupa como mínimo el alto disponible de la pantalla en escritorio, descontando el encabezado. En móvil las secciones conservan altura natural para evitar recortes. La tostadora blanca aparece en una escena generada con IA integrada sobre el fondo oscuro. Por solicitud del negocio, el pie visible muestra únicamente «Kaleido M10S»; la procedencia y los prompts se conservan en docs/kaleido-blanca-ia.md. Al revisar el encabezado, comprobar ambos idiomas, el menú desplegable y los destinos de los enlaces con el encabezado fijo.
+Las experiencias se comparan en tres tarjetas con fotos, condiciones, precio y detalles desplegables nativos. Todo el texto existe en el HTML sin depender de JavaScript. El formulario de personas recibe la selección de café o experiencia. El de empresas recibe el servicio; fecha, lugar, asistentes y duración solo se muestran y se incluyen en la consulta cuando se elige eventos. Ningún formulario envía mensajes automáticamente.
 
-Editar el contenido español en `index.html`, `empresas/index.html`, `cafe-para-eventos/index.html` y `experiencias-de-cafe/index.html`. Mantener sus traducciones en `content/en.json` y ejecutar `node scripts/build-site.cjs` antes de publicar. El generador actualiza metadatos, datos estructurados, versiones inglesas y sitemap; falla si falta traducir texto visible. Los archivos generados de `en/` se guardan en Git. El hosting sigue sirviendo archivos estáticos sin compilación adicional. No editar directamente las páginas inglesas generadas.
+Las imágenes editoriales de cata, métodos, espresso, eventos y origen tienen variantes WebP de 480 y 960 px y carga diferida. Procedencia y prompts: `content/editorial-images.json`. Son ilustraciones y no acreditan instalaciones reales. La tostadora blanca conserva el registro `docs/kaleido-blanca-ia.md`.
 
-Los títulos y descripciones SEO se mantienen en `scripts/build-site.cjs`; las etiquetas dinámicas de los formularios, en `script.js`. El selector ES/EN mantiene la página equivalente. No se fuerza el idioma según navegador o ubicación. El PDF original continúa en español y así se identifica en los enlaces de la versión inglesa.
+## Unificación y direcciones anteriores
+
+Las páginas de experiencias y eventos se integraron en sus respectivos públicos. `_redirects` aplica 301 en español e inglés, incluyendo rutas sin barra y con index.html:
+
+- `/experiencias-de-cafe/` → `/#experiencias`
+- `/en/coffee-experiences/` → `/en/#experiencias`
+- `/cafe-para-eventos/` → `/empresas/#barra`
+- `/en/event-coffee/` → `/en/business/#barra`
+
+Conservar estas redirecciones. No recrear las antiguas páginas con contenido duplicado. El sitemap contiene las cuatro URL comerciales vigentes; los servicios y productos apuntan a sus nuevas anclas. Los fragmentos antiguos llevan a la sección de experiencias o eventos, donde se encuentran las opciones integradas. Google puede tardar en procesar el cambio y presentar variaciones temporales. Consultar los informes de Search Console y Bing después de la publicación; no confundir una redirección comprobada con una indexación o posición garantizada.
+
+## Verificación y publicación
+
+Ejecutar `node scripts/build-site.cjs` y `node --test tests/site.test.cjs tests/analytics.test.cjs`. Las pruebas cubren precios, presets, mensajes bilingües, privacidad, enlaces, anclas, imágenes, sitemap y destinos de redirección. Revisar también menús, detalles desplegables y formularios en móvil y escritorio. Los cambios se publican al enviar main al repositorio conectado a Cloudflare Pages. Comprobar las respuestas 301 reales en producción: un servidor estático genérico puede ignorar `_redirects`.
 
 ## Medición de contactos y privacidad
 
@@ -34,71 +45,14 @@ Se confirmó en el informe en tiempo real de GA4 una visita y un `whatsapp_click
 
 Perfil de Empresa de Google creado como servicio en Bogotá, sin dirección pública, con teléfono, WhatsApp, web, servicios y descripción. Atención solo con reserva; la descripción informa consultas de lunes a domingo de 8 a. m. a 9 p. m. No se publica un horario de acceso libre. Google exige verificación mediante vídeo real del negocio por parte de su responsable; el perfil aún no es visible para clientes. Fotografías y testimonios reales siguen pendientes por decisión del negocio.
 
-## Comprobaciones
 
-Ejecutar también `node --test tests/analytics.test.cjs`: consentimiento, rechazo, caducidad, entornos locales, exclusión de textos privados y retirada del permiso.
+## Datos comerciales vigentes
 
-Las páginas dedicadas a eventos y experiencias comparten tipografía, paleta y navegación con el sitio. Cada una tiene su propio título, descripción, canonical, enlaces de idioma, datos de servicios y ruta de navegación. El sitemap contiene ocho páginas. Los formularios preparan una consulta y no envían mensajes automáticamente. Las pruebas incluyen sus destinos, traducciones y condiciones comerciales; la revisión visual contempla escritorio de 1280 px y móvil de 390 px.
+Blend de Casa: $25.000 COP; Bourbon Rosado y Bourbon Sidra: $40.000 COP cada uno. Bolsas de 250 g. Cata: desde $80.000 COP, 2 horas, 4–6 personas. Curso de métodos: desde $160.000 COP, 2–3 horas, 1–4 personas. Experiencia personalizada: desde $220.000 COP, 2–4 horas, 1–4 personas. Confirmar disponibilidad, valor total y logística por WhatsApp. No inventar inventario, reseñas, orígenes de lotes o fechas de tostión.
 
-La portada presenta las experiencias como tres intereses y enlaza a la guía o al detalle elegido; no reproduce sus fotos, precios ni descripciones completas. El catálogo tiene una franja secundaria propia. La guía de experiencias permite comparar duración, grupo y precio, profundizar en objetivos y contenidos, desplegar el desarrollo de cada sesión, resolver dudas y preparar una consulta con la experiencia seleccionada. Las preguntas prácticas preceden al formulario. Los datos estructurados de servicios apuntan a la guía como destino principal, también desde la portada. Mantener esta separación entre descubrir, comparar y consultar, con altura natural en móvil y sin ocultar contenido para hacerlo caber en la pantalla.
+## Registro histórico
 
-La página de café para eventos abre con una introducción orientada a planear el servicio y cotizar, sin repetir la imagen de la portada empresarial. Las páginas de detalle conservan el contexto mediante la ruta de navegación y agregan información para decidir.
-
-Search Console: propiedad de dominio `origenpasionycafe.com` verificada mediante un registro DNS TXT en Cloudflare el 2 de noviembre de 2026. Conservar ese registro para mantener la verificación. El sitemap público es `https://origenpasionycafe.com/sitemap.xml`. La verificación y el envío del sitemap no equivalen a indexación ni garantizan posiciones.
-
-```sh
-node scripts/build-site.cjs
-node --check script.js
-node --test tests/site.test.cjs
-```
-
-Además de estas pruebas, revisar en navegador que los botones de las tarjetas se vean completos, que no exista desplazamiento horizontal y que el menú móvil abra, cierre y responda a Escape. Probar los siete tipos de consulta sin enviar mensajes reales.
-
-## Publicación
-
-El catálogo se publica como `catalogo.pdf` en la raíz del sitio y se enlaza desde experiencias, café para casa y el pie de página. Su dirección pública es `https://origenpasionycafe.com/catalogo.pdf`. Para actualizarlo, reemplazar ese archivo por el nuevo PDF conservando el nombre y publicar el cambio en `main`. Editar el archivo original de Marketing no actualiza automáticamente la copia de la web. Comprobar que las condiciones del catálogo y la página coincidan antes de una nueva publicación.
-
-Publicar `index.html`, `empresas/`, `cafe-para-eventos/`, `experiencias-de-cafe/`, `en/`, `privacidad/`, `404.html`, `_headers`, `catalogo.pdf`, `styles.css`, `script.js`, `analytics.js`, `robots.txt`, `sitemap.xml` y `img/` en el hosting actual. El dominio canónico configurado es `https://origenpasionycafe.com/`. Los cambios locales no actualizan por sí solos la web pública.
-
-El hosting es Cloudflare Pages, conectado a la rama `main` de este repositorio. Un push a `main` activa el despliegue. Al cambiar CSS o JavaScript, actualizar también el parámetro `v` de sus referencias en `index.html` para renovar la caché de los visitantes existentes.
-
-## Contenido comercial
-
-- Cata: desde $80.000 COP, 2 horas, 4–6 personas.
-- Curso de métodos: desde $160.000 COP, 2–3 horas, 1–4 personas.
-- Experiencia personalizada: desde $220.000 COP, 2–4 horas, 1–4 personas.
-- Bolsas de 250 g: Blend de Casa, $25.000 COP; Bourbon Rosado y Bourbon Sidra, $40.000 COP cada uno.
-- Confirmar con el negocio molienda, envíos y lugar exacto antes de incorporarlos.
-- Redes oficiales: [Instagram](https://www.instagram.com/origenpasionycafe/), [Facebook](https://www.facebook.com/OrigenPasionyCafeCo/) y [TikTok](https://www.tiktok.com/@origenpasionycafe). Incluidas en el pie de página y en `sameAs` de la organización.
-- Las imágenes del catálogo son ilustraciones de bolsas generadas con IA, no fotografías de empaques reales. Sustituirlas por fotografías propias cuando estén disponibles. El registro de prompts y archivos está en `docs/imagenes-catalogo.md`.
-- Actualizar conjuntamente tarjetas, opciones del formulario, preguntas frecuentes y metadatos si cambian los precios o condiciones.
-- La tostión a demanda y los cuatro servicios para organizaciones fueron confirmados por el negocio el 2 de noviembre de 2026. No publicar capacidades de la Kaleido, pedidos mínimos, precios empresariales o plazos sin confirmarlos. Los formularios preparan consultas de WhatsApp; no envían datos automáticamente ni confirman contratos.
-- El mensaje para consumidores se centra en café de tostión reciente y sus aromas y matices. Evitar decir que cada pedido requiere programar una tostión; consultar disponibilidad sin prometer inventario o entrega inmediata. Los textos y metadatos se mantienen coherentes en español e inglés.
-- La jerarquía visual usa títulos de sección grandes, explicaciones de 16–18 px y detalles de 14 px. El índice de servicios empresariales presenta cuatro accesos grandes. Comprobar las cuatro páginas en móvil y escritorio al cambiar textos o tipografías.
-
-## SEO después de publicar
-
-1. Verificar en Google Search Console la propiedad del dominio, enviar `/sitemap.xml` y solicitar la inspección de la página principal.
-2. Verificar que el hosting entrega HTML, imágenes, robots y sitemap con estado 200; redirigir HTTP y el dominio alternativo a la URL canónica desde el hosting.
-3. Completar el Perfil de Empresa de Google con datos reales de atención, ubicación o área de servicio y fotografías propias, si corresponde al negocio.
-4. Medir consultas, impresiones y clics para “catas de café en Bogotá”, “curso de métodos de café” y variaciones relevantes. No existe garantía de una primera posición.
-5. Medir Core Web Vitals y rendimiento móvil en la versión publicada; añadir contenido útil basado en preguntas de clientes, sin repetir palabras clave artificialmente.
-
-El marcado describe la organización, el sitio, cada página, los productos de 250 g y los servicios empresariales. Cada versión tiene canonical propio y referencias recíprocas `hreflang` (es, en y x-default). No declara reseñas, puntuaciones, dirección física, inventario ni horarios sin confirmar. Las preguntas frecuentes son contenido útil visible; no se promete un resultado enriquecido de Google.
-
-## Revisión del 2 de noviembre de 2026
-
-Se verifican enlaces internos, imágenes locales, secciones de destino, precios en COP, mensajes de compra y cotización en ambos idiomas y consistencia de metadatos. La revisión en navegador incluye anchos de 320, 390, 768, 1280 y 1920 px, menú móvil y selección de café. Las nuevas imágenes del catálogo se sirven en WebP y las que quedan fuera de portada cargan de forma diferida. `404.html` evita mostrar la portada como si fuera una URL válida inexistente.
-
-El sitio ofrece contenido legible sin JavaScript y permite rastreo en `robots.txt`. Esto facilita el descubrimiento; no garantiza indexación, posiciones ni citas de IA. Queda pendiente comprobar impresiones e indexación desde las cuentas de Google Search Console y Bing Webmaster Tools, enviar allí el sitemap y medir Core Web Vitals con datos reales. No se ha realizado una auditoría de esas cuentas ni una medición de campo de rendimiento.
-
-Las condiciones de la cata se unificaron con el catálogo por confirmación del negocio: 2 horas, 4–6 personas y precio desde $80.000 COP. El PDF se conserva intacto. Las ilustraciones del catálogo no acreditan instalaciones o equipos reales.
-
-Fuentes oficiales: [Guía de SEO de Google](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) y [datos estructurados de organizaciones](https://developers.google.com/search/docs/appearance/structured-data/organization).
-
-Referencias para esta revisión: [Google: funciones de IA](https://developers.google.com/search/docs/appearance/ai-features), [sitios multilingües](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites) y [directrices de Bing y Copilot](https://www.bing.com/webmasters/help/bing-webmaster-guidelines-30fba23a).
-
-La página empresarial agrupa el título y el índice en una introducción delimitada. Los servicios de eventos, café verde y volumen tienen paneles con fondo, borde y márgenes internos; los detalles de tostión y las preguntas frecuentes también conservan agrupación visual. Mantener la portada a alto de pantalla en escritorio y la altura natural en móvil.
+Las notas siguientes describen mediciones y prioridades de una versión anterior; no son resultados de la versión unificada. La configuración actual de medición e indexación se describe arriba.
 
 ## Auditoría SEO y rendimiento — 2 de noviembre de 2026, 12:12 (Bogotá)
 

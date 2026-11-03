@@ -24,12 +24,13 @@ function setup(language = 'es-CO', business = false, fileOverride) {
   const buttons = [...page.matchAll(/data-preset="([^"]+)"/g)].map(([, preset]) => ({
     ...element(), preset, getAttribute() { return preset; }
   }));
+  const businessButtons = [...page.matchAll(/data-business-preset="([^"]+)"/g)].map(([, preset]) => ({ ...element(), preset, getAttribute() { return preset; } }));
   const context = vm.createContext({
     document: {
       documentElement: {lang: language},
       querySelector: () => null,
       getElementById: id => fields.get(id),
-      querySelectorAll: () => buttons
+      querySelectorAll: selector => selector === '[data-business-preset]' ? businessButtons : buttons
     },
     window: { location: { assign(url) { context.destination = url; } } }
   });
@@ -37,6 +38,7 @@ function setup(language = 'es-CO', business = false, fileOverride) {
   return {
     fields, context,
     choose(preset) { buttons.find(button => button.preset === preset).fire('click'); },
+    chooseBusiness(preset) { businessButtons.find(button => button.preset === preset).fire('click'); },
     message() { return new URL(fields.get(business ? 'business-whatsapp' : 'waBtn').href).searchParams.get('text'); }
   };
 }
@@ -152,39 +154,7 @@ test('business quote forms encode the selected service and details in both langu
   }
 });
 
-const routes = {'/':'index.html', '/empresas/':'empresas/index.html', '/en/':'en/index.html', '/en/business/':'en/business/index.html', '/cafe-para-eventos/':'cafe-para-eventos/index.html', '/experiencias-de-cafe/':'experiencias-de-cafe/index.html', '/en/event-coffee/':'en/event-coffee/index.html', '/en/coffee-experiences/':'en/coffee-experiences/index.html'};
-test('dedicated service forms prepare the right inquiry without sending it', () => {
-  for (const [language,eventFile,experienceFile] of [['es-CO','cafe-para-eventos/index.html','experiencias-de-cafe/index.html'],['en','en/event-coffee/index.html','en/coffee-experiences/index.html']]) {
-    const event=setup(language,true,eventFile);
-    event.fields.get('business-details').value='80 asistentes, Bogotá';
-    event.fields.get('business-form').fire('input');
-    assert.match(event.message(),/80 asistentes, Bogotá/);
-    assert.match(event.message(),language==='en'?/Coffee bar for events/:/Barra de café para eventos/);
-    assert.equal(event.context.destination,undefined);
-    const experience=setup(language,false,experienceFile);
-    const expected=language==='en'?['Specialty coffee tasting','Brewing methods class','Personalised experience']:['Cata de café de especialidad','Curso de métodos','Experiencia personalizada'];
-    for(const preset of ['cata','curso_metodos','personalizada']) {
-      experience.choose(preset);
-      assert.ok(experience.message().includes(expected[['cata','curso_metodos','personalizada'].indexOf(preset)]));
-      assert.equal(experience.context.destination,undefined);
-    }
-    assert.equal(experience.fields.has('producto'),false);
-  }
-});
-
-test('new pages describe their own services and navigable breadcrumb hierarchy', () => {
-  for(const route of ['/cafe-para-eventos/','/experiencias-de-cafe/','/en/event-coffee/','/en/coffee-experiences/']) {
-    const page=fs.readFileSync(path.join(root,routes[route]),'utf8');
-    const graph=JSON.parse(page.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
-    const breadcrumb=graph.find(x=>x['@type']==='BreadcrumbList');
-    assert.equal(breadcrumb.itemListElement.at(-1).item,'https://origenpasionycafe.com'+route);
-    for(const item of breadcrumb.itemListElement) assert.ok(routes[new URL(item.item).pathname]);
-    assert.ok(graph.some(x=>x['@type']==='Service'));
-    assert.doesNotMatch(JSON.stringify(graph),/"@type":"Product"|aggregateRating|streetAddress/);
-  }
-  assert.equal((fs.readFileSync(path.join(root,'sitemap.xml'),'utf8').match(/<loc>/g)||[]).length,8);
-});
-
+const routes = {'/':'index.html', '/empresas/':'empresas/index.html', '/en/':'en/index.html', '/en/business/':'en/business/index.html'};
 test('every page has reciprocal language links, an independent canonical and a sitemap entry', () => {
   for (const [route,file] of Object.entries(routes)) {
     const page = fs.readFileSync(path.join(root,file),'utf8');
@@ -202,7 +172,7 @@ test('every page has reciprocal language links, an independent canonical and a s
   }
 });
 
-test('published internal routes, fragment targets and local images resolve on all eight pages', () => {
+test('published internal routes, fragment targets and local images resolve on both audiences and languages', () => {
   for (const [route,file] of Object.entries(routes)) {
     const page = fs.readFileSync(path.join(root,file),'utf8');
     const ids=[...page.matchAll(/\bid="([^"]+)"/g)].map(x=>x[1]);
@@ -238,8 +208,8 @@ test('social descriptions preserve currency and do not leak text outside head ta
   }
 });
 
-test('experience descriptions resolve to the dedicated service detail in both languages', () => {
-  for (const file of ['index.html','en/index.html','experiencias-de-cafe/index.html','en/coffee-experiences/index.html']) {
+test('experience descriptions resolve to the integrated service cards in both languages', () => {
+  for (const file of ['index.html','en/index.html']) {
     const page=fs.readFileSync(path.join(root,file),'utf8');
     const graph=JSON.parse(page.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
     const services=graph.filter(item=>item['@type']==='Service');
@@ -247,7 +217,7 @@ test('experience descriptions resolve to the dedicated service detail in both la
     for (const service of services) {
       const target=new URL(service.url);
       const destination=fs.readFileSync(path.join(root,routes[target.pathname]),'utf8');
-      const detail=destination.match(new RegExp(`<article class="experience-detail" id="${target.hash.slice(1)}"[^>]*>([\\s\\S]*?)</article>`));
+      const detail=destination.match(new RegExp(`<article class="experience-card" id="${target.hash.slice(1)}"[^>]*>([\\s\\S]*?)</article>`));
       assert.ok(detail,service.url);
       assert.ok(detail[1].includes(service.name),service.name);
       assert.match(detail[1],/data-preset=/);
@@ -257,19 +227,8 @@ test('experience descriptions resolve to the dedicated service detail in both la
   }
 });
 
-test('home experience choices lead to the guide without duplicating its offer cards', () => {
-  for (const [homeFile,guideRoute] of [['index.html','/experiencias-de-cafe/'],['en/index.html','/en/coffee-experiences/']]) {
-    const home=fs.readFileSync(path.join(root,homeFile),'utf8');
-    const overview=home.match(/<section id="experiencias"[\s\S]*?<\/section>/)[0];
-    assert.doesNotMatch(overview,/data-preset=|class="card"/);
-    for (const id of ['cata','curso-metodos','experiencia-personalizada']) assert.ok(overview.includes(`href="${guideRoute}#${id}"`));
-    const guide=fs.readFileSync(path.join(root,routes[guideRoute]),'utf8');
-    assert.ok(guide.indexOf('id="preguntas"') < guide.indexOf('<section id="reservar"'));
-  }
-});
-
 test('each audience has identical primary navigation labels, order and destinations', () => {
-  const groups=[['index.html','experiencias-de-cafe/index.html','privacidad/index.html'],['empresas/index.html','cafe-para-eventos/index.html'],['en/index.html','en/coffee-experiences/index.html','en/privacy/index.html'],['en/business/index.html','en/event-coffee/index.html']];
+  const groups=[['index.html','privacidad/index.html'],['en/index.html','en/privacy/index.html']];
   for(const group of groups){
     const menus=group.map(file=>fs.readFileSync(path.join(root,file),'utf8').match(/<ul class="nav-list" id="nav-list">([\s\S]*?)<\/ul>/)[1].replace(/ aria-current="[^"]+"/g,''));
     for(const menu of menus) assert.equal(menu,menus[0],group.join(', '));
@@ -277,7 +236,7 @@ test('each audience has identical primary navigation labels, order and destinati
 });
 
 test('structured event enquiry includes all supplied details without sending a message', () => {
-  for(const [language,file] of [['es-CO','cafe-para-eventos/index.html'],['en','en/event-coffee/index.html']]){
+  for(const [language,file] of [['es-CO','empresas/index.html'],['en','en/business/index.html']]){
     const s=setup(language,true,file);
     s.fields.get('business-service').value='Barra de café para eventos';
     for(const [id,value] of [['event-date','15/12, 9:00'],['event-place','Bogotá & norte'],['event-guests','80'],['event-duration','3 h']]) s.fields.get(id).value=value;
@@ -300,6 +259,50 @@ test('responsive image candidates exist and declare their actual widths', () => 
         const explicitWidth=src.match(/-(\d+)\.webp$/)?.[1];
         if (explicitWidth) assert.equal(width,explicitWidth+'w');
       }
+    }
+  }
+});
+
+ test('only two commercial pages per language are in the sitemap and menus stay within the audience', () => {
+  const sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
+  assert.equal((sitemap.match(/<loc>/g)||[]).length,4);
+  for(const [route,file] of Object.entries(routes)){
+    const page=fs.readFileSync(path.join(root,file),'utf8');
+    const nav=page.match(/<ul class="nav-list" id="nav-list">([\s\S]*?)<\/ul>/)[1];
+    for(const [,href] of nav.matchAll(/href="([^"]+)"/g)) assert.equal(new URL(href,'https://origenpasionycafe.com').pathname,route);
+    assert.doesNotMatch(page,/href="[^" ]*(?:experiencias-de-cafe|coffee-experiences|cafe-para-eventos|event-coffee)/);
+    assert.equal((page.match(/<form /g)||[]).length,1);
+  }
+});
+
+test('retired routes permanently redirect to the matching audience and existing section', () => {
+  const rules=fs.readFileSync(path.join(root,'_redirects'),'utf8').split(/\r?\n/).filter(line=>line&&!line.startsWith('#'));
+  assert.equal(rules.length,12);
+  for(const rule of rules){
+    const [from,to,status]=rule.split(/\s+/);assert.equal(status,'301');
+    const target=new URL(to,'https://origenpasionycafe.com');assert.ok(routes[target.pathname]);
+    const page=fs.readFileSync(path.join(root,routes[target.pathname]),'utf8');
+    assert.ok(page.includes('id="'+target.hash.slice(1)+'"'));
+    assert.ok(from.startsWith('/en/')===to.startsWith('/en/'));
+    assert.ok(!sitemapHas(from));
+  }
+  function sitemapHas(route){return fs.readFileSync(path.join(root,'sitemap.xml'),'utf8').includes('<loc>https://origenpasionycafe.com'+route+'</loc>');}
+});
+
+test('business service buttons select the right proposal and exclude stale event details', () => {
+  for(const language of ['es-CO','en']){
+    const s=setup(language,true);
+    s.chooseBusiness('Barra de café para eventos');
+    s.fields.get('event-date').value='date-only-for-event';
+    s.fields.get('business-form').fire('input');
+    assert.equal(s.fields.get('event-fields').hidden,false);
+    assert.ok(s.message().includes('date-only-for-event'));
+    for(const service of ['Café en verde','Café tostado por volumen','Tostión de microlotes']){
+      s.chooseBusiness(service);
+      assert.equal(s.fields.get('event-fields').hidden,true);
+      assert.ok(!s.message().includes('date-only-for-event'));
+      assert.ok(s.message().includes(s.fields.get('business-service').value));
+      assert.equal(s.context.destination,undefined);
     }
   }
 });

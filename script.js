@@ -1,7 +1,7 @@
 /* Los enlaces de contacto funcionan también sin JavaScript. */
 const isEnglish = document.documentElement?.lang === 'en';
 const text = (es, en) => isEnglish ? en : es;
-const serviceNames = { 'Cata de café de especialidad': 'Specialty coffee tasting', 'Curso de métodos': 'Brewing methods class', 'Experiencia personalizada': 'Personalised experience', 'Barra de café para eventos': 'Coffee bar for events', 'Comprar café para casa': 'Coffee for home' };
+const serviceNames = { 'Cata de café de especialidad': 'Specialty coffee tasting', 'Curso de métodos': 'Brewing methods class', 'Experiencia personalizada': 'Personalised experience', 'Barra de café para eventos': 'Coffee bar for events', 'Comprar café para casa': 'Coffee for home', 'Café en verde': 'Green coffee', 'Café tostado por volumen': 'Bulk roasted coffee', 'Tostión de microlotes': 'Microlot roasting' };
 const serviceName = value => isEnglish ? serviceNames[value] || value : value;
 const toggle = document.querySelector('.nav-toggle');
 const menu = document.querySelector('.nav-list');
@@ -12,7 +12,8 @@ if (window.location?.href) {
     const current = new URL(window.location.href);
     document.querySelectorAll('.nav-list a').forEach(link => {
       const target = new URL(link.href, current);
-      const matches = target.pathname === current.pathname && (target.hash ? target.hash === current.hash : !current.hash || current.pathname !== '/' && current.pathname !== '/en/' && current.pathname !== '/empresas/' && current.pathname !== '/en/business/');
+      const section = document.getElementById(current.hash.slice(1))?.closest('section[id]');
+      const matches = target.pathname === current.pathname && (target.hash ? target.hash === (current.hash || '#top') || target.hash === '#' + section?.id : !current.hash || current.hash === '#top');
       if (matches) link.setAttribute('aria-current', target.hash ? 'location' : 'page');
       else link.removeAttribute('aria-current');
     });
@@ -123,16 +124,20 @@ if (form) {
 const businessForm = document.getElementById('business-form');
 if (businessForm) {
   const businessLink = document.getElementById('business-whatsapp');
+  const businessService = document.getElementById('business-service');
   function updateBusinessLink() {
     const value = id => document.getElementById(id)?.value.trim() || '';
+    const isEvent = ['Barra de café para eventos', 'Coffee bar for events'].includes(value('business-service'));
+    const eventFields = document.getElementById('event-fields');
+    if (eventFields) eventFields.hidden = !isEvent;
     const message = [
       text('Hola, me gustaría una propuesta de café para mi organización.', 'Hello, I’d like a coffee proposal for my organisation.'),
       text('Servicio: ', 'Service: ') + serviceName(value('business-service')),
       value('business-organization') ? text('Organización: ', 'Organisation: ') + value('business-organization') : '',
-      value('event-date') ? text('Fecha y horario: ', 'Date and time: ') + value('event-date') : '',
-      value('event-place') ? text('Lugar del evento: ', 'Event location: ') + value('event-place') : '',
-      value('event-guests') ? text('Asistentes: ', 'Attendees: ') + value('event-guests') : '',
-      value('event-duration') ? text('Duración del servicio: ', 'Service duration: ') + value('event-duration') : '',
+      isEvent && value('event-date') ? text('Fecha y horario: ', 'Date and time: ') + value('event-date') : '',
+      isEvent && value('event-place') ? text('Lugar del evento: ', 'Event location: ') + value('event-place') : '',
+      isEvent && value('event-guests') ? text('Asistentes: ', 'Attendees: ') + value('event-guests') : '',
+      isEvent && value('event-duration') ? text('Duración del servicio: ', 'Service duration: ') + value('event-duration') : '',
       value('business-details') ? text('Detalles: ', 'Details: ') + value('business-details') : '',
       text('¿Podemos revisar disponibilidad, alcance y valor? Gracias.', 'Could we discuss availability, scope and pricing? Thank you.')
     ].filter(Boolean).join('\n');
@@ -140,6 +145,10 @@ if (businessForm) {
   }
   businessForm.addEventListener('input', updateBusinessLink);
   businessForm.addEventListener('change', updateBusinessLink);
+  document.querySelectorAll('[data-business-preset]').forEach(link => link.addEventListener('click', () => {
+    businessService.value = serviceName(link.getAttribute('data-business-preset'));
+    updateBusinessLink();
+  }));
   businessForm.addEventListener('submit', event => { event.preventDefault(); updateBusinessLink(); window.location.assign(businessLink.href); });
   updateBusinessLink();
 }
