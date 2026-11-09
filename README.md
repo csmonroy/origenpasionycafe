@@ -52,6 +52,8 @@ Perfil de Empresa de Google creado como servicio en Bogotá, sin dirección púb
 
 Blend de Casa: $25.000 COP; Bourbon Rosado y Bourbon Sidra: $40.000 COP cada uno. Bolsas de 250 g. Cata: desde $80.000 COP por persona, 2 horas, 4–6 personas. Curso de métodos: desde $160.000 COP, 2–3 horas, 1–4 personas. Experiencia personalizada: desde $220.000 COP, 2–4 horas, 1–4 personas. Confirmar disponibilidad, valor total y logística por WhatsApp. No inventar inventario, reseñas, orígenes de lotes o fechas de tostión.
 
+Barra para eventos: capuchino, americano y filtrado como opciones habituales; otras bebidas se pueden agregar a la propuesta. Reservar con al menos 5 días de anticipación, sujeto a disponibilidad. Tostión de microlotes: mínimo 1 kg. Condiciones confirmadas por el propietario el 9 de noviembre de 2026. Las preguntas frecuentes de ambos públicos usan un acordeón nativo de apertura exclusiva; los tres puntos de preparación de la barra permanecen visibles y el botón de cotización cierra la explicación.
+
 ## Mantenimiento y procedencia
 
 `tests/structure.test.cjs` comprueba que todas las páginas de contenido se alcancen desde el inicio, que los destinos y recursos existan, que no queden imágenes sin referencia y que las traducciones correspondan a textos actuales. La página 404 es una excepción deliberada: la sirve el alojamiento cuando una URL no existe.
